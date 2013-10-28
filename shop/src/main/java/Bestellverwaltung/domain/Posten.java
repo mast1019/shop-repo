@@ -1,6 +1,6 @@
-package de.shop.bestellungsverwaltung.domain;
+package Bestellverwaltung.domain;
 
-import de.shop.artikelverwaltung.domain.Artikel;
+import Artikelverwaltung.domain.Artikel;
 
 public class Posten
 {

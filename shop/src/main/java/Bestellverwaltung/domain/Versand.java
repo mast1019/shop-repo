@@ -1,6 +1,6 @@
-package de.shop.bestellungsverwaltung.domain;
+package Bestellverwaltung.domain;
 
-import de.shop.extern.domain.*;
+import Externe.domain.*;
 
 import java.util.Date;
 
