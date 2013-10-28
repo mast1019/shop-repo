@@ -1,4 +1,4 @@
-package de.shop.bestellungsverwaltung.domain;
+package Bestellverwaltung.domain;
 
 public class Bankeinzug extends Zahlung {
 	

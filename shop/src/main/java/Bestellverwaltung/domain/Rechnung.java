@@ -1,8 +1,7 @@
-package de.shop.bestellungsverwaltung.domain;
+package Bestellverwaltung.domain;
 
 import java.util.Date;
-
-import de.shop.kundenverwaltung.domain.Adresse;
+import Kundenverwaltung.domain.Adresse;
 
 public class Rechnung {
 	

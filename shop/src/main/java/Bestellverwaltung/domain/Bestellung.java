@@ -1,4 +1,4 @@
-package de.shop.bestellungsverwaltung.domain;
+package Bestellverwaltung.domain;
 
 import java.util.Date;
 import java.util.List;
