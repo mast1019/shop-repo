@@ -1,4 +1,4 @@
-package de.shop.kundenverwaltung.domain;
+package Kundenverwaltung.domain;
 
 public class Adresse {
 	
