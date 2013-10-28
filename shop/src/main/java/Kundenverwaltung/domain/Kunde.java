@@ -1,9 +1,9 @@
-package de.shop.kundenverwaltung.domain;
+package Kundenverwaltung.domain;
 
 import java.util.Date;
 import java.util.List;
 
-import de.shop.bestellungsverwaltung.domain.Bestellung;
+import Bestellverwaltung.domain.Bestellung;
 
 public class Kunde {
 	
@@ -15,7 +15,7 @@ public class Kunde {
 	public Date Erstellungsdatum;
 	
 	public Kunde(String nachname, String vorname,
-			de.shop.kundenverwaltung.domain.Adresse adresse,
+			Kundenverwaltung.domain.Adresse adresse,
 			Date erstellungsdatum) {
 		super();
 		Nachname = nachname;
