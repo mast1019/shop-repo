@@ -1,6 +1,6 @@
-package de.shop.artikelverwaltung.domain;
+package Artikelverwaltung.domain;
 
-import de.shop.extern.domain.Lieferant;
+import Externe.domain.Lieferant;
 
 public abstract class Artikel {
 	
