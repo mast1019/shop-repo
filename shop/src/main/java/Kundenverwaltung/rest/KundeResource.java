@@ -18,7 +18,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
@@ -83,7 +82,7 @@ public class KundeResource {
 	public void setStructuralLinks(Kunde kunde, UriInfo uriInfo) {
 		// URI fuer Bestellungen setzen
 		final URI uri = getUriBestellungen(kunde, uriInfo);
-		kunde.setBestellungenUri(uri);
+		kunde.setBestellungenURI(uri);
 	}
 	
 	private URI getUriBestellungen(Kunde kunde, UriInfo uriInfo) {
@@ -201,7 +200,6 @@ public class KundeResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createKunde(Kunde kunde) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		kunde = Mock.createKunde(kunde);
 		return Response.created(getUriKunde(kunde, uriInfo))
 			           .build();
@@ -211,7 +209,6 @@ public class KundeResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public void updateKunde(Kunde kunde) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		Mock.updateKunde(kunde);
 	}
 	
@@ -219,7 +216,6 @@ public class KundeResource {
 	@Path("{id:[1-9][0-9]*}")
 	@Produces
 	public void deleteKunde(@PathParam("id") Long kundeId) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		Mock.deleteKunde(kundeId);
 	}
 }
