@@ -2,7 +2,7 @@ package Artikelverwaltung.domain;
 
 import Externe.domain.Lieferant;
 
-public abstract class Artikel {
+public class Artikel {
 	
 	private Long id;
 	private String name;
@@ -19,6 +19,10 @@ public abstract class Artikel {
 		this.setPreis(preis);
 		this.setLieferant(lieferant);
 		this.setGewicht(gewicht);
+	}
+	
+	public Artikel() {
+		
 	}
 
 	public Long getId() {

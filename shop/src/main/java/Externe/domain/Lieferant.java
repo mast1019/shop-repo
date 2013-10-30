@@ -22,6 +22,8 @@ public class Lieferant
 		this.name = name;
 		this.anschrift = anschrift;
 	}
+	
+	public Lieferant(){}
 
 	private String name;
 	

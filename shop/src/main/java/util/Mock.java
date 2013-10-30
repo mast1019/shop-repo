@@ -27,6 +27,7 @@ public final class Mock {
 	private static final int MAX_ID = 99;
 	private static final int MAX_KUNDEN = 8;
 	private static final int MAX_BESTELLUNGEN = 4;
+	private static final int MAX_ARTIKEL = 4;
 
 	public static Kunde findKundeById(Long id) {
 		if (id > MAX_ID) {
@@ -122,5 +123,31 @@ public final class Mock {
 		System.out.println("Kunde mit ID=" + kundeId + " geloescht");
 	}
 
+	public static Artikel findArtikelbyId(Long id){
+		if (id>MAX_ARTIKEL){
+			return null;
+		}
+		final Artikel artikel = new Artikel();
+		artikel.setId(id);
+		artikel.setName("Test-Fahrrad");
+		artikel.setBeschreibung("ein Fahrrad zum testen!");
+		artikel.setPreis(200.00);
+		artikel.setGewicht(12);
+		
+		final Lieferant lieferant=new Lieferant();
+		lieferant.setId((long) 1);
+		lieferant.setName("Lieferanten-Name");
+		
+		final Adresse adresse = new Adresse();
+		adresse.setPostleitzahl(12345);
+		adresse.setStadt("Testort");
+		adresse.setStraße("Teststraße");
+		adresse.setHausnummer(67);
+		lieferant.setAnschrift(adresse);
+		
+		return artikel;
+		
+	}
+	
 	private Mock() { /**/ }
 }
