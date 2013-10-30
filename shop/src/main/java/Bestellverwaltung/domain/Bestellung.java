@@ -2,12 +2,17 @@ package Bestellverwaltung.domain;
 
 import java.util.List;
 
+import java.io.Serializable;
+import java.net.URI;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 import Kundenverwaltung.domain.Kunde;
+@XmlRootElement
+public class Bestellung implements Serializable{
+	private static final long serialVersionUID = 1618359234119003714L;
 
-public class Bestellung {
-
-
-	
 	public Bestellung(Long bestellnummer, List<Posten> posten,
 			Double gesamtpreis, Kunde kundenid, Boolean ausgeliefert) {
 		super();
@@ -23,8 +28,13 @@ public class Bestellung {
 	private Long bestellnummer;
 	private List<Posten> posten;
 	private Double gesamtpreis;
+	
+	@XmlTransient
 	private Kunde kundenid;
+	
 	private Boolean ausgeliefert;
+	
+	private URI kundeUri;
 	
 	public Long getBestellnummer() {
 		return bestellnummer;
@@ -57,12 +67,22 @@ public class Bestellung {
 	public void setAusgeliefert(Boolean ausgeliefert) {
 		this.ausgeliefert = ausgeliefert;
 	}
+	
+	public URI getKundeUri() {
+		return kundeUri;
+	}
+	public void setKundeUri(URI kundeUri) {
+		this.kundeUri = kundeUri;
+	}
+	
 	@Override
 	public String toString() {
 		return "Bestellung [bestellnummer=" + bestellnummer + ", posten="
 				+ posten + ", gesamtpreis=" + gesamtpreis + ", kundenid="
 				+ kundenid + ", ausgeliefert=" + ausgeliefert + "]";
 	}
+	
+	
 	
 	
 }
