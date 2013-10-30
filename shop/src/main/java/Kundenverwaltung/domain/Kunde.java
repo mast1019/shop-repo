@@ -159,6 +159,14 @@ public class Kunde {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Kunde [Id=" + Id + ", Nachname=" + Nachname + ", Vorname="
+				+ Vorname + ", Bestellungen=" + Bestellungen + ", Adresse="
+				+ Adresse + ", Erstellungsdatum=" + Erstellungsdatum
+				+ ", bestellungenURI=" + bestellungenURI + "]";
+	}
 	
 	
 	
