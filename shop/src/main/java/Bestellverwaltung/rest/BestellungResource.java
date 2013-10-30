@@ -62,7 +62,7 @@ public class BestellungResource {
 		// URI fuer Kunde setzen
 		final Kunde kunde = bestellung.getKundenid();
 		if (kunde != null) {
-			final URI kundeUri = kundeResource.getUriKunde(bestellung.getKunde(), uriInfo);
+			final URI kundeUri = kundeResource.getUriKunde(bestellung.getKundenid(), uriInfo);
 			bestellung.setKundeUri(kundeUri);
 		}
 	}
