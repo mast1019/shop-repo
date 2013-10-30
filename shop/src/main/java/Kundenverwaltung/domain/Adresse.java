@@ -3,39 +3,39 @@ package Kundenverwaltung.domain;
 public class Adresse {
 	
 	private String Straﬂe;
-	private Long Hausnummer;
-	private Long Postleitzahl;
+	private Integer Hausnummer;
+	private Integer Postleitzahl;
 	private String Stadt;
-	private String Adresszusatz;
 	
 	public Adresse(String straﬂe,
-			Long hausnummer, Long postleitzahl, String stadt,
-			String adresszusatz) {
+			Integer hausnummer, Integer postleitzahl, String stadt) {
 		super();
 		
 		setStraﬂe(straﬂe);
 		setHausnummer(hausnummer);
 		setPostleitzahl(postleitzahl);
 		setStadt(stadt);
-		setAdresszusatz(adresszusatz);
 	}
 
+	public Adresse()
+	{}
+	
 	public String getStraﬂe() {
 		return Straﬂe;
 	}
 	public void setStraﬂe(String straﬂe) {
 		Straﬂe = straﬂe;
 	}
-	public Long getHausnummer() {
+	public Integer getHausnummer() {
 		return Hausnummer;
 	}
-	public void setHausnummer(Long hausnummer) {
+	public void setHausnummer(Integer hausnummer) {
 		Hausnummer = hausnummer;
 	}
-	public Long getPostleitzahl() {
+	public Integer getPostleitzahl() {
 		return Postleitzahl;
 	}
-	public void setPostleitzahl(Long postleitzahl) {
+	public void setPostleitzahl(Integer postleitzahl) {
 		Postleitzahl = postleitzahl;
 	}
 	public String getStadt() {
@@ -44,12 +44,6 @@ public class Adresse {
 	public void setStadt(String stadt) {
 		Stadt = stadt;
 	}
-	public String getAdresszusatz() {
-		return Adresszusatz;
-	}
-	public void setAdresszusatz(String adresszusatz) {
-		Adresszusatz = adresszusatz;
-	}
-	
+
 	
 }

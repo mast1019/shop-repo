@@ -24,6 +24,9 @@ public class Kunde {
 		Erstellungsdatum = erstellungsdatum;
 	}
 	
+	public Kunde()
+	{}
+	
 	public Long getId() {
 		return Id;
 	}

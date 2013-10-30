@@ -1,32 +1,38 @@
 package Bestellverwaltung.domain;
 
-import java.util.Date;
 import java.util.List;
+
+import Kundenverwaltung.domain.Kunde;
 
 public class Bestellung {
 
-	public Bestellung(Date bestelldatum, Long kundenid) {
+
+	
+	public Bestellung(Long bestellnummer, List<Posten> posten,
+			Double gesamtpreis, Kunde kundenid, Boolean ausgeliefert) {
 		super();
-		this.bestelldatum = bestelldatum;
+		this.bestellnummer = bestellnummer;
+		this.posten = posten;
+		this.gesamtpreis = gesamtpreis;
 		this.kundenid = kundenid;
+		this.ausgeliefert = ausgeliefert;
 	}
+	public Bestellung()
+	{}
+	
 	private Long bestellnummer;
-	private Date bestelldatum;
 	private List<Posten> posten;
 	private Double gesamtpreis;
-	private Long kundenid;
+	private Kunde kundenid;
+	private Boolean ausgeliefert;
+	
 	public Long getBestellnummer() {
 		return bestellnummer;
 	}
 	public void setBestellnummer(Long bestellnummer) {
 		this.bestellnummer = bestellnummer;
 	}
-	public Date getBestelldatum() {
-		return bestelldatum;
-	}
-	public void setBestelldatum(Date bestelldatum) {
-		this.bestelldatum = bestelldatum;
-	}
+
 	public List<Posten> getPosten() {
 		return posten;
 	}
@@ -39,17 +45,23 @@ public class Bestellung {
 	public void setGesamtpreis(Double gesamtpreis) {
 		this.gesamtpreis = gesamtpreis;
 	}
-	public Long getKundenid() {
+	public Kunde getKundenid() {
 		return kundenid;
 	}
-	public void setKundenid(Long kundenid) {
+	public void setKundenid(Kunde kundenid) {
 		this.kundenid = kundenid;
+	}
+	public Boolean getAusgeliefert() {
+		return ausgeliefert;
+	}
+	public void setAusgeliefert(Boolean ausgeliefert) {
+		this.ausgeliefert = ausgeliefert;
 	}
 	@Override
 	public String toString() {
-		return "Bestellung [bestellnummer=" + bestellnummer + ", bestelldatum="
-				+ bestelldatum + ", posten=" + posten + ", gesamtpreis="
-				+ gesamtpreis + ", kundenid=" + kundenid + "]";
+		return "Bestellung [bestellnummer=" + bestellnummer + ", posten="
+				+ posten + ", gesamtpreis=" + gesamtpreis + ", kundenid="
+				+ kundenid + ", ausgeliefert=" + ausgeliefert + "]";
 	}
 	
 	
