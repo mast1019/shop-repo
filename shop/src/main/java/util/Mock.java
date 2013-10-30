@@ -123,7 +123,7 @@ public final class Mock {
 		System.out.println("Kunde mit ID=" + kundeId + " geloescht");
 	}
 
-	public static Artikel findArtikelbyId(Long id){
+	public static Artikel findArtikelById(Long id){
 		if (id>MAX_ARTIKEL){
 			return null;
 		}
