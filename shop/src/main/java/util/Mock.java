@@ -1,26 +1,14 @@
 package util;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import Bestellverwaltung.domain.Bestellung;
-import Bestellverwaltung.domain.Bankeinzug;
-import Bestellverwaltung.domain.Kreditkarte;
 import Bestellverwaltung.domain.Posten;
-import Bestellverwaltung.domain.Versand;
-import Bestellverwaltung.domain.Rechnung;
-import Bestellverwaltung.domain.Zahlung;
 import Kundenverwaltung.domain.Kunde;
 import Kundenverwaltung.domain.Adresse;
 import Artikelverwaltung.domain.Artikel;
-import Artikelverwaltung.domain.Fahrrad;
-import Artikelverwaltung.domain.Fahrradtyp;
-import Artikelverwaltung.domain.Helm;
-import Artikelverwaltung.domain.Katalog;
 import Externe.domain.Lieferant;
-import Externe.domain.Spediteur;
 
 
 public final class Mock {

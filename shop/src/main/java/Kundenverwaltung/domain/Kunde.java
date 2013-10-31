@@ -1,6 +1,5 @@
 package Kundenverwaltung.domain;
 
-import java.io.Serializable;
 import java.net.URI;
 import java.util.Date;
 import java.util.List;
