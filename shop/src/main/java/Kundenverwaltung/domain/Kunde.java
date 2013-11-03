@@ -14,8 +14,7 @@ import org.codehaus.jackson.annotate.JsonTypeInfo;
 
 @XmlRootElement
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-public class Kunde implements Serializable {
-	private static final long serialVersionUID = 7401524595142572933L;
+public class Kunde {
 	
 	private Long Id;
 	private String Nachname;

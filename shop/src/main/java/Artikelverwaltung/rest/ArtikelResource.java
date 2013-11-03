@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import util.Mock;
+import util.rest.UriHelper;
 import Artikelverwaltung.domain.Artikel;
 
 	
