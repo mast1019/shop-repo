@@ -1,9 +1,10 @@
 package Artikelverwaltung.domain;
 
 import Externe.domain.Lieferant;
+import java.util.Set;
 
 public class Fahrrad extends Artikel {
-	private Fahrradtyp typ;
+	private Set<Fahrradtyp> typ;
 	private Integer rahmengroesse;
 
 	
@@ -16,16 +17,16 @@ public class Fahrrad extends Artikel {
 		this.rahmengroesse = rahmengroesse;
 	}
 
-	public Fahrradtyp getTyp() {
+	public Set<Fahrradtyp> getTyp() {
 		return typ;
 	}
 
-	public void setTyp(Fahrradtyp typ) {
+	public void setTyp(Set<Fahrradtyp> typ) {
 		this.typ = typ;
 	}
 
 	public Fahrrad(String name, String beschreibung, Double preis,
-			Lieferant lieferant, Integer gewicht, Fahrradtyp typ,
+			Lieferant lieferant, Integer gewicht, Set<Fahrradtyp> typ,
 			Integer rahmengroesse) {
 		super(name, beschreibung, preis, lieferant, gewicht);
 		this.typ = typ;

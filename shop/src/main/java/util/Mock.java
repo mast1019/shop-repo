@@ -131,7 +131,6 @@ public final class Mock {
 		adresse.setStadt("Testort");
 		adresse.setStraße("Teststraße");
 		adresse.setHausnummer(67);
-		lieferant.setAnschrift(adresse);
 		
 		return artikel;
 		

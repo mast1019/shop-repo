@@ -18,10 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import util.Mock;
-import util.rest.UriHelper;
 import Artikelverwaltung.domain.Artikel;
-
-
 
 	
 	@Path("/artikel")
@@ -33,8 +30,6 @@ import Artikelverwaltung.domain.Artikel;
 		
 		@Inject
 		private UriHelper uriHelper;
-		
-		
 		
 		@GET
 		@Path("{id:[1-9][0-9]*}")
@@ -56,10 +51,8 @@ import Artikelverwaltung.domain.Artikel;
 		
 		
 		
-		
-		
 		public URI getUriBestellung(Artikel artikel, UriInfo uriInfo) {
-			return uriHelper.getUri(ArtikelResource.class, "findBestellungById", artikel.getId(), uriInfo);
+			return uriHelper.getUri(ArtikelResource.class, "findArtikelById", artikel.getId(), uriInfo);
 		}
 	}
 

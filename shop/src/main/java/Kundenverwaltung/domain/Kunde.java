@@ -9,9 +9,13 @@ import Bestellverwaltung.domain.Bestellung;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+
 
 @XmlRootElement
-public class Kunde {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+public class Kunde implements Serializable {
+	private static final long serialVersionUID = 7401524595142572933L;
 	
 	private Long Id;
 	private String Nachname;
