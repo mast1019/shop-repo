@@ -30,7 +30,7 @@ public final class Mock {
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("01234");
 		adresse.setStadt("Testort");
-		adresse.setStrasse("Teststra�e");
+		adresse.setStrasse("Teststrasse");
 		adresse.setHausnummer(22);
 		kunde.setAdresse(adresse);
 		
@@ -129,7 +129,7 @@ public final class Mock {
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("01234");
 		adresse.setStadt("Testort");
-		adresse.setStrasse("Teststra�e");
+		adresse.setStrasse("Teststrasse");
 		adresse.setHausnummer(67);
 		
 		return artikel;
