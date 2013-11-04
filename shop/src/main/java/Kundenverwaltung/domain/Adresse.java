@@ -7,14 +7,14 @@ public class Adresse {
 	
 	private String Strasse;
 	private Integer Hausnummer;
-	private Integer Postleitzahl;
+	private String Postleitzahl;
 	private String Stadt;
 	
 	@XmlTransient
 	private Kunde kunde;
 	
 	public Adresse(String strasse,
-			Integer hausnummer, Integer postleitzahl, String stadt, Kunde kunde) {
+			Integer hausnummer, String postleitzahl, String stadt, Kunde kunde) {
 		super();
 		
 		setStrasse(strasse);
@@ -39,10 +39,10 @@ public class Adresse {
 	public void setHausnummer(Integer hausnummer) {
 		Hausnummer = hausnummer;
 	}
-	public Integer getPostleitzahl() {
+	public String getPostleitzahl() {
 		return Postleitzahl;
 	}
-	public void setPostleitzahl(Integer postleitzahl) {
+	public void setPostleitzahl(String postleitzahl) {
 		Postleitzahl = postleitzahl;
 	}
 	public String getStadt() {

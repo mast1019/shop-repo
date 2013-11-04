@@ -28,7 +28,7 @@ public final class Mock {
 		
 		
 		final Adresse adresse = new Adresse();
-		adresse.setPostleitzahl(12345);
+		adresse.setPostleitzahl("01234");
 		adresse.setStadt("Testort");
 		adresse.setStrasse("Teststra�e");
 		adresse.setHausnummer(22);
@@ -127,7 +127,7 @@ public final class Mock {
 		lieferant.setName("Lieferanten-Name");
 		
 		final Adresse adresse = new Adresse();
-		adresse.setPostleitzahl(12345);
+		adresse.setPostleitzahl("01234");
 		adresse.setStadt("Testort");
 		adresse.setStrasse("Teststra�e");
 		adresse.setHausnummer(67);
