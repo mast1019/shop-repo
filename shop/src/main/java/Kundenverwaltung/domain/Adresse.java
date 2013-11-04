@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class Adresse {
 	
-	private String Straße;
+	private String Strasse;
 	private Integer Hausnummer;
 	private Integer Postleitzahl;
 	private String Stadt;
@@ -13,11 +13,11 @@ public class Adresse {
 	@XmlTransient
 	private Kunde kunde;
 	
-	public Adresse(String straße,
+	public Adresse(String strasse,
 			Integer hausnummer, Integer postleitzahl, String stadt, Kunde kunde) {
 		super();
 		
-		setStraße(straße);
+		setStrasse(strasse);
 		setHausnummer(hausnummer);
 		setPostleitzahl(postleitzahl);
 		setStadt(stadt);
@@ -27,11 +27,11 @@ public class Adresse {
 	public Adresse()
 	{}
 	
-	public String getStraße() {
-		return Straße;
+	public String getStrasse() {
+		return Strasse;
 	}
-	public void setStraße(String straße) {
-		Straße = straße;
+	public void setStrasse(String strasse) {
+		Strasse = strasse;
 	}
 	public Integer getHausnummer() {
 		return Hausnummer;
@@ -62,7 +62,7 @@ public class Adresse {
 
 	@Override
 	public String toString() {
-		return "Adresse [Straße=" + Straße + ", Hausnummer=" + Hausnummer
+		return "Adresse [Straï¿½e=" + Strasse + ", Hausnummer=" + Hausnummer
 				+ ", Postleitzahl=" + Postleitzahl + ", Stadt=" + Stadt
 				+ ", kunde=" + kunde + "]";
 	}
@@ -76,7 +76,7 @@ public class Adresse {
 		result = prime * result
 				+ ((Postleitzahl == null) ? 0 : Postleitzahl.hashCode());
 		result = prime * result + ((Stadt == null) ? 0 : Stadt.hashCode());
-		result = prime * result + ((Straße == null) ? 0 : Straße.hashCode());
+		result = prime * result + ((Strasse == null) ? 0 : Strasse.hashCode());
 		result = prime * result + ((kunde == null) ? 0 : kunde.hashCode());
 		return result;
 	}
@@ -105,10 +105,10 @@ public class Adresse {
 				return false;
 		} else if (!Stadt.equals(other.Stadt))
 			return false;
-		if (Straße == null) {
-			if (other.Straße != null)
+		if (Strasse == null) {
+			if (other.Strasse != null)
 				return false;
-		} else if (!Straße.equals(other.Straße))
+		} else if (!Strasse.equals(other.Strasse))
 			return false;
 		if (kunde == null) {
 			if (other.kunde != null)
