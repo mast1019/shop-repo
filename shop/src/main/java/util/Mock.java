@@ -11,6 +11,7 @@ import Artikelverwaltung.domain.Artikel;
 import Externe.domain.Lieferant;
 
 
+//ich checks nicht
 public final class Mock {
 	private static final int MAX_ID = 99;
 	private static final int MAX_KUNDEN = 8;
@@ -32,6 +33,7 @@ public final class Mock {
 		adresse.setStadt("Testort");
 		adresse.setStrasse("Teststrasse");
 		adresse.setHausnummer(22);
+		
 		kunde.setAdresse(adresse);
 		
 		return kunde;

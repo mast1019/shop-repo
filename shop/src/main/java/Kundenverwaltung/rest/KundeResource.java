@@ -1,3 +1,4 @@
+// ich checks nicht
 package Kundenverwaltung.rest;
 
 import static util.Constants.ADD_LINK;
@@ -45,7 +46,7 @@ import util.rest.UriHelper;
 @Consumes
 public class KundeResource {
 	
-	public static final String KUNDEN_ID_PATH_PARAM = "kundeId";
+	public static final String KUNDEN_ID_PATH_PARAM = "id";
 	public static final String KUNDEN_NACHNAME_QUERY_PARAM = "nachname";
 	
 	@Context

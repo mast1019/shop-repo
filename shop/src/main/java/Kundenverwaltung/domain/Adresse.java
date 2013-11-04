@@ -1,3 +1,4 @@
+// ich checks nicht
 package Kundenverwaltung.domain;
 
 import javax.xml.bind.annotation.XmlTransient;
@@ -14,14 +15,14 @@ public class Adresse {
 	private Kunde kunde;
 	
 	public Adresse(String strasse,
-			Integer hausnummer, String postleitzahl, String stadt, Kunde kunde) {
+			Integer hausnummer, String postleitzahl, String stadt, Kunde kundeparam) {
 		super();
 		
-		setStrasse(strasse);
-		setHausnummer(hausnummer);
-		setPostleitzahl(postleitzahl);
-		setStadt(stadt);
-		setKunde(kunde);
+		Strasse = strasse;
+		Hausnummer = hausnummer;
+		Postleitzahl = postleitzahl;
+		Stadt = stadt;
+		kunde = kundeparam;
 	}
 
 	public Adresse()
