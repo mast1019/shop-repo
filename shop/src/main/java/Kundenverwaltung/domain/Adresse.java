@@ -1,4 +1,3 @@
-// ich checks nicht
 package Kundenverwaltung.domain;
 
 import javax.xml.bind.annotation.XmlTransient;

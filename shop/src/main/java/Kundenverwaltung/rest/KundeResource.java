@@ -1,4 +1,3 @@
-// ich checks nicht
 package Kundenverwaltung.rest;
 
 import static util.Constants.ADD_LINK;

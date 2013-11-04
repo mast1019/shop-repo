@@ -11,7 +11,6 @@ import Artikelverwaltung.domain.Artikel;
 import Externe.domain.Lieferant;
 
 
-//ich checks nicht
 public final class Mock {
 	private static final int MAX_ID = 99;
 	private static final int MAX_KUNDEN = 8;
