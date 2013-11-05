@@ -127,11 +127,10 @@ public final class Mock {
 		lieferant.setId((long) 1);
 		lieferant.setName("Lieferanten-Name");
 		
-		final Adresse adresse = new Adresse();
-		adresse.setPostleitzahl("01234");
-		adresse.setStadt("Testort");
-		adresse.setStrasse("Teststrasse");
-		adresse.setHausnummer("67");
+
+		
+		artikel.setLieferant(lieferant);
+
 		
 		return artikel;
 		

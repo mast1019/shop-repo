@@ -3,16 +3,8 @@ package Externe.domain;
 public class Lieferant
 {
 	private Long id;
+	private String name;
 	
-	public Long getId()
-	{
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public Lieferant(Long id, String name) 
 	{
 		super();
@@ -22,7 +14,15 @@ public class Lieferant
 	
 	public Lieferant(){}
 
-	private String name;
+	
+	public Long getId()
+	{
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	public String getName() 
 	{
