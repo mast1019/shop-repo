@@ -1,27 +1,21 @@
 package Kundenverwaltung.domain;
 
-import javax.xml.bind.annotation.XmlTransient;
-
 
 public class Adresse {
 	
 	private String Strasse;
-	private Integer Hausnummer;
+	private String Hausnummer;
 	private String Postleitzahl;
 	private String Stadt;
 	
-	@XmlTransient
-	private Kunde kunde;
-	
 	public Adresse(String strasse,
-			Integer hausnummer, String postleitzahl, String stadt, Kunde kundeparam) {
+			String hausnummer, String postleitzahl, String stadt) {
 		super();
 		
 		Strasse = strasse;
 		Hausnummer = hausnummer;
 		Postleitzahl = postleitzahl;
 		Stadt = stadt;
-		kunde = kundeparam;
 	}
 
 	public Adresse()
@@ -33,10 +27,10 @@ public class Adresse {
 	public void setStrasse(String strasse) {
 		Strasse = strasse;
 	}
-	public Integer getHausnummer() {
+	public String getHausnummer() {
 		return Hausnummer;
 	}
-	public void setHausnummer(Integer hausnummer) {
+	public void setHausnummer(String hausnummer) {
 		Hausnummer = hausnummer;
 	}
 	public String getPostleitzahl() {
@@ -52,21 +46,6 @@ public class Adresse {
 		Stadt = stadt;
 	}
 
-	public Kunde getKunde() {
-		return kunde;
-	}
-
-	public void setKunde(Kunde kunde) {
-		this.kunde = kunde;
-	}
-
-	@Override
-	public String toString() {
-		return "Adresse [Stra�e=" + Strasse + ", Hausnummer=" + Hausnummer
-				+ ", Postleitzahl=" + Postleitzahl + ", Stadt=" + Stadt
-				+ ", kunde=" + kunde + "]";
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,7 +56,6 @@ public class Adresse {
 				+ ((Postleitzahl == null) ? 0 : Postleitzahl.hashCode());
 		result = prime * result + ((Stadt == null) ? 0 : Stadt.hashCode());
 		result = prime * result + ((Strasse == null) ? 0 : Strasse.hashCode());
-		result = prime * result + ((kunde == null) ? 0 : kunde.hashCode());
 		return result;
 	}
 
@@ -110,13 +88,17 @@ public class Adresse {
 				return false;
 		} else if (!Strasse.equals(other.Strasse))
 			return false;
-		if (kunde == null) {
-			if (other.kunde != null)
-				return false;
-		} else if (!kunde.equals(other.kunde))
-			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Adresse [Strasse=" + Strasse + ", Hausnummer=" + Hausnummer
+				+ ", Postleitzahl=" + Postleitzahl + ", Stadt=" + Stadt + "]";
+	}
+
+
+
 
 	
 	

@@ -9,11 +9,7 @@ import Bestellverwaltung.domain.Bestellung;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.codehaus.jackson.annotate.JsonTypeInfo;
-
-
 @XmlRootElement
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 public class Kunde {
 	
 	private Long Id;
