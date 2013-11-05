@@ -18,7 +18,7 @@ public class Adresse {
 		Stadt = stadt;
 	}
 
-	public Adresse(){
+	public Adresse() {
 		
 	}
 	
@@ -91,7 +91,8 @@ public class Adresse {
 		if (Stadt == null) {
 			if (other.Stadt != null)
 				return false;
-		} else if (!Stadt.equals(other.Stadt))
+		} 
+		else if (!Stadt.equals(other.Stadt))
 			return false;
 		if (Strasse == null) {
 			if (other.Strasse != null)
