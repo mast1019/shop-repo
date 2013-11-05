@@ -142,6 +142,7 @@ public final class Mock {
 	}
 
 	
+
 	
 
 	public static Artikel createArtikel(Artikel artikel) {
@@ -170,5 +171,10 @@ public final class Mock {
 		return bestellung;
 		
 	}
+	
+	public static void updateArtikel(Artikel artikel) {
+		System.out.println("Aktualisierter Artikel: " + artikel);
+	}
+
 	private Mock() { /**/ }
 }
