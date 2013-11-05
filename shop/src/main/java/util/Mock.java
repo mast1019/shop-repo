@@ -91,6 +91,24 @@ public final class Mock {
 		return bestellung;
 	}
 
+
+	public static Kunde createKunde(Kunde kunde) {
+		// Neue IDs fuer Kunde und zugehoerige Adresse
+		// Ein neuer Kunde hat auch keine Bestellungen
+		final String nachname = kunde.getNachname();
+		kunde.setNachname(nachname);
+		final String vorname = kunde.getVorname();
+		kunde.setVorname(vorname);
+		kunde.setId(Long.valueOf(nachname.length()));
+		final Adresse adresse = kunde.getAdresse();
+		kunde.setAdresse(adresse);
+		kunde.setBestellungen(null);
+		
+		System.out.println("Neuer Kunde: " + kunde);
+		return kunde;
+	}
+
+
 	public static void updateKunde(Kunde kunde) {
 		System.out.println("Aktualisierter Kunde: " + kunde);
 	}
@@ -122,18 +140,7 @@ public final class Mock {
 		return artikel;
 		
 	}
-	public static Kunde createKunde(Kunde kunde) {
-		// Neue IDs fuer Kunde und zugehoerige Adresse
-		// Ein neuer Kunde hat auch keine Bestellungen
-		final String nachname = kunde.getNachname();
-		kunde.setId(Long.valueOf(nachname.length()));
-		final Adresse adresse = kunde.getAdresse();
-		kunde.setAdresse(adresse);
-		kunde.setBestellungen(null);
-		
-		System.out.println("Neuer Kunde: " + kunde);
-		return kunde;
-	}
+
 	
 	
 
