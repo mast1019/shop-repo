@@ -117,8 +117,8 @@ public final class Mock {
 		System.out.println("Kunde mit ID=" + kundeId + " geloescht");
 	}
 
-	public static Artikel findArtikelById(Long id){
-		if (id>MAX_ARTIKEL){
+	public static Artikel findArtikelById(Long id) {
+		if (id > MAX_ARTIKEL) {
 			return null;
 		}
 		final Artikel artikel = new Artikel();
@@ -128,7 +128,7 @@ public final class Mock {
 		artikel.setPreis(200.00);
 		artikel.setGewicht(12);
 		
-		final Lieferant lieferant=new Lieferant();
+		final Lieferant lieferant = new Lieferant();
 		lieferant.setId((long) 1);
 		lieferant.setName("Lieferanten-Name");
 		
@@ -149,20 +149,20 @@ public final class Mock {
 		final String name = artikel.getName();
 		artikel.setName(name);
 		artikel.setId(Long.valueOf(name.length()));
-		String beschreibung = artikel.getBeschreibung();
+		final String beschreibung = artikel.getBeschreibung();
 		artikel.setBeschreibung(beschreibung);
-		Double preis =artikel.getPreis();
+		final Double preis = artikel.getPreis();
 		artikel.setPreis(preis);
-		Integer gewicht = artikel.getGewicht();
+		final Integer gewicht = artikel.getGewicht();
 		artikel.setGewicht(gewicht);
-		Lieferant lieferant = artikel.getLieferant();
+		final Lieferant lieferant = artikel.getLieferant();
 		artikel.setLieferant(lieferant);
 		System.out.println("Neuer artikel: " + artikel);
 		return artikel;
 	}
 
 	public static Bestellung createBestellung(Bestellung bestellung) {
-		final Long bestellnummer =bestellung.getBestellnummer();
+		final Long bestellnummer = bestellung.getBestellnummer();
 		bestellung.setBestellnummer(bestellnummer);
 		bestellung.setPosten(null);
 		bestellung.setGesamtpreis(null);

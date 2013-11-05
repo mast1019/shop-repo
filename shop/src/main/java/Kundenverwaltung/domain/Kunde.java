@@ -113,7 +113,7 @@ public class Kunde {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Kunde other = (Kunde) obj;
+		final Kunde other = (Kunde) obj;
 		if (Adresse == null) {
 			if (other.Adresse != null)
 				return false;

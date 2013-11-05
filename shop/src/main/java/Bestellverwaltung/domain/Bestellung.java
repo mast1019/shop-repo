@@ -20,8 +20,9 @@ public class Bestellung {
 		this.ausgeliefert = ausgeliefert;
 	}
 	
-	public Bestellung()
-	{ }
+	public Bestellung() {
+		
+	}
 	
 	private Long bestellnummer;
 	private List<Posten> posten;
@@ -114,36 +115,42 @@ public class Bestellung {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Bestellung other = (Bestellung) obj;
+		final Bestellung other = (Bestellung) obj;
 		if (ausgeliefert == null) {
 			if (other.ausgeliefert != null)
 				return false;
-		} else if (!ausgeliefert.equals(other.ausgeliefert))
+		}
+		else if (!ausgeliefert.equals(other.ausgeliefert))
 			return false;
 		if (bestellnummer == null) {
 			if (other.bestellnummer != null)
 				return false;
-		} else if (!bestellnummer.equals(other.bestellnummer))
+		}
+		else if (!bestellnummer.equals(other.bestellnummer))
 			return false;
 		if (gesamtpreis == null) {
 			if (other.gesamtpreis != null)
 				return false;
-		} else if (!gesamtpreis.equals(other.gesamtpreis))
+		}
+		else if (!gesamtpreis.equals(other.gesamtpreis))
 			return false;
 		if (kundeUri == null) {
 			if (other.kundeUri != null)
 				return false;
-		} else if (!kundeUri.equals(other.kundeUri))
+		} 
+		else if (!kundeUri.equals(other.kundeUri))
 			return false;
 		if (kundenid == null) {
 			if (other.kundenid != null)
 				return false;
-		} else if (!kundenid.equals(other.kundenid))
+		} 
+		else if (!kundenid.equals(other.kundenid))
 			return false;
 		if (posten == null) {
 			if (other.posten != null)
 				return false;
-		} else if (!posten.equals(other.posten))
+		}
+		else if (!posten.equals(other.posten))
 			return false;
 		return true;
 	}

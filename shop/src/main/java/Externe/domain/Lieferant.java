@@ -10,7 +10,7 @@ public class Lieferant {
 		this.name = name;
 	}
 	
-	public Lieferant(){ }
+	public Lieferant() { }
 
 	
 	public Long getId() {
@@ -52,16 +52,18 @@ public class Lieferant {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Lieferant other = (Lieferant) obj;
+		final Lieferant other = (Lieferant) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		}
+		else if (!id.equals(other.id))
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
-		} else if (!name.equals(other.name))
+		}
+		else if (!name.equals(other.name))
 			return false;
 		return true;
 	}

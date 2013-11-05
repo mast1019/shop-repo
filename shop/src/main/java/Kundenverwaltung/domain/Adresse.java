@@ -18,8 +18,9 @@ public class Adresse {
 		Stadt = stadt;
 	}
 
-	public Adresse()
-	{ }
+	public Adresse(){
+		
+	}
 	
 	public String getStrasse() {
 		return Strasse;
@@ -74,16 +75,18 @@ public class Adresse {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Adresse other = (Adresse) obj;
+		final Adresse other = (Adresse) obj;
 		if (Hausnummer == null) {
 			if (other.Hausnummer != null)
 				return false;
-		} else if (!Hausnummer.equals(other.Hausnummer))
+		} 
+		else if (!Hausnummer.equals(other.Hausnummer))
 			return false;
 		if (Postleitzahl == null) {
 			if (other.Postleitzahl != null)
 				return false;
-		} else if (!Postleitzahl.equals(other.Postleitzahl))
+		}
+		else if (!Postleitzahl.equals(other.Postleitzahl))
 			return false;
 		if (Stadt == null) {
 			if (other.Stadt != null)
@@ -93,7 +96,8 @@ public class Adresse {
 		if (Strasse == null) {
 			if (other.Strasse != null)
 				return false;
-		} else if (!Strasse.equals(other.Strasse))
+		}
+		else if (!Strasse.equals(other.Strasse))
 			return false;
 		return true;
 	}

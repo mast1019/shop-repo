@@ -17,7 +17,7 @@ public class Artikel {
 	
 	
 	
-	public Artikel(String name, String beschreibung, Double preis, Lieferant lieferant,Integer gewicht)	{
+	public Artikel(String name, String beschreibung, Double preis, Lieferant lieferant, Integer gewicht)	{
 		super();
 		this.setName(name);
 		this.setBeschreibung(beschreibung);
@@ -100,7 +100,7 @@ public class Artikel {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Artikel other = (Artikel) obj;
+		final Artikel other = (Artikel) obj;
 		if (beschreibung == null)	{
 			if (other.beschreibung != null)
 				return false;
