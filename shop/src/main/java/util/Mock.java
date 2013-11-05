@@ -25,7 +25,7 @@ public final class Mock {
 		final Kunde kunde = new Kunde();
 		kunde.setId(id);
 		kunde.setNachname("Nachname" + id);
-		
+		kunde.setVorname("Vorname");
 		
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("01234");
