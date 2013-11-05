@@ -91,19 +91,6 @@ public final class Mock {
 		return bestellung;
 	}
 
-	public static Kunde createKunde(Kunde kunde) {
-		// Neue IDs fuer Kunde und zugehoerige Adresse
-		// Ein neuer Kunde hat auch keine Bestellungen
-		final String nachname = kunde.getNachname();
-		kunde.setId(Long.valueOf(nachname.length()));
-		final Adresse adresse = kunde.getAdresse();
-		kunde.setAdresse(adresse);
-		kunde.setBestellungen(null);
-		
-		System.out.println("Neuer Kunde: " + kunde);
-		return kunde;
-	}
-
 	public static void updateKunde(Kunde kunde) {
 		System.out.println("Aktualisierter Kunde: " + kunde);
 	}
@@ -136,6 +123,46 @@ public final class Mock {
 		return artikel;
 		
 	}
+	public static Kunde createKunde(Kunde kunde) {
+		// Neue IDs fuer Kunde und zugehoerige Adresse
+		// Ein neuer Kunde hat auch keine Bestellungen
+		final String nachname = kunde.getNachname();
+		kunde.setId(Long.valueOf(nachname.length()));
+		final Adresse adresse = kunde.getAdresse();
+		kunde.setAdresse(adresse);
+		kunde.setBestellungen(null);
+		
+		System.out.println("Neuer Kunde: " + kunde);
+		return kunde;
+	}
 	
+	
+
+	public static Artikel createArtikel(Artikel artikel) {
+		final String name = artikel.getName();
+		artikel.setId(Long.valueOf(name.length()));
+		String beschreibung = artikel.getBeschreibung();
+		artikel.setBeschreibung(beschreibung);
+		Double preis =artikel.getPreis();
+		artikel.setPreis(preis);
+		
+		System.out.println("Neuer artikel: " + artikel);
+		return artikel;
+	}
+
+	public static Bestellung createBestellung(Bestellung bestellung) {
+		final Long bestellnummer =bestellung.getBestellnummer();
+		bestellung.setBestellnummer(bestellnummer);
+		bestellung.setPosten(null);
+		bestellung.setGesamtpreis(null);
+		bestellung.setAusgeliefert(false);
+		final Kunde kundenid = bestellung.getKundenid();
+		bestellung.setKundenid(kundenid);
+		
+		System.out.println("Neuer artikel: " + bestellung);
+		
+		return bestellung;
+		
+	}
 	private Mock() { /**/ }
 }

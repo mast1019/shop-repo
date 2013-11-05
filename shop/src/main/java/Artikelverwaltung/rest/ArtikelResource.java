@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -20,6 +21,7 @@ import javax.ws.rs.core.UriInfo;
 import util.Mock;
 import util.rest.UriHelper;
 import Artikelverwaltung.domain.Artikel;
+//import Kundenverwaltung.domain.Kunde;
 
 	
 	@Path("/artikel")
@@ -52,8 +54,17 @@ import Artikelverwaltung.domain.Artikel;
 		
 		
 		
-		public URI getUriBestellung(Artikel artikel, UriInfo uriInfo) {
+		public URI getUriArtikel(Artikel artikel, UriInfo uriInfo) {
 			return uriHelper.getUri(ArtikelResource.class, "findArtikelById", artikel.getId(), uriInfo);
+		}
+		
+		@POST
+		@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
+		@Produces
+		public Response createArtikel(Artikel artikel) {
+			artikel = Mock.createArtikel(artikel);
+			return Response.created(getUriArtikel(artikel, uriInfo))
+				           .build();
 		}
 	}
 
