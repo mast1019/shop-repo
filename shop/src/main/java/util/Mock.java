@@ -95,6 +95,9 @@ public final class Mock {
 		// Neue IDs fuer Kunde und zugehoerige Adresse
 		// Ein neuer Kunde hat auch keine Bestellungen
 		final String nachname = kunde.getNachname();
+		kunde.setNachname(nachname);
+		final String vorname = kunde.getVorname();
+		kunde.setVorname(vorname);
 		kunde.setId(Long.valueOf(nachname.length()));
 		final Adresse adresse = kunde.getAdresse();
 		kunde.setAdresse(adresse);
