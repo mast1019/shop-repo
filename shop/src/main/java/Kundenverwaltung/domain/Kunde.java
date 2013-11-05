@@ -22,9 +22,7 @@ public class Kunde {
 	private Date Erstellungsdatum;
 	private URI bestellungenURI;
 	
-	public Kunde(String nachname, String vorname,
-			Kundenverwaltung.domain.Adresse adresse,
-			Date erstellungsdatum) {
+	public Kunde(String nachname, String vorname, Kundenverwaltung.domain.Adresse adresse, Date erstellungsdatum) {
 		super();
 		Nachname = nachname;
 		Vorname = vorname;
@@ -32,10 +30,11 @@ public class Kunde {
 		Erstellungsdatum = erstellungsdatum;
 	}
 	
-	public Kunde()
-	{}
+	public Kunde() { 
+		
+	}
 	
-	public Long getId() {
+	public Long getId()  {
 		return Id;
 	}
 
@@ -97,17 +96,12 @@ public class Kunde {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Adresse == null) ? 0 : Adresse.hashCode());
-		result = prime * result
-				+ ((Bestellungen == null) ? 0 : Bestellungen.hashCode());
-		result = prime
-				* result
-				+ ((Erstellungsdatum == null) ? 0 : Erstellungsdatum.hashCode());
+		result = prime * result	+ ((Bestellungen == null) ? 0 : Bestellungen.hashCode());
+		result = prime * result	+ ((Erstellungsdatum == null) ? 0 : Erstellungsdatum.hashCode());
 		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
-		result = prime * result
-				+ ((Nachname == null) ? 0 : Nachname.hashCode());
+		result = prime * result + ((Nachname == null) ? 0 : Nachname.hashCode());
 		result = prime * result + ((Vorname == null) ? 0 : Vorname.hashCode());
-		result = prime * result
-				+ ((bestellungenURI == null) ? 0 : bestellungenURI.hashCode());
+		result = prime * result	+ ((bestellungenURI == null) ? 0 : bestellungenURI.hashCode());
 		return result;
 	}
 
@@ -123,37 +117,44 @@ public class Kunde {
 		if (Adresse == null) {
 			if (other.Adresse != null)
 				return false;
-		} else if (!Adresse.equals(other.Adresse))
+		} 
+		else if (!Adresse.equals(other.Adresse))
 			return false;
 		if (Bestellungen == null) {
 			if (other.Bestellungen != null)
 				return false;
-		} else if (!Bestellungen.equals(other.Bestellungen))
+		}
+		else if (!Bestellungen.equals(other.Bestellungen))
 			return false;
 		if (Erstellungsdatum == null) {
 			if (other.Erstellungsdatum != null)
 				return false;
-		} else if (!Erstellungsdatum.equals(other.Erstellungsdatum))
+		} 
+		else if (!Erstellungsdatum.equals(other.Erstellungsdatum))
 			return false;
 		if (Id == null) {
 			if (other.Id != null)
 				return false;
-		} else if (!Id.equals(other.Id))
+		}
+		else if (!Id.equals(other.Id))
 			return false;
 		if (Nachname == null) {
 			if (other.Nachname != null)
 				return false;
-		} else if (!Nachname.equals(other.Nachname))
+		}
+		else if (!Nachname.equals(other.Nachname))
 			return false;
 		if (Vorname == null) {
 			if (other.Vorname != null)
 				return false;
-		} else if (!Vorname.equals(other.Vorname))
+		} 
+		else if (!Vorname.equals(other.Vorname))
 			return false;
 		if (bestellungenURI == null) {
 			if (other.bestellungenURI != null)
 				return false;
-		} else if (!bestellungenURI.equals(other.bestellungenURI))
+		}
+		else if (!bestellungenURI.equals(other.bestellungenURI))
 			return false;
 		return true;
 	}

@@ -19,29 +19,36 @@ public class Adresse {
 	}
 
 	public Adresse()
-	{}
+	{ }
 	
 	public String getStrasse() {
 		return Strasse;
 	}
+	
 	public void setStrasse(String strasse) {
 		Strasse = strasse;
 	}
+	
 	public String getHausnummer() {
 		return Hausnummer;
 	}
+	
 	public void setHausnummer(String hausnummer) {
 		Hausnummer = hausnummer;
 	}
+	
 	public String getPostleitzahl() {
 		return Postleitzahl;
 	}
+	
 	public void setPostleitzahl(String postleitzahl) {
 		Postleitzahl = postleitzahl;
 	}
+	
 	public String getStadt() {
 		return Stadt;
 	}
+	
 	public void setStadt(String stadt) {
 		Stadt = stadt;
 	}
@@ -97,9 +104,5 @@ public class Adresse {
 				+ ", Postleitzahl=" + Postleitzahl + ", Stadt=" + Stadt + "]";
 	}
 
-
-
-
-	
 	
 }

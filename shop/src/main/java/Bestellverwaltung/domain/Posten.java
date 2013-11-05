@@ -2,8 +2,7 @@ package Bestellverwaltung.domain;
 
 import Artikelverwaltung.domain.Artikel;
 
-public class Posten
-{
+public class Posten {
 	public Posten(Long id, Artikel artikel, Integer anzahl, Double gesamtpreis) {
 		super();
 		this.id = id;
@@ -14,23 +13,19 @@ public class Posten
 
 	private Long id;
 	
-	public Long getId() 
-	{
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id)
-	{
+	public void setId(Long id){
 		this.id = id;
 	}
 
-	public Double getGesamtpreis()
-	{
+	public Double getGesamtpreis(){
 		return gesamtpreis;
 	}
 
-	public void setGesamtpreis(Double gesamtpreis)
-	{
+	public void setGesamtpreis(Double gesamtpreis){
 		this.gesamtpreis = gesamtpreis;
 	}
 
@@ -38,23 +33,19 @@ public class Posten
 	private Integer anzahl;
 	private Double gesamtpreis;
 	
-	public Artikel getArtikel()
-	{
+	public Artikel getArtikel(){
 		return artikel;
 	}
 	
-	public void setArtikel(Artikel artikel)
-	{
+	public void setArtikel(Artikel artikel){
 		this.artikel = artikel;
 	}
 	
-	public Integer getAnzahl()
-	{
+	public Integer getAnzahl(){
 		return anzahl;
 	}
 	
-	public void setAnzahl(Integer anzahl)
-	{
+	public void setAnzahl(Integer anzahl){
 		this.anzahl = anzahl;
 	}
 

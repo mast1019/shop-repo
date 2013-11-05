@@ -17,8 +17,7 @@ public class Artikel {
 	
 	
 	
-	public Artikel(String name, String beschreibung, Double preis,
-			Lieferant lieferant,Integer gewicht) {
+	public Artikel(String name, String beschreibung, Double preis, Lieferant lieferant,Integer gewicht)	{
 		super();
 		this.setName(name);
 		this.setBeschreibung(beschreibung);
@@ -87,8 +86,7 @@ public class Artikel {
 				+ ((beschreibung == null) ? 0 : beschreibung.hashCode());
 		result = prime * result + ((gewicht == null) ? 0 : gewicht.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((lieferant == null) ? 0 : lieferant.hashCode());
+		result = prime * result + ((lieferant == null) ? 0 : lieferant.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((preis == null) ? 0 : preis.hashCode());
 		return result;
@@ -103,35 +101,41 @@ public class Artikel {
 		if (getClass() != obj.getClass())
 			return false;
 		Artikel other = (Artikel) obj;
-		if (beschreibung == null) {
+		if (beschreibung == null)	{
 			if (other.beschreibung != null)
 				return false;
-		} else if (!beschreibung.equals(other.beschreibung))
+		} 
+		else if (!beschreibung.equals(other.beschreibung))
 			return false;
 		if (gewicht == null) {
 			if (other.gewicht != null)
 				return false;
-		} else if (!gewicht.equals(other.gewicht))
+		}
+		else if (!gewicht.equals(other.gewicht))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} 
+		else if (!id.equals(other.id))
 			return false;
 		if (lieferant == null) {
 			if (other.lieferant != null)
 				return false;
-		} else if (!lieferant.equals(other.lieferant))
+		} 
+		else if (!lieferant.equals(other.lieferant))
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} 
+		else if (!name.equals(other.name))
 			return false;
 		if (preis == null) {
 			if (other.preis != null)
 				return false;
-		} else if (!preis.equals(other.preis))
+		} 
+		else if (!preis.equals(other.preis))
 			return false;
 		return true;
 	}

@@ -22,12 +22,11 @@ public class Bankeinzug extends Zahlung {
 		this.iban = iban;
 		this.bic = bic;
 	}
+	
 	@Override
 	public String toString() {
 		return "Bankeinzug [iban=" + iban + ", bic=" + bic + ", toString()="
 				+ super.toString() + "]";
 	}
-	
-
-	
+		
 }

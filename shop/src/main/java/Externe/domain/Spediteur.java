@@ -1,6 +1,6 @@
 package Externe.domain;
 
-import Kundenverwaltung.domain.*;
+import Kundenverwaltung.domain.Adresse;
 
 public class Spediteur {
 	

@@ -1,6 +1,6 @@
 package Bestellverwaltung.domain;
 
-import Externe.domain.*;
+import Externe.domain.Spediteur;
 
 import java.util.Date;
 

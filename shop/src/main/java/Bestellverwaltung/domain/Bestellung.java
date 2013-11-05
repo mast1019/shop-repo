@@ -1,17 +1,15 @@
 package Bestellverwaltung.domain;
 
 import java.util.List;
-import java.io.Serializable;
 import java.net.URI;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import Kundenverwaltung.domain.Kunde;
-@XmlRootElement
-public class Bestellung implements Serializable{
-	private static final long serialVersionUID = 1618359234119003714L;
 
+@XmlRootElement
+public class Bestellung {
 	public Bestellung(Long bestellnummer, List<Posten> posten,
 			Double gesamtpreis, Kunde kundenid, Boolean ausgeliefert) {
 		super();
@@ -21,8 +19,9 @@ public class Bestellung implements Serializable{
 		this.kundenid = kundenid;
 		this.ausgeliefert = ausgeliefert;
 	}
+	
 	public Bestellung()
-	{}
+	{ }
 	
 	private Long bestellnummer;
 	private List<Posten> posten;
@@ -38,6 +37,7 @@ public class Bestellung implements Serializable{
 	public Long getBestellnummer() {
 		return bestellnummer;
 	}
+	
 	public void setBestellnummer(Long bestellnummer) {
 		this.bestellnummer = bestellnummer;
 	}
@@ -45,24 +45,30 @@ public class Bestellung implements Serializable{
 	public List<Posten> getPosten() {
 		return posten;
 	}
+	
 	public void setPosten(List<Posten> posten) {
 		this.posten = posten;
 	}
 	public Double getGesamtpreis() {
 		return gesamtpreis;
 	}
+	
 	public void setGesamtpreis(Double gesamtpreis) {
 		this.gesamtpreis = gesamtpreis;
 	}
+	
 	public Kunde getKundenid() {
 		return kundenid;
 	}
+	
 	public void setKundenid(Kunde kundenid) {
 		this.kundenid = kundenid;
 	}
+	
 	public Boolean getAusgeliefert() {
 		return ausgeliefert;
 	}
+	
 	public void setAusgeliefert(Boolean ausgeliefert) {
 		this.ausgeliefert = ausgeliefert;
 	}
@@ -70,6 +76,7 @@ public class Bestellung implements Serializable{
 	public URI getKundeUri() {
 		return kundeUri;
 	}
+	
 	public void setKundeUri(URI kundeUri) {
 		this.kundeUri = kundeUri;
 	}
@@ -80,6 +87,7 @@ public class Bestellung implements Serializable{
 				+ posten + ", gesamtpreis=" + gesamtpreis + ", kundenid="
 				+ kundenid + ", ausgeliefert=" + ausgeliefert + "]";
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -97,6 +105,7 @@ public class Bestellung implements Serializable{
 		result = prime * result + ((posten == null) ? 0 : posten.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -140,6 +149,6 @@ public class Bestellung implements Serializable{
 	}
 	
 	
-	
-	
 }
+
+
