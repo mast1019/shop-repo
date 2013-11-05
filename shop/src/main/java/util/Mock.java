@@ -147,12 +147,16 @@ public final class Mock {
 
 	public static Artikel createArtikel(Artikel artikel) {
 		final String name = artikel.getName();
+		artikel.setName(name);
 		artikel.setId(Long.valueOf(name.length()));
 		String beschreibung = artikel.getBeschreibung();
 		artikel.setBeschreibung(beschreibung);
 		Double preis =artikel.getPreis();
 		artikel.setPreis(preis);
-		
+		Integer gewicht = artikel.getGewicht();
+		artikel.setGewicht(gewicht);
+		Lieferant lieferant = artikel.getLieferant();
+		artikel.setLieferant(lieferant);
 		System.out.println("Neuer artikel: " + artikel);
 		return artikel;
 	}

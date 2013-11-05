@@ -10,11 +10,12 @@ public class Artikel {
 	private String name;
 	private String beschreibung;
 	private Double preis;
+	private Integer gewicht;
 	
 	@XmlTransient
 	private Lieferant lieferant;
 	
-	private Integer gewicht;
+	
 	
 	public Artikel(String name, String beschreibung, Double preis,
 			Lieferant lieferant,Integer gewicht) {
