@@ -74,14 +74,82 @@
 	
 	<developers>
 		<developer>
-			<id>Juergen.Zimmermann</id>
-			<name>J&#252;rgen Zimmermann</name>
-			<email>Juergen.Zimmermann@HS-Karlsruhe.de</email>
+			<id>Rene.Albers</id>
+			<name>Rene Albers</name>
+			<email>alre1011@hs-karlsruhe.de</email>
 			<url>http://www.iwi.hs-karlsruhe.de</url>
 			<organization>Hochschule Karlsruhe</organization>
-			<organizationUrl>http://www.iwi.hs-karlsruhe.de</organizationUrl>
+			<organizationUrl>http://www.hs-karlsruhe.de</organizationUrl>
 			<roles>
-				<role>Dozent</role>
+				<role>Student</role>
+			</roles>
+			<timezone>+1</timezone>     <!-- relativ zu GMT -->
+			<properties>
+				<!--
+				<picUrl>http://my.host.com/my/pic.gif</picUrl>
+				-->
+			</properties>
+		</developer>
+		<developer>
+			<id>Matthias.Brand</id>
+			<name>Matthias Brand</name>
+			<email>brma1028@hs-karlsruhe.de</email>
+			<url>http://www.iwi.hs-karlsruhe.de</url>
+			<organization>Hochschule Karlsruhe</organization>
+			<organizationUrl>http://www.hs-karlsruhe.de</organizationUrl>
+			<roles>
+				<role>Student</role>
+			</roles>
+			<timezone>+1</timezone>     <!-- relativ zu GMT -->
+			<properties>
+				<!--
+				<picUrl>http://my.host.com/my/pic.gif</picUrl>
+				-->
+			</properties>
+		</developer>
+		<developer>
+			<id>Tanja.Gutmann</id>
+			<name>Tanja Gutmann</name>
+			<email>guta1012@hs-karlsruhe.de</email>
+			<url>http://www.iwi.hs-karlsruhe.de</url>
+			<organization>Hochschule Karlsruhe</organization>
+			<organizationUrl>http://www.hs-karlsruhe.de</organizationUrl>
+			<roles>
+				<role>Student</role>
+			</roles>
+			<timezone>+1</timezone>     <!-- relativ zu GMT -->
+			<properties>
+				<!--
+				<picUrl>http://my.host.com/my/pic.gif</picUrl>
+				-->
+			</properties>
+		</developer>
+		<developer>
+			<id>Juliette.Leufke</id>
+			<name>Juliette Leufke</name>
+			<email>leju1013@hs-karlsruhe.de</email>
+			<url>http://www.iwi.hs-karlsruhe.de</url>
+			<organization>Hochschule Karlsruhe</organization>
+			<organizationUrl>http://www.hs-karlsruhe.de</organizationUrl>
+			<roles>
+				<role>Student</role>
+			</roles>
+			<timezone>+1</timezone>     <!-- relativ zu GMT -->
+			<properties>
+				<!--
+				<picUrl>http://my.host.com/my/pic.gif</picUrl>
+				-->
+			</properties>
+		</developer>
+		<developer>
+			<id>Sarah.Ludwig</id>
+			<name>Sarah Ludwig</name>
+			<email>lusa1011@hs-karlsruhe.de</email>
+			<url>http://www.iwi.hs-karlsruhe.de</url>
+			<organization>Hochschule Karlsruhe</organization>
+			<organizationUrl>http://www.hs-karlsruhe.de</organizationUrl>
+			<roles>
+				<role>Student</role>
 			</roles>
 			<timezone>+1</timezone>     <!-- relativ zu GMT -->
 			<properties>
