@@ -162,18 +162,17 @@ public final class Mock {
 	}
 
 	public static Bestellung createBestellung(Bestellung bestellung) {
-		final Long bestellnummer = bestellung.getBestellnummer();
+		final Long bestellnummer = (long)1;
 		bestellung.setBestellnummer(bestellnummer);
 		bestellung.setPosten(null);
-		bestellung.setGesamtpreis(null);
+		bestellung.setGesamtpreis(0.0);
 		bestellung.setAusgeliefert(false);
 		final Kunde kundenid = bestellung.getKundenid();
 		bestellung.setKundenid(kundenid);
 		
-		System.out.println("Neuer artikel: " + bestellung);
+		System.out.println("Neue Bestellung: " + bestellung);
 		
 		return bestellung;
-		
 	}
 	
 	public static void updateArtikel(Artikel artikel) {
