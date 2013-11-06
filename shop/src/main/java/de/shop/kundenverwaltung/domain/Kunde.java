@@ -12,22 +12,22 @@ import de.shop.bestellverwaltung.domain.Bestellung;
 @XmlRootElement
 public class Kunde {
 	
-	private Long Id;
-	private String Nachname;
-	private String Vorname;
+	private Long id;
+	private String nachname;
+	private String vorname;
 	
 	@XmlTransient
-	private List<Bestellung> Bestellungen;
-	private Adresse Adresse;
-	private Date Erstellungsdatum;
+	private List<Bestellung> bestellungen;
+	private Adresse adresse;
+	private Date erstellungsdatum;
 	private URI bestellungenURI;
 	
-	public Kunde(String nachname, String vorname, de.shop.kundenverwaltung.domain.Adresse adresse, Date erstellungsdatum) {
+	public Kunde(String nname, String vname, de.shop.kundenverwaltung.domain.Adresse adr, Date erstellung) {
 		super();
-		Nachname = nachname;
-		Vorname = vorname;
-		Adresse = adresse;
-		Erstellungsdatum = erstellungsdatum;
+		nachname = nname;
+		vorname = vname;
+		adresse = adr;
+		erstellungsdatum = erstellung;
 	}
 	
 	//Standardkonstruktor
@@ -36,52 +36,52 @@ public class Kunde {
 	}
 	
 	public Long getId()  {
-		return Id;
+		return id;
 	}
 
-	public void setId(Long id) {
-		Id = id;
+	public void setId(Long i) {
+		id = i;
 	}
 
 	public String getNachname() {
-		return Nachname;
+		return nachname;
 	}
 
-	public void setNachname(String nachname) {
-		Nachname = nachname;
+	public void setNachname(String nname) {
+		nachname = nname;
 	}
 
 	public String getVorname() {
-		return Vorname;
+		return vorname;
 	}
 
-	public void setVorname(String vorname) {
-		Vorname = vorname;
+	public void setVorname(String vname) {
+		vorname = vname;
 	}
 
 
 	public List<Bestellung> getBestellungen() {
-		return Bestellungen;
+		return bestellungen;
 	}
 
-	public void setBestellungen(List<Bestellung> bestellungen) {
-		Bestellungen = bestellungen;
+	public void setBestellungen(List<Bestellung> best) {
+		bestellungen = best;
 	}
 
 	public Adresse getAdresse() {
-		return Adresse;
+		return adresse;
 	}
 
-	public void setAdresse(Adresse adresse) {
-		Adresse = adresse;
+	public void setAdresse(Adresse adr) {
+		adresse = adr;
 	}
 
 	public Date getErstellungsdatum() {
-		return Erstellungsdatum;
+		return erstellungsdatum;
 	}
 
-	public void setErstellungsdatum(Date erstellungsdatum) {
-		Erstellungsdatum = erstellungsdatum;
+	public void setErstellungsdatum(Date erstellung) {
+		erstellungsdatum = erstellung;
 	}
 
 	public URI getBestellungenURI() {
@@ -96,12 +96,12 @@ public class Kunde {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Adresse == null) ? 0 : Adresse.hashCode());
-		result = prime * result	+ ((Bestellungen == null) ? 0 : Bestellungen.hashCode());
-		result = prime * result	+ ((Erstellungsdatum == null) ? 0 : Erstellungsdatum.hashCode());
-		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
-		result = prime * result + ((Nachname == null) ? 0 : Nachname.hashCode());
-		result = prime * result + ((Vorname == null) ? 0 : Vorname.hashCode());
+		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
+		result = prime * result	+ ((bestellungen == null) ? 0 : bestellungen.hashCode());
+		result = prime * result	+ ((erstellungsdatum == null) ? 0 : erstellungsdatum.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nachname == null) ? 0 : nachname.hashCode());
+		result = prime * result + ((vorname == null) ? 0 : vorname.hashCode());
 		result = prime * result	+ ((bestellungenURI == null) ? 0 : bestellungenURI.hashCode());
 		return result;
 	}
@@ -115,41 +115,41 @@ public class Kunde {
 		if (getClass() != obj.getClass())
 			return false;
 		final Kunde other = (Kunde) obj;
-		if (Adresse == null) {
-			if (other.Adresse != null)
+		if (adresse == null) {
+			if (other.adresse != null)
 				return false;
 		} 
-		else if (!Adresse.equals(other.Adresse))
+		else if (!adresse.equals(other.adresse))
 			return false;
-		if (Bestellungen == null) {
-			if (other.Bestellungen != null)
+		if (bestellungen == null) {
+			if (other.bestellungen != null)
 				return false;
 		}
-		else if (!Bestellungen.equals(other.Bestellungen))
+		else if (!bestellungen.equals(other.bestellungen))
 			return false;
-		if (Erstellungsdatum == null) {
-			if (other.Erstellungsdatum != null)
+		if (erstellungsdatum == null) {
+			if (other.erstellungsdatum != null)
 				return false;
 		} 
-		else if (!Erstellungsdatum.equals(other.Erstellungsdatum))
+		else if (!erstellungsdatum.equals(other.erstellungsdatum))
 			return false;
-		if (Id == null) {
-			if (other.Id != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
 		}
-		else if (!Id.equals(other.Id))
+		else if (!id.equals(other.id))
 			return false;
-		if (Nachname == null) {
-			if (other.Nachname != null)
+		if (nachname == null) {
+			if (other.nachname != null)
 				return false;
 		}
-		else if (!Nachname.equals(other.Nachname))
+		else if (!nachname.equals(other.nachname))
 			return false;
-		if (Vorname == null) {
-			if (other.Vorname != null)
+		if (vorname == null) {
+			if (other.vorname != null)
 				return false;
 		} 
-		else if (!Vorname.equals(other.Vorname))
+		else if (!vorname.equals(other.vorname))
 			return false;
 		if (bestellungenURI == null) {
 			if (other.bestellungenURI != null)
@@ -162,9 +162,9 @@ public class Kunde {
 
 	@Override
 	public String toString() {
-		return "Kunde [Id=" + Id + ", Nachname=" + Nachname + ", Vorname="
-				+ Vorname + ", Bestellungen=" + Bestellungen + ", Adresse="
-				+ Adresse + ", Erstellungsdatum=" + Erstellungsdatum
+		return "Kunde [Id=" + id + ", Nachname=" + nachname + ", Vorname="
+				+ vorname + ", Bestellungen=" + bestellungen + ", Adresse="
+				+ adresse + ", Erstellungsdatum=" + erstellungsdatum
 				+ ", bestellungenURI=" + bestellungenURI + "]";
 	}
 	

@@ -1,6 +1,6 @@
 package de.shop.bestellverwaltung.domain;
 
-public class Bankeinzug extends Zahlung {
+public class Bankeinzug extends AbstractZahlung {
 	
 	private String iban;
 	private String bic;

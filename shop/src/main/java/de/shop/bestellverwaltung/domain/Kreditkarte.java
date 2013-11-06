@@ -1,6 +1,6 @@
 package de.shop.bestellverwaltung.domain;
 
-public class Kreditkarte extends Zahlung {
+public class Kreditkarte extends AbstractZahlung {
 	
 	private String kartennummer;
 	private String ablaufdatum;

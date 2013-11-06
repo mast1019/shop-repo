@@ -1,6 +1,6 @@
 package de.shop.bestellverwaltung.domain;
 
-public abstract class Zahlung {
+public abstract class AbstractZahlung {
 	
 	private String name;
 
@@ -12,7 +12,7 @@ public abstract class Zahlung {
 		this.name = name;
 	}
 
-	public Zahlung(String name) {
+	public AbstractZahlung(String name) {
 		super();
 		this.name = name;
 	}
