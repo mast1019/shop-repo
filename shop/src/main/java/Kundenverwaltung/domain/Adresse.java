@@ -3,19 +3,19 @@ package Kundenverwaltung.domain;
 
 public class Adresse {
 	
-	private String Strasse;
-	private String Hausnummer;
-	private String Postleitzahl;
-	private String Stadt;
+	private String strasse;
+	private String hausnummer;
+	private String postleitzahl;
+	private String stadt;
 	
-	public Adresse(String strasse,
-			String hausnummer, String postleitzahl, String stadt) {
+	public Adresse(String str,
+			String hnr, String plz, String stdt) {
 		super();
 		
-		Strasse = strasse;
-		Hausnummer = hausnummer;
-		Postleitzahl = postleitzahl;
-		Stadt = stadt;
+		strasse = str;
+		hausnummer = hnr;
+		postleitzahl = plz;
+		stadt = stdt;
 	}
 
 	public Adresse() {
@@ -23,35 +23,35 @@ public class Adresse {
 	}
 	
 	public String getStrasse() {
-		return Strasse;
+		return strasse;
 	}
 	
-	public void setStrasse(String strasse) {
-		Strasse = strasse;
+	public void setStrasse(String str) {
+		strasse = str;
 	}
 	
 	public String getHausnummer() {
-		return Hausnummer;
+		return hausnummer;
 	}
 	
-	public void setHausnummer(String hausnummer) {
-		Hausnummer = hausnummer;
+	public void setHausnummer(String hnr) {
+		hausnummer = hnr;
 	}
 	
 	public String getPostleitzahl() {
-		return Postleitzahl;
+		return postleitzahl;
 	}
 	
-	public void setPostleitzahl(String postleitzahl) {
-		Postleitzahl = postleitzahl;
+	public void setPostleitzahl(String plz) {
+		postleitzahl = plz;
 	}
 	
 	public String getStadt() {
-		return Stadt;
+		return stadt;
 	}
 	
-	public void setStadt(String stadt) {
-		Stadt = stadt;
+	public void setStadt(String stdt) {
+		stadt = stdt;
 	}
 
 	@Override
@@ -59,11 +59,11 @@ public class Adresse {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((Hausnummer == null) ? 0 : Hausnummer.hashCode());
+				+ ((hausnummer == null) ? 0 : hausnummer.hashCode());
 		result = prime * result
-				+ ((Postleitzahl == null) ? 0 : Postleitzahl.hashCode());
-		result = prime * result + ((Stadt == null) ? 0 : Stadt.hashCode());
-		result = prime * result + ((Strasse == null) ? 0 : Strasse.hashCode());
+				+ ((postleitzahl == null) ? 0 : postleitzahl.hashCode());
+		result = prime * result + ((stadt == null) ? 0 : stadt.hashCode());
+		result = prime * result + ((strasse == null) ? 0 : strasse.hashCode());
 		return result;
 	}
 
@@ -76,37 +76,37 @@ public class Adresse {
 		if (getClass() != obj.getClass())
 			return false;
 		final Adresse other = (Adresse) obj;
-		if (Hausnummer == null) {
-			if (other.Hausnummer != null)
+		if (hausnummer == null) {
+			if (other.hausnummer != null)
 				return false;
 		} 
-		else if (!Hausnummer.equals(other.Hausnummer))
+		else if (!hausnummer.equals(other.hausnummer))
 			return false;
-		if (Postleitzahl == null) {
-			if (other.Postleitzahl != null)
+		if (postleitzahl == null) {
+			if (other.postleitzahl != null)
 				return false;
 		}
-		else if (!Postleitzahl.equals(other.Postleitzahl))
+		else if (!postleitzahl.equals(other.postleitzahl))
 			return false;
-		if (Stadt == null) {
-			if (other.Stadt != null)
+		if (stadt == null) {
+			if (other.stadt != null)
 				return false;
 		} 
-		else if (!Stadt.equals(other.Stadt))
+		else if (!stadt.equals(other.stadt))
 			return false;
-		if (Strasse == null) {
-			if (other.Strasse != null)
+		if (strasse == null) {
+			if (other.strasse != null)
 				return false;
 		}
-		else if (!Strasse.equals(other.Strasse))
+		else if (!strasse.equals(other.strasse))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Adresse [Strasse=" + Strasse + ", Hausnummer=" + Hausnummer
-				+ ", Postleitzahl=" + Postleitzahl + ", Stadt=" + Stadt + "]";
+		return "Adresse [Strasse=" + strasse + ", Hausnummer=" + hausnummer
+				+ ", Postleitzahl=" + postleitzahl + ", Stadt=" + stadt + "]";
 	}
 
 	
