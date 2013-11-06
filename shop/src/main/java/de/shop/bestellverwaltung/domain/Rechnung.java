@@ -6,41 +6,41 @@ import de.shop.kundenverwaltung.domain.Adresse;
 
 public class Rechnung {
 	
-	private Date Datum;
-	private Bestellung Bestellnummer;
-	private Adresse Rechnungsadresse;
+	private Date datum;
+	private Bestellung bestellnummer;
+	private Adresse rechnungsadresse;
 	
 	
-	public Rechnung(Date datum, Bestellung bestellnummer,
-			Adresse rechnungsadresse) {
+	public Rechnung(Date date, Bestellung bnr,
+			Adresse rechnadr) {
 		super();
-		Datum = datum;
-		Bestellnummer = bestellnummer;
-		Rechnungsadresse = rechnungsadresse;
+		datum = date;
+		bestellnummer = bnr;
+		rechnungsadresse = rechnadr;
 	}
 	
 	public Date getDatum() {
-		return Datum;
+		return datum;
 	}
 
-	public void setDatum(Date datum) {
-		Datum = datum;
+	public void setDatum(Date date) {
+		datum = date;
 	}
 
 	public Bestellung getBestellnummer() {
-		return Bestellnummer;
+		return bestellnummer;
 	}
 
-	public void setBestellnummer(Bestellung bestellnummer) {
-		Bestellnummer = bestellnummer;
+	public void setBestellnummer(Bestellung bnr) {
+		bestellnummer = bnr;
 	}
 
 	public Adresse getRechnungsadresse() {
-		return Rechnungsadresse;
+		return rechnungsadresse;
 	}
 
-	public void setRechnungsadresse(Adresse rechnungsadresse) {
-		Rechnungsadresse = rechnungsadresse;
+	public void setRechnungsadresse(Adresse rechnadr) {
+		rechnungsadresse = rechnadr;
 	}
 
 	
