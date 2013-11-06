@@ -178,6 +178,10 @@ public final class Mock {
 	public static void updateArtikel(Artikel artikel) {
 		System.out.println("Aktualisierter Artikel: " + artikel);
 	}
+	
+	public static void updateBestellung(Bestellung bestellung) {
+		System.out.println("Aktualisierte Bestellung: " + bestellung);
+	}
 
 	private Mock() { /**/ }
 }

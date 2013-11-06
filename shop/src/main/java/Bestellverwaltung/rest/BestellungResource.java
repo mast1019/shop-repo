@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -21,6 +22,7 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import Artikelverwaltung.domain.Artikel;
 import Bestellverwaltung.domain.Bestellung;
 import Kundenverwaltung.domain.Kunde;
 import Kundenverwaltung.rest.KundeResource;
@@ -89,4 +91,12 @@ public class BestellungResource {
 		return Response.created(getUriBestellung(bestellung, uriInfo))
 			           .build();
 	}
+	
+	@PUT
+	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
+	@Produces
+	public void updateBestellung(Bestellung bestellung) {
+		// TODO Anwendungskern statt Mock, Verwendung von Locale
+		Mock.updateBestellung(bestellung);
+		}
 }
