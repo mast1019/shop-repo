@@ -22,7 +22,6 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import Artikelverwaltung.domain.Artikel;
 import Bestellverwaltung.domain.Bestellung;
 import Kundenverwaltung.domain.Kunde;
 import Kundenverwaltung.rest.KundeResource;
