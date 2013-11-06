@@ -1,4 +1,4 @@
-package Externe.domain;
+package de.shop.externe.domain;
 
 public class Lieferant {
 	private Long id;

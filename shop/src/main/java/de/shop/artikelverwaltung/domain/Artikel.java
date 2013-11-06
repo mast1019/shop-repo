@@ -1,8 +1,8 @@
-package Artikelverwaltung.domain;
+package de.shop.artikelverwaltung.domain;
 
 import javax.xml.bind.annotation.XmlTransient;
 
-import Externe.domain.Lieferant;
+import de.shop.externe.domain.Lieferant;
 
 public class Artikel {
 	

@@ -1,6 +1,6 @@
-package Bestellverwaltung.domain;
+package de.shop.bestellverwaltung.domain;
 
-import Artikelverwaltung.domain.Artikel;
+import de.shop.artikelverwaltung.domain.Artikel;
 
 public class Posten {
 	public Posten(Long id, Artikel artikel, Integer anzahl, Double gesamtpreis) {

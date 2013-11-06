@@ -1,4 +1,4 @@
-package Bestellverwaltung.domain;
+package de.shop.bestellverwaltung.domain;
 
 import java.util.List;
 import java.net.URI;
@@ -6,7 +6,7 @@ import java.net.URI;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import Kundenverwaltung.domain.Kunde;
+import de.shop.kundenverwaltung.domain.Kunde;
 
 @XmlRootElement
 public class Bestellung {

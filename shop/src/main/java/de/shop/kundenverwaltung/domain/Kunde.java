@@ -1,13 +1,13 @@
-package Kundenverwaltung.domain;
+package de.shop.kundenverwaltung.domain;
 
 import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
-import Bestellverwaltung.domain.Bestellung;
-
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
+import de.shop.bestellverwaltung.domain.Bestellung;
 
 @XmlRootElement
 public class Kunde {
@@ -22,7 +22,7 @@ public class Kunde {
 	private Date Erstellungsdatum;
 	private URI bestellungenURI;
 	
-	public Kunde(String nachname, String vorname, Kundenverwaltung.domain.Adresse adresse, Date erstellungsdatum) {
+	public Kunde(String nachname, String vorname, de.shop.kundenverwaltung.domain.Adresse adresse, Date erstellungsdatum) {
 		super();
 		Nachname = nachname;
 		Vorname = vorname;

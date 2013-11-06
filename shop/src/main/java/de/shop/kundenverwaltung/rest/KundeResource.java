@@ -1,4 +1,4 @@
-package Kundenverwaltung.rest;
+package de.shop.kundenverwaltung.rest;
 
 import static util.Constants.ADD_LINK;
 import static util.Constants.FIRST_LINK;
@@ -6,7 +6,6 @@ import static util.Constants.LAST_LINK;
 import static util.Constants.REMOVE_LINK;
 import static util.Constants.SELF_LINK;
 import static util.Constants.UPDATE_LINK;
-
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
@@ -32,10 +31,9 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import Bestellverwaltung.domain.Bestellung;
-import Bestellverwaltung.rest.BestellungResource;
-import Kundenverwaltung.domain.Kunde;
-
+import de.shop.bestellverwaltung.domain.Bestellung;
+import de.shop.bestellverwaltung.rest.BestellungResource;
+import de.shop.kundenverwaltung.domain.Kunde;
 import util.Mock;
 import util.rest.UriHelper;
 

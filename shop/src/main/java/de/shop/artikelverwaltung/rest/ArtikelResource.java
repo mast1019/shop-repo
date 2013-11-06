@@ -1,4 +1,4 @@
-package Artikelverwaltung.rest;
+package de.shop.artikelverwaltung.rest;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
@@ -19,10 +19,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import de.shop.artikelverwaltung.domain.Artikel;
 import util.Mock;
 import util.rest.UriHelper;
-import Artikelverwaltung.domain.Artikel;
-//import Kundenverwaltung.domain.Kunde;
 
 	
 	@Path("/artikel")

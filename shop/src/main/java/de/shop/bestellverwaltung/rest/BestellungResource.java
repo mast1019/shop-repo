@@ -1,6 +1,6 @@
 // kommentar
 
-package Bestellverwaltung.rest;
+package de.shop.bestellverwaltung.rest;
 
 import static util.Constants.SELF_LINK;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -22,9 +22,9 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import Bestellverwaltung.domain.Bestellung;
-import Kundenverwaltung.domain.Kunde;
-import Kundenverwaltung.rest.KundeResource;
+import de.shop.bestellverwaltung.domain.Bestellung;
+import de.shop.kundenverwaltung.domain.Kunde;
+import de.shop.kundenverwaltung.rest.KundeResource;
 import util.Mock;
 import util.rest.UriHelper;
 import util.rest.NotFoundException;

@@ -1,8 +1,8 @@
-package Bestellverwaltung.domain;
-
-import Externe.domain.Spediteur;
+package de.shop.bestellverwaltung.domain;
 
 import java.util.Date;
+
+import de.shop.externe.domain.Spediteur;
 
 public class Versand {
 

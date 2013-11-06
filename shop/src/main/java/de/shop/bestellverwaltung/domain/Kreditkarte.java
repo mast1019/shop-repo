@@ -1,4 +1,4 @@
-package Bestellverwaltung.domain;
+package de.shop.bestellverwaltung.domain;
 
 public class Kreditkarte extends Zahlung {
 	

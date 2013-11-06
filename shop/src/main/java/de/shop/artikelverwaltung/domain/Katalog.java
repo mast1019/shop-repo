@@ -1,4 +1,4 @@
-package Artikelverwaltung.domain;
+package de.shop.artikelverwaltung.domain;
 
 import java.util.List;
 

@@ -3,12 +3,12 @@ package util;
 import java.util.ArrayList;
 import java.util.List;
 
-import Bestellverwaltung.domain.Bestellung;
-import Bestellverwaltung.domain.Posten;
-import Kundenverwaltung.domain.Kunde;
-import Kundenverwaltung.domain.Adresse;
-import Artikelverwaltung.domain.Artikel;
-import Externe.domain.Lieferant;
+import de.shop.artikelverwaltung.domain.Artikel;
+import de.shop.bestellverwaltung.domain.Bestellung;
+import de.shop.bestellverwaltung.domain.Posten;
+import de.shop.externe.domain.Lieferant;
+import de.shop.kundenverwaltung.domain.Adresse;
+import de.shop.kundenverwaltung.domain.Kunde;
 
 
 public final class Mock {

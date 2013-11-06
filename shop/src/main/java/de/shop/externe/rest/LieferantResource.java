@@ -1,4 +1,4 @@
-package Externe.rest;
+package de.shop.externe.rest;
 
 public class LieferantResource {
 
