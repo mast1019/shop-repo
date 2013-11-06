@@ -30,6 +30,7 @@ public class Kunde {
 		Erstellungsdatum = erstellungsdatum;
 	}
 	
+	//Standardkonstruktor
 	public Kunde() { 
 		
 	}
