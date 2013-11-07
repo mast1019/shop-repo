@@ -3,12 +3,11 @@ package de.shop.bestellverwaltung.domain;
 import de.shop.artikelverwaltung.domain.Artikel;
 
 public class Posten {
-	public Posten(Long id, Artikel artikel, Integer anzahl, Double gesamtpreis) {
+	public Posten(Long id, Artikel artikel, Integer anzahl) {
 		super();
 		this.id = id;
 		this.artikel = artikel;
 		this.anzahl = anzahl;
-		this.gesamtpreis = gesamtpreis;
 	}
 
 	private Long id;
@@ -22,12 +21,9 @@ public class Posten {
 	}
 
 	public Double getGesamtpreis() {
-		return gesamtpreis;
+		return artikel.getPreis() * anzahl;
 	}
 
-	public void setGesamtpreis(Double gesamtpreis) {
-		this.gesamtpreis = gesamtpreis;
-	}
 
 	private Artikel artikel;
 	private Integer anzahl;

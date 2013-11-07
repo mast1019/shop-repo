@@ -38,12 +38,13 @@ public class Bestellung {
 		this.posten = posten;
 	}
 	public Double getGesamtpreis() {
-		return gesamtpreis;
+		Double r = 0.0;
+		for(Posten p : posten) {
+			r += p.getGesamtpreis();
+		}
+		return r;
 	}
 	
-	public void setGesamtpreis(Double gesamtpreis) {
-		this.gesamtpreis = gesamtpreis;
-	}
 	
 	public Kunde getKundenid() {
 		return kundenid;

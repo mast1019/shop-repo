@@ -88,9 +88,8 @@ public final class Mock {
 		final Bestellung bestellung = new Bestellung();
 		bestellung.setBestellnummer(id);
 		bestellung.setAusgeliefert(false);
-		bestellung.setGesamtpreis(200.5);
+		bestellung.setPosten(bestellung.getPosten());
 		bestellung.setKundenid(kunde);
-		bestellung.setPosten(new ArrayList<Posten>());
 		
 		return bestellung;
 	}
@@ -168,7 +167,7 @@ public final class Mock {
 	public static Bestellung createBestellung(Bestellung bestellung) {
 		final Long bestellnummer = (long)1;
 		bestellung.setBestellnummer(bestellnummer);
-		bestellung.setPosten(null);
+		bestellung.setPosten(bestellung.getPosten());
 		bestellung.setGesamtpreis(0.0);
 		bestellung.setAusgeliefert(false);
 		final Kunde kundenid = bestellung.getKundenid();
