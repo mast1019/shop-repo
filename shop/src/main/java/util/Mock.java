@@ -88,7 +88,8 @@ public final class Mock {
 		final Bestellung bestellung = new Bestellung();
 		bestellung.setBestellnummer(id);
 		bestellung.setAusgeliefert(false);
-		bestellung.setPosten(bestellung.getPosten());
+		// TODO bestellung.setPosten(bestellung.getPosten()) 
+		bestellung.setPosten(null);
 		bestellung.setKundenid(kunde);
 		
 		return bestellung;
