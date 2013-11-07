@@ -28,7 +28,11 @@ public class Posten {
 	}
 
 	public Double getGesamtpreis() {
-		return artikel.getPreis() * anzahl;
+		return gesamtpreis;
+	}
+	
+	public void setGesamtpreis(Double gesamtpreis) {
+		gesamtpreis = artikel.getPreis() * anzahl;
 	}
 
 
