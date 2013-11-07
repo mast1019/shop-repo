@@ -45,6 +45,10 @@ public class Bestellung {
 		return r;
 	}
 	
+	public void setGesamtpreis(Double gp) {
+		this.gesamtpreis = gp;
+	}
+	
 	
 	public Kunde getKundenid() {
 		return kundenid;
