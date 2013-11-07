@@ -90,7 +90,7 @@ public final class Mock {
 		bestellung.setAusgeliefert(false);
 		// TODO bestellung.setPosten(bestellung.getPosten()) 
 		bestellung.setPosten(null);
-		bestellung.
+		bestellung.setGesamtpreis(null);
 		bestellung.setKundenid(kunde);
 		
 		return bestellung;
