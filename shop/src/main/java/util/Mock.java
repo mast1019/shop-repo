@@ -168,7 +168,6 @@ public final class Mock {
 		final Long bestellnummer = (long)1;
 		bestellung.setBestellnummer(bestellnummer);
 		bestellung.setPosten(bestellung.getPosten());
-		bestellung.setGesamtpreis(0.0);
 		bestellung.setAusgeliefert(false);
 		final Kunde kundenid = bestellung.getKundenid();
 		bestellung.setKundenid(kundenid);

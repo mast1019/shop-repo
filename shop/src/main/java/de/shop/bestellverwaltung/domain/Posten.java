@@ -2,6 +2,7 @@ package de.shop.bestellverwaltung.domain;
 
 import de.shop.artikelverwaltung.domain.Artikel;
 
+
 public class Posten {
 	public Posten(Long id, Artikel artikel, Integer anzahl) {
 		super();
@@ -9,6 +10,12 @@ public class Posten {
 		this.artikel = artikel;
 		this.anzahl = anzahl;
 	}
+
+
+	public Posten() {
+		
+	}
+
 
 	private Long id;
 	

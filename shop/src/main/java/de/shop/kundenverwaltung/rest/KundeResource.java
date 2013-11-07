@@ -73,6 +73,7 @@ public class KundeResource {
 		setStructuralLinks(kunde, uriInfo);
 		
 		return Response.ok(kunde)
+					   .links(getTransitionalLinks(kunde, uriInfo))
                        .build();
 	}
 	
