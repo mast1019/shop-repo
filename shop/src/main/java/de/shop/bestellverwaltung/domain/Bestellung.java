@@ -10,19 +10,6 @@ import de.shop.kundenverwaltung.domain.Kunde;
 
 @XmlRootElement
 public class Bestellung {
-	public Bestellung(Long bestellnummer, List<Posten> posten,
-			Double gesamtpreis, Kunde kundenid, Boolean ausgeliefert) {
-		super();
-		this.bestellnummer = bestellnummer;
-		this.posten = posten;
-		this.gesamtpreis = gesamtpreis;
-		this.kundenid = kundenid;
-		this.ausgeliefert = ausgeliefert;
-	}
-	
-	public Bestellung() {
-		
-	}
 	
 	private Long bestellnummer;
 	private List<Posten> posten;
