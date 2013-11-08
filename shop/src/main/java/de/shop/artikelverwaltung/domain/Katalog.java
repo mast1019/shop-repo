@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Katalog {
 	
+	private List<Artikel> artikel;
+
 	public Katalog() {
 		super();
 	}
-
-	private List<Artikel> artikel;
 
 	public List<Artikel> getArtikel() {
 		return artikel;

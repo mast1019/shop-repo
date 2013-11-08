@@ -16,7 +16,6 @@ public class Artikel {
 	private Lieferant lieferant;
 	
 	
-	
 	public Artikel(String name, String beschreibung, Double preis, Lieferant lieferant, Integer gewicht)	{
 		super();
 		this.setName(name);
