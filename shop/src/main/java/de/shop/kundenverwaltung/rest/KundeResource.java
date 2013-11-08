@@ -16,7 +16,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -210,10 +209,4 @@ public class KundeResource {
 		Mock.updateKunde(kunde);
 	}
 	
-	@DELETE
-	@Path("{id:[1-9][0-9]*}")
-	@Produces
-	public void deleteKunde(@PathParam("id") Long kundeId) {
-		Mock.deleteKunde(kundeId);
-	}
 }

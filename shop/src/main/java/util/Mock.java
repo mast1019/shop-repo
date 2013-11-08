@@ -117,9 +117,6 @@ public final class Mock {
 		System.out.println("Aktualisierter Kunde: " + kunde);
 	}
 
-	public static void deleteKunde(Long kundeId) {
-		System.out.println("Kunde mit ID=" + kundeId + " geloescht");
-	}
 
 	public static Artikel findArtikelById(Long id) {
 		if (id > MAX_ARTIKEL) {
@@ -146,9 +143,6 @@ public final class Mock {
 	}
 
 	
-
-	
-
 	public static Artikel createArtikel(Artikel artikel) {
 		final String name = artikel.getName();
 		artikel.setName(name);
