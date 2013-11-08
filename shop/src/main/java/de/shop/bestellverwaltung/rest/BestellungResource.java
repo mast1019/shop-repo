@@ -1,5 +1,3 @@
-// kommentar
-
 package de.shop.bestellverwaltung.rest;
 
 import static util.Constants.SELF_LINK;
@@ -23,12 +21,11 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import de.shop.bestellverwaltung.domain.Bestellung;
-import de.shop.kundenverwaltung.domain.Kunde;
+import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.rest.KundeResource;
 import util.Mock;
 import util.rest.UriHelper;
 import util.rest.NotFoundException;
-
 
 @Path("/bestellungen")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
@@ -64,7 +61,7 @@ public class BestellungResource {
 	
 	public void setStructuralLinks(Bestellung bestellung, UriInfo uriInfo) {
 		// URI fuer Kunde setzen
-		final Kunde kunde = bestellung.getKundenid();
+		final AbstractKunde kunde = bestellung.getKundenid();
 		if (kunde != null) {
 			final URI kundeUri = kundeResource.getUriKunde(bestellung.getKundenid(), uriInfo);
 			bestellung.setKundeUri(kundeUri);

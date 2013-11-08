@@ -4,17 +4,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import de.shop.externe.domain.Lieferant;
 
-public class Artikel {
-	
+public class Artikel {	
 	private Long id;
 	private String name;
 	private String beschreibung;
 	private Double preis;
 	private Integer gewicht;
-	
 	@XmlTransient
 	private Lieferant lieferant;
-	
 	
 	public Artikel(String name, String beschreibung, Double preis, Lieferant lieferant, Integer gewicht)	{
 		super();
@@ -25,8 +22,7 @@ public class Artikel {
 		this.setGewicht(gewicht);
 	}
 	
-	public Artikel() {
-		
+	public Artikel() {	
 	}
 
 	public Long getId() {
@@ -144,9 +140,5 @@ public class Artikel {
 		return "Artikel [id=" + id + ", name=" + name + ", beschreibung="
 				+ beschreibung + ", preis=" + preis + ", lieferant="
 				+ lieferant + ", gewicht=" + gewicht + "]";
-	}
-	
-
-	
-	
+	}	
 }

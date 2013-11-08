@@ -1,24 +1,24 @@
 package de.shop.kundenverwaltung.domain;
 
-public class Adresse {
-	
+import javax.xml.bind.annotation.XmlTransient;
+
+public class Adresse {	
 	private String strasse;
 	private String hausnummer;
 	private String postleitzahl;
 	private String stadt;
+	@XmlTransient
+	private AbstractKunde kunde;
 	
-	public Adresse(String str,
-			String hnr, String plz, String stdt) {
+	public Adresse(String str, String hnr, String plz, String stdt) {
 		super();
-		
 		strasse = str;
 		hausnummer = hnr;
 		postleitzahl = plz;
 		stadt = stdt;
 	}
 
-	public Adresse() {
-		
+	public Adresse() {	
 	}
 	
 	public String getStrasse() {
@@ -52,6 +52,13 @@ public class Adresse {
 	public void setStadt(String stdt) {
 		stadt = stdt;
 	}
+	
+	public AbstractKunde getKunde() {
+		return kunde;
+	}
+	public void setKunde(AbstractKunde kunde) {
+		this.kunde = kunde;
+	}
 
 	@Override
 	public int hashCode() {
@@ -59,6 +66,7 @@ public class Adresse {
 		int result = 1;
 		result = prime * result
 				+ ((hausnummer == null) ? 0 : hausnummer.hashCode());
+		result = prime * result + ((kunde == null) ? 0 : kunde.hashCode());
 		result = prime * result
 				+ ((postleitzahl == null) ? 0 : postleitzahl.hashCode());
 		result = prime * result + ((stadt == null) ? 0 : stadt.hashCode());
@@ -74,12 +82,18 @@ public class Adresse {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final Adresse other = (Adresse) obj;
+		Adresse other = (Adresse) obj;
 		if (hausnummer == null) {
 			if (other.hausnummer != null)
 				return false;
-		} 
+		}
 		else if (!hausnummer.equals(other.hausnummer))
+			return false;
+		if (kunde == null) {
+			if (other.kunde != null)
+				return false;
+		}
+		else if (!kunde.equals(other.kunde))
 			return false;
 		if (postleitzahl == null) {
 			if (other.postleitzahl != null)
@@ -90,7 +104,7 @@ public class Adresse {
 		if (stadt == null) {
 			if (other.stadt != null)
 				return false;
-		} 
+		}
 		else if (!stadt.equals(other.stadt))
 			return false;
 		if (strasse == null) {
@@ -104,9 +118,7 @@ public class Adresse {
 
 	@Override
 	public String toString() {
-		return "Adresse [Strasse=" + strasse + ", Hausnummer=" + hausnummer
-				+ ", Postleitzahl=" + postleitzahl + ", Stadt=" + stadt + "]";
+		return "Adresse [strasse=" + strasse + ", hausnummer=" + hausnummer
+				+ ", postleitzahl=" + postleitzahl + ", stadt=" + stadt + "]";
 	}
-
-	
 }

@@ -1,18 +1,16 @@
-//Mock
-//Mock
-//Mock
-//Mock
 package util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import de.shop.artikelverwaltung.domain.Artikel;
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.externe.domain.Lieferant;
 import de.shop.kundenverwaltung.domain.Adresse;
-import de.shop.kundenverwaltung.domain.Kunde;
-
+import de.shop.kundenverwaltung.domain.AbstractKunde;
+import de.shop.kundenverwaltung.domain.Firmenkunde;
+import de.shop.kundenverwaltung.domain.Privatkunde;
 
 public final class Mock {
 	private static final int MAX_ID = 99;
@@ -20,50 +18,49 @@ public final class Mock {
 	private static final int MAX_BESTELLUNGEN = 4;
 	private static final int MAX_ARTIKEL = 4;
 
-	public static Kunde findKundeById(Long id) {
+	public static AbstractKunde findKundeById(Long id) {
 		if (id > MAX_ID) {
 			return null;
 		}
 		
-		final Kunde kunde = new Kunde();
+		final AbstractKunde kunde = id % 2 == 1 ? new Privatkunde() : new Firmenkunde();
 		kunde.setId(id);
 		kunde.setNachname("Nachname" + id);
 		kunde.setVorname("Vorname");
+		kunde.setErstellungsdatum(new Date());
 		
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("01234");
 		adresse.setStadt("Testort");
 		adresse.setStrasse("Teststrasse");
 		adresse.setHausnummer("22");
-		
 		kunde.setAdresse(adresse);
 		
 		return kunde;
 	}
 
-	public static List<Kunde> findAllKunden() {
+	public static List<AbstractKunde> findAllKunden() {
 		final int anzahl = MAX_KUNDEN;
-		final List<Kunde> kunden = new ArrayList<>(anzahl);
+		final List<AbstractKunde> kunden = new ArrayList<>(anzahl);
 		for (int i = 1; i <= anzahl; i++) {
-			final Kunde kunde = findKundeById(Long.valueOf(i));
+			final AbstractKunde kunde = findKundeById(Long.valueOf(i));
 			kunden.add(kunde);			
 		}
 		return kunden;
 	}
 
-	public static List<Kunde> findKundenByNachname(String nachname) {
+	public static List<AbstractKunde> findKundenByNachname(String nachname) {
 		final int anzahl = nachname.length();
-		final List<Kunde> kunden = new ArrayList<>(anzahl);
+		final List<AbstractKunde> kunden = new ArrayList<>(anzahl);
 		for (int i = 1; i <= anzahl; i++) {
-			final Kunde kunde = findKundeById(Long.valueOf(i));
+			final AbstractKunde kunde = findKundeById(Long.valueOf(i));
 			kunde.setNachname(nachname);
 			kunden.add(kunde);			
 		}
 		return kunden;
 	}
 	
-
-	public static List<Bestellung> findBestellungenByKunde(Kunde kunde) {
+	public static List<Bestellung> findBestellungenByKunde(AbstractKunde kunde) {
 		// Beziehungsgeflecht zwischen Kunde und Bestellungen aufbauen
 		final int anzahl = kunde.getId().intValue() % MAX_BESTELLUNGEN + 1; 
 		final List<Bestellung> bestellungen = new ArrayList<>(anzahl);
@@ -82,7 +79,7 @@ public final class Mock {
 			return null;
 		}
 
-		final Kunde kunde = findKundeById(id + 1);  // andere ID fuer den Kunden
+		final AbstractKunde kunde = findKundeById(id + 1);  // andere ID fuer den Kunden
 
 		final Bestellung bestellung = new Bestellung();
 		bestellung.setBestellnummer(id);
@@ -95,8 +92,7 @@ public final class Mock {
 		return bestellung;
 	}
 
-
-	public static Kunde createKunde(Kunde kunde) {
+	public static AbstractKunde createKunde(AbstractKunde kunde) {
 		// Neue IDs fuer Kunde und zugehoerige Adresse
 		// Ein neuer Kunde hat auch keine Bestellungen
 		final String nachname = kunde.getNachname();
@@ -105,27 +101,26 @@ public final class Mock {
 		kunde.setVorname(vorname);
 		kunde.setId(Long.valueOf(nachname.length()));
 		final Adresse adresse = kunde.getAdresse();
-		kunde.setAdresse(adresse);
+		adresse.setKunde(kunde);
 		kunde.setBestellungen(null);
 		
 		System.out.println("Neuer Kunde: " + kunde);
 		return kunde;
 	}
 
-
-	public static void updateKunde(Kunde kunde) {
+	public static void updateKunde(AbstractKunde kunde) {
 		System.out.println("Aktualisierter Kunde: " + kunde);
 	}
 	
 	public static void deleteKunde(Long kundeId) {
 		System.out.println("Kunde mit ID=" + kundeId + " geloescht");
 	}
-
-
+	
 	public static Artikel findArtikelById(Long id) {
 		if (id > MAX_ARTIKEL) {
 			return null;
 		}
+		
 		final Artikel artikel = new Artikel();
 		artikel.setId(id);
 		artikel.setName("Test-Fahrrad");
@@ -136,17 +131,32 @@ public final class Mock {
 		final Lieferant lieferant = new Lieferant();
 		lieferant.setId((long) 1);
 		lieferant.setName("Lieferanten-Name");
-		
-
-		
 		artikel.setLieferant(lieferant);
-
 		
+		return artikel;		
+	}
+	
+	public static List<Artikel> findAllArtikel() {
+		final int anzahl = MAX_ARTIKEL;
+		final List<Artikel> artikel = new ArrayList<>(anzahl);
+		for (int i = 1; i <= anzahl; i++) {
+			final Artikel a = findArtikelById(Long.valueOf(i));
+			artikel.add(a);
+		}
 		return artikel;
-		
+	}
+	
+	public static List<Artikel> findArtikelByName(String name) {
+		final int anzahl = name.length();
+		final List<Artikel> artikel = new ArrayList<>(anzahl);
+		for (int i = 1; i <= anzahl; i++) {
+			final Artikel a = findArtikelById(Long.valueOf(i));
+			a.setName(name);
+			artikel.add(a);
+		}
+		return artikel;
 	}
 
-	
 	public static Artikel createArtikel(Artikel artikel) {
 		final String name = artikel.getName();
 		artikel.setName(name);
@@ -162,17 +172,26 @@ public final class Mock {
 		System.out.println("Neuer artikel: " + artikel);
 		return artikel;
 	}
+	
+	public static List<Bestellung> findAllBestellungen() {
+		final int anzahl = MAX_BESTELLUNGEN;
+		final List<Bestellung> bestellungen = new ArrayList<>(anzahl);
+		for (int i = 1; i <= anzahl; i++) {
+			final Bestellung b = findBestellungById(Long.valueOf(i));
+			bestellungen.add(b);
+		}
+		return bestellungen;
+	}
 
 	public static Bestellung createBestellung(Bestellung bestellung) {
 		final Long bestellnummer = (long)1;
 		bestellung.setBestellnummer(bestellnummer);
 		bestellung.setPosten(bestellung.getPosten());
 		bestellung.setAusgeliefert(false);
-		final Kunde kundenid = bestellung.getKundenid();
+		final AbstractKunde kundenid = bestellung.getKundenid();
 		bestellung.setKundenid(kundenid);
 		
-		System.out.println("Neue Bestellung: " + bestellung);
-		
+		System.out.println("Neue Bestellung: " + bestellung);	
 		return bestellung;
 	}
 	

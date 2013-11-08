@@ -5,12 +5,25 @@ import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
+
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonSubTypes.Type;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
 
 import de.shop.bestellverwaltung.domain.Bestellung;
 
 @XmlRootElement
-public class Kunde {
+@XmlSeeAlso({ Firmenkunde.class, Privatkunde.class })
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+	@Type(value = Privatkunde.class, name = AbstractKunde.PRIVATKUNDE),
+	@Type(value = Firmenkunde.class, name = AbstractKunde.FIRMENKUNDE) })
+public abstract class AbstractKunde {
+	
+	public static final String PRIVATKUNDE = "P";
+	public static final String FIRMENKUNDE = "F";
 	
 	private Long id;
 	private String nachname;
@@ -22,7 +35,7 @@ public class Kunde {
 	private URI bestellungenURI;
 
 	
-	public Kunde(String nname, String vname, de.shop.kundenverwaltung.domain.Adresse adr, Date erstellung) {
+	public AbstractKunde(String nname, String vname, Adresse adr, Date erstellung) {
 		super();
 		nachname = nname;
 		vorname = vname;
@@ -31,8 +44,7 @@ public class Kunde {
 	}
 	
 	//Standardkonstruktor
-	public Kunde() { 
-		
+	public AbstractKunde() { 	
 	}
 	
 	public Long getId()  {
@@ -59,15 +71,6 @@ public class Kunde {
 		vorname = vname;
 	}
 
-
-	public List<Bestellung> getBestellungen() {
-		return bestellungen;
-	}
-
-	public void setBestellungen(List<Bestellung> best) {
-		bestellungen = best;
-	}
-
 	public Adresse getAdresse() {
 		return adresse;
 	}
@@ -83,6 +86,14 @@ public class Kunde {
 	public void setErstellungsdatum(Date erstellung) {
 		erstellungsdatum = erstellung;
 	}
+	
+	public List<Bestellung> getBestellungen() {
+		return bestellungen;
+	}
+
+	public void setBestellungen(List<Bestellung> best) {
+		bestellungen = best;
+	}
 
 	public URI getBestellungenURI() {
 		return bestellungenURI;
@@ -97,12 +108,17 @@ public class Kunde {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
-		result = prime * result	+ ((bestellungen == null) ? 0 : bestellungen.hashCode());
-		result = prime * result	+ ((erstellungsdatum == null) ? 0 : erstellungsdatum.hashCode());
+		result = prime * result
+				+ ((bestellungen == null) ? 0 : bestellungen.hashCode());
+		result = prime * result
+				+ ((bestellungenURI == null) ? 0 : bestellungenURI.hashCode());
+		result = prime
+				* result
+				+ ((erstellungsdatum == null) ? 0 : erstellungsdatum.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nachname == null) ? 0 : nachname.hashCode());
+		result = prime * result
+				+ ((nachname == null) ? 0 : nachname.hashCode());
 		result = prime * result + ((vorname == null) ? 0 : vorname.hashCode());
-		result = prime * result	+ ((bestellungenURI == null) ? 0 : bestellungenURI.hashCode());
 		return result;
 	}
 
@@ -114,11 +130,11 @@ public class Kunde {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final Kunde other = (Kunde) obj;
+		AbstractKunde other = (AbstractKunde) obj;
 		if (adresse == null) {
 			if (other.adresse != null)
 				return false;
-		} 
+		}
 		else if (!adresse.equals(other.adresse))
 			return false;
 		if (bestellungen == null) {
@@ -127,10 +143,16 @@ public class Kunde {
 		}
 		else if (!bestellungen.equals(other.bestellungen))
 			return false;
+		if (bestellungenURI == null) {
+			if (other.bestellungenURI != null)
+				return false;
+		}
+		else if (!bestellungenURI.equals(other.bestellungenURI))
+			return false;
 		if (erstellungsdatum == null) {
 			if (other.erstellungsdatum != null)
 				return false;
-		} 
+		}
 		else if (!erstellungsdatum.equals(other.erstellungsdatum))
 			return false;
 		if (id == null) {
@@ -148,27 +170,16 @@ public class Kunde {
 		if (vorname == null) {
 			if (other.vorname != null)
 				return false;
-		} 
-		else if (!vorname.equals(other.vorname))
-			return false;
-		if (bestellungenURI == null) {
-			if (other.bestellungenURI != null)
-				return false;
 		}
-		else if (!bestellungenURI.equals(other.bestellungenURI))
+		else if (!vorname.equals(other.vorname))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Kunde [Id=" + id + ", Nachname=" + nachname + ", Vorname="
-				+ vorname + ", Bestellungen=" + bestellungen + ", Adresse="
-				+ adresse + ", Erstellungsdatum=" + erstellungsdatum
-				+ ", bestellungenURI=" + bestellungenURI + "]";
+		return "AbstractKunde [id=" + id + ", nachname=" + nachname + ", vorname="
+				+ vorname + ", erstellungsdatum=" + erstellungsdatum + ", bestellungenURI=" + bestellungenURI + "]";
 	}
-	
-	
-	
 }
 

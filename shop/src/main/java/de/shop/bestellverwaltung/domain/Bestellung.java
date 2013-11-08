@@ -6,7 +6,7 @@ import java.net.URI;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import de.shop.kundenverwaltung.domain.Kunde;
+import de.shop.kundenverwaltung.domain.AbstractKunde;
 
 @XmlRootElement
 public class Bestellung {
@@ -15,7 +15,7 @@ public class Bestellung {
 	private List<Posten> posten;
 	private Double gesamtpreis;
 	@XmlTransient
-	private Kunde kundenid;
+	private AbstractKunde kundenid;
 	private Boolean ausgeliefert;
 	private URI kundeUri;
 	
@@ -47,11 +47,11 @@ public class Bestellung {
 	}
 	
 	
-	public Kunde getKundenid() {
+	public AbstractKunde getKundenid() {
 		return kundenid;
 	}
 	
-	public void setKundenid(Kunde kundenid) {
+	public void setKundenid(AbstractKunde kundenid) {
 		this.kundenid = kundenid;
 	}
 	
