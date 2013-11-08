@@ -9,8 +9,6 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import de.shop.bestellverwaltung.domain.Bestellung;
 
-
-
 @XmlRootElement
 public class Kunde {
 	
@@ -19,11 +17,10 @@ public class Kunde {
 	private String vorname;
 	private Adresse adresse;
 	private Date erstellungsdatum;
-	
 	@XmlTransient
 	private List<Bestellung> bestellungen;
-	
 	private URI bestellungenURI;
+
 	
 	public Kunde(String nname, String vname, de.shop.kundenverwaltung.domain.Adresse adr, Date erstellung) {
 		super();
