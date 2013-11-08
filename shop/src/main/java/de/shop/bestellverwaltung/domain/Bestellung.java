@@ -41,9 +41,9 @@ public class Bestellung {
 		return gesamtpreis;
 	}
 	
-	public void setGesamtpreis () {
+	public void setGesamtpreis() {
 		if (posten != null) {			
-			for(Posten p : posten) {
+			for (Posten p : posten) {
 				gesamtpreis += p.getGesamtpreis();
 			}
 		}
