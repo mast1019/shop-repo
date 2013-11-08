@@ -14,12 +14,9 @@ public class Bestellung {
 	private Long bestellnummer;
 	private List<Posten> posten;
 	private Double gesamtpreis;
-	
 	@XmlTransient
 	private Kunde kundenid;
-	
 	private Boolean ausgeliefert;
-	
 	private URI kundeUri;
 	
 	public Long getBestellnummer() {
@@ -147,7 +144,4 @@ public class Bestellung {
 		return true;
 	}
 	
-	
 }
-
-

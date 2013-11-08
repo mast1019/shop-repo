@@ -4,6 +4,12 @@ public class Bankeinzug extends AbstractZahlung {
 	
 	private String iban;
 	private String bic;
+
+	public Bankeinzug(String name, String iban, String bic) {
+		super(name);
+		this.iban = iban;
+		this.bic = bic;
+	}
 	
 	public String getIban() {
 		return iban;
@@ -15,11 +21,6 @@ public class Bankeinzug extends AbstractZahlung {
 		return bic;
 	}
 	public void setBic(String bic) {
-		this.bic = bic;
-	}
-	public Bankeinzug(String name, String iban, String bic) {
-		super(name);
-		this.iban = iban;
 		this.bic = bic;
 	}
 	

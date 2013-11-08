@@ -9,6 +9,13 @@ public class Versand {
 	private Date versanddatum;
 	private Spediteur spedition;
 
+	public Versand(Spediteur spedition, Date versanddatum) {
+		super();
+		this.spedition = spedition;
+		this.versanddatum = versanddatum;
+	}
+
+		
 	public Date getVersanddatum() {
 		return versanddatum;
 	}
@@ -22,11 +29,6 @@ public class Versand {
 		this.spedition = spedition;
 	}
 
-	public Versand(Spediteur spedition, Date versanddatum) {
-		super();
-		this.spedition = spedition;
-		this.versanddatum = versanddatum;
-	}
 	
 	@Override
 	public String toString() {

@@ -4,16 +4,16 @@ public abstract class AbstractZahlung {
 	
 	private String name;
 
+	public AbstractZahlung(String name) {
+		super();
+		this.name = name;
+	}
+	
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
-	}
-
-	public AbstractZahlung(String name) {
-		super();
 		this.name = name;
 	}
 

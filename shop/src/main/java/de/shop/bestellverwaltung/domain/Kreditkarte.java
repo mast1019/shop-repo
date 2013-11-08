@@ -5,7 +5,15 @@ public class Kreditkarte extends AbstractZahlung {
 	private String kartennummer;
 	private String ablaufdatum;
 	private String sicherheitscode;
-	
+
+	public Kreditkarte(String name, String kartennummer, String ablaufdatum,
+			String sicherheitscode) {
+		super(name);
+		this.kartennummer = kartennummer;
+		this.ablaufdatum = ablaufdatum;
+		this.sicherheitscode = sicherheitscode;
+	}
+
 	public String getKartennummer() {
 		return kartennummer;
 	}
@@ -24,20 +32,11 @@ public class Kreditkarte extends AbstractZahlung {
 	public void setSicherheitscode(String sicherheitscode) {
 		this.sicherheitscode = sicherheitscode;
 	}
-	public Kreditkarte(String name, String kartennummer, String ablaufdatum,
-			String sicherheitscode) {
-		super(name);
-		this.kartennummer = kartennummer;
-		this.ablaufdatum = ablaufdatum;
-		this.sicherheitscode = sicherheitscode;
-	}
 	@Override
 	public String toString() {
 		return "Kreditkarte [Kartennummer=" + kartennummer + ", Ablaufdatum="
 				+ ablaufdatum + ", Sicherheitscode=" + sicherheitscode
 				+ ", toString()=" + super.toString() + "]";
 	}
-	
-	
-	
+		
 }
