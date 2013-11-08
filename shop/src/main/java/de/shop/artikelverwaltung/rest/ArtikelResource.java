@@ -9,7 +9,6 @@ import java.net.URI;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -22,6 +21,7 @@ import javax.ws.rs.core.UriInfo;
 import de.shop.artikelverwaltung.domain.Artikel;
 import util.Mock;
 import util.rest.UriHelper;
+import util.rest.NotFoundException;
 
 	
 	@Path("/artikel")
