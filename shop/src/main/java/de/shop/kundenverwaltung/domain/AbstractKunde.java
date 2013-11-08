@@ -1,7 +1,6 @@
 package de.shop.kundenverwaltung.domain;
 
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -29,13 +28,13 @@ public abstract class AbstractKunde {
 	private String nachname;
 	private String vorname;
 	private Adresse adresse;
-	private Date erstellungsdatum;
+	private String erstellungsdatum;
 	@XmlTransient
 	private List<Bestellung> bestellungen;
 	private URI bestellungenURI;
 
 	
-	public AbstractKunde(String nname, String vname, Adresse adr, Date erstellung) {
+	public AbstractKunde(String nname, String vname, Adresse adr, String erstellung) {
 		super();
 		nachname = nname;
 		vorname = vname;
@@ -79,11 +78,11 @@ public abstract class AbstractKunde {
 		adresse = adr;
 	}
 
-	public Date getErstellungsdatum() {
+	public String getErstellungsdatum() {
 		return erstellungsdatum;
 	}
 
-	public void setErstellungsdatum(Date erstellung) {
+	public void setErstellungsdatum(String erstellung) {
 		erstellungsdatum = erstellung;
 	}
 	
@@ -130,7 +129,7 @@ public abstract class AbstractKunde {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AbstractKunde other = (AbstractKunde) obj;
+		final AbstractKunde other = (AbstractKunde) obj;
 		if (adresse == null) {
 			if (other.adresse != null)
 				return false;

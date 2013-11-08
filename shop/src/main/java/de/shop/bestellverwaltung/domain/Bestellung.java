@@ -34,16 +34,21 @@ public class Bestellung {
 	public void setPosten(List<Posten> posten) {
 		this.posten = posten;
 	}
-	public Double getGesamtpreis() {
-		return gesamtpreis;
-	}
 	
-	public void setGesamtpreis() {
-		if (posten != null) {			
+	public Double getGesamtpreis() {
+		if (posten == null) {
+			gesamtpreis = 0.0;
+		}
+		else {
 			for (Posten p : posten) {
 				gesamtpreis += p.getGesamtpreis();
 			}
 		}
+		return gesamtpreis;
+	}
+	
+	public void setGesamtpreis(Double gesamtpreis) {
+		this.gesamtpreis = gesamtpreis;
 	}
 	
 	

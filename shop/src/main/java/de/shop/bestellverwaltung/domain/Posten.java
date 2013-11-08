@@ -17,9 +17,7 @@ public class Posten {
 		this.anzahl = anzahl;
 	}
 
-
-	public Posten() {
-		
+	public Posten() {	
 	}
 	
 	public Long getId() {
@@ -47,13 +45,13 @@ public class Posten {
 	}
 	
 	public Double getGesamtpreis() {
+		gesamtpreis = artikel.getPreis() * anzahl;
 		return gesamtpreis;
 	}
 	
 	public void setGesamtpreis(Double gesamtpreis) {
-		gesamtpreis = artikel.getPreis() * anzahl;
+		this.gesamtpreis = gesamtpreis;
 	}
-
 
 	@Override
 	public String toString() {

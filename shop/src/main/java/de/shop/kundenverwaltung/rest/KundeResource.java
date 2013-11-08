@@ -171,7 +171,8 @@ public class KundeResource {
                        .build();
 	}
 	
-	private Link[] getTransitionalLinksBestellungen(List<Bestellung> bestellungen, AbstractKunde kunde, UriInfo uriInfo) {
+	private Link[] getTransitionalLinksBestellungen(List<Bestellung> bestellungen, AbstractKunde kunde,
+			UriInfo uriInfo) {
 		if (bestellungen == null || bestellungen.isEmpty()) {
 			return new Link[0];
 		}

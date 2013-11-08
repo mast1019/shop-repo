@@ -11,6 +11,7 @@ import de.shop.kundenverwaltung.domain.Adresse;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.domain.Firmenkunde;
 import de.shop.kundenverwaltung.domain.Privatkunde;
+import de.shop.bestellverwaltung.domain.Posten;
 
 public final class Mock {
 	private static final int MAX_ID = 99;
@@ -27,7 +28,7 @@ public final class Mock {
 		kunde.setId(id);
 		kunde.setNachname("Nachname" + id);
 		kunde.setVorname("Vorname");
-		kunde.setErstellungsdatum(new Date());
+		kunde.setErstellungsdatum(new Date().toString());
 		
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("01234");
@@ -84,9 +85,11 @@ public final class Mock {
 		final Bestellung bestellung = new Bestellung();
 		bestellung.setBestellnummer(id);
 		bestellung.setAusgeliefert(false);
-		// TODO bestellung.setPosten(bestellung.getPosten()) 
-		bestellung.setPosten(null);
-		// bestellung.setGesamtpreis(100.0);
+		// TODO bestellung.setPosten(bestellung.getPosten())
+		final List<Posten> posten = bestellung.getPosten();
+		bestellung.setPosten(posten);
+		final Double gesamtpreis = bestellung.getGesamtpreis();
+		bestellung.setGesamtpreis(gesamtpreis);
 		bestellung.setKundenid(kunde);
 		
 		return bestellung;
@@ -184,10 +187,12 @@ public final class Mock {
 	}
 
 	public static Bestellung createBestellung(Bestellung bestellung) {
-		final Long bestellnummer = (long)1;
+		final Long bestellnummer = (long) 1;
 		bestellung.setBestellnummer(bestellnummer);
 		bestellung.setPosten(bestellung.getPosten());
 		bestellung.setAusgeliefert(false);
+		final Double gesamtpreis = bestellung.getGesamtpreis();
+		bestellung.setGesamtpreis(gesamtpreis);
 		final AbstractKunde kundenid = bestellung.getKundenid();
 		bestellung.setKundenid(kundenid);
 		

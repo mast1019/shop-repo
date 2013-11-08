@@ -1,17 +1,14 @@
 package de.shop.bestellverwaltung.domain;
 
-import java.util.Date;
-
 import de.shop.kundenverwaltung.domain.Adresse;
 
 public class Rechnung {
 	
-	private Date datum;
+	private String datum;
 	private Bestellung bestellnummer;
 	private Adresse rechnungsadresse;
 	
-	
-	public Rechnung(Date date, Bestellung bnr,
+	public Rechnung(String date, Bestellung bnr,
 			Adresse rechnadr) {
 		super();
 		datum = date;
@@ -19,11 +16,11 @@ public class Rechnung {
 		rechnungsadresse = rechnadr;
 	}
 	
-	public Date getDatum() {
+	public String getDatum() {
 		return datum;
 	}
 
-	public void setDatum(Date date) {
+	public void setDatum(String date) {
 		datum = date;
 	}
 
@@ -42,5 +39,4 @@ public class Rechnung {
 	public void setRechnungsadresse(Adresse rechnadr) {
 		rechnungsadresse = rechnadr;
 	}
-
 }
