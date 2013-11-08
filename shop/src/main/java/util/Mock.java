@@ -116,6 +116,10 @@ public final class Mock {
 	public static void updateKunde(Kunde kunde) {
 		System.out.println("Aktualisierter Kunde: " + kunde);
 	}
+	
+	public static void deleteKunde(Long kundeId) {
+		System.out.println("Kunde mit ID=" + kundeId + " geloescht");
+	}
 
 
 	public static Artikel findArtikelById(Long id) {
