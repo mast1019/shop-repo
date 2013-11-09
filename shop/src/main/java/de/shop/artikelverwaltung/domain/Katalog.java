@@ -6,10 +6,6 @@ public class Katalog {
 	
 	private List<Artikel> artikel;
 
-	public Katalog() {
-		super();
-	}
-
 	public List<Artikel> getArtikel() {
 		return artikel;
 	}
