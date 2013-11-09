@@ -128,8 +128,10 @@ public final class Mock {
 		artikel.setId(id);
 		artikel.setName("Test-Fahrrad");
 		artikel.setBeschreibung("ein Fahrrad zum testen!");
-		artikel.setPreis(200.00);
-		artikel.setGewicht(12);
+		final double preis = 200.00;
+		artikel.setPreis(preis);
+		final Integer gewicht = 12;
+		artikel.setGewicht(gewicht);
 		
 		final Lieferant lieferant = new Lieferant();
 		lieferant.setId((long) 1);
