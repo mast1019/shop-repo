@@ -7,6 +7,13 @@ public class Spediteur {
 	private String name;
 	private Adresse adresse;
 	
+	public Spediteur(String name, Adresse adresse) {
+		super();
+		this.name = name;
+		this.adresse = adresse;
+	}
+
+	
 	public String getName() {
 		return name;
 	}
@@ -20,11 +27,6 @@ public class Spediteur {
 		this.adresse = adresse;
 	}
 	
-	public Spediteur(String name, Adresse adresse) {
-		super();
-		this.name = name;
-		this.adresse = adresse;
-	}
 	
 	@Override
 	public String toString() {
