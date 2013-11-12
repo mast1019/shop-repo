@@ -1,5 +1,3 @@
-//Kommentar
-
 package de.shop.externe.domain;
 
 public class Lieferant {
