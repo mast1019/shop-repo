@@ -1,6 +1,9 @@
+//Kommentar
+
 package de.shop.externe.domain;
 
 public class Lieferant {
+
 	private Long id;
 	private String name;
 	
