@@ -2,6 +2,7 @@ package de.shop.kundenverwaltung.domain;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -28,18 +29,20 @@ public abstract class AbstractKunde {
 	private String nachname;
 	private String vorname;
 	private Adresse adresse;
-	private String erstellungsdatum;
+	private Date erstellungsdatum;
+	private String email;
 	@XmlTransient
 	private List<Bestellung> bestellungen;
 	private URI bestellungenURI;
 
 	
-	public AbstractKunde(String nname, String vname, Adresse adr, String erstellung) {
+	public AbstractKunde(String nname, String vname, Adresse adr, Date erstellung, String mail) {
 		super();
 		nachname = nname;
 		vorname = vname;
 		adresse = adr;
 		erstellungsdatum = erstellung;
+		email = mail;
 	}
 	
 	//Standardkonstruktor
@@ -78,12 +81,20 @@ public abstract class AbstractKunde {
 		adresse = adr;
 	}
 
-	public String getErstellungsdatum() {
+	public Date getErstellungsdatum() {
 		return erstellungsdatum;
 	}
 
-	public void setErstellungsdatum(String erstellung) {
+	public void setErstellungsdatum(Date erstellung) {
 		erstellungsdatum = erstellung;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String mail) {
+		email = mail;
 	}
 	
 	public List<Bestellung> getBestellungen() {
@@ -178,7 +189,7 @@ public abstract class AbstractKunde {
 	@Override
 	public String toString() {
 		return "AbstractKunde [id=" + id + ", nachname=" + nachname + ", vorname="
-				+ vorname + ", erstellungsdatum=" + erstellungsdatum + ", bestellungenURI=" + bestellungenURI + "]";
+				+ vorname + ", email=" + email + ", erstellungsdatum=" + erstellungsdatum + ", bestellungenURI=" + bestellungenURI + "]";
 	}
 }
 

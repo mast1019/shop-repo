@@ -3,6 +3,11 @@ package util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
+import java.lang.invoke.MethodHandles;
+
+import org.jboss.logging.Logger;
 
 import de.shop.artikelverwaltung.domain.Artikel;
 import de.shop.bestellverwaltung.domain.Bestellung;
@@ -14,10 +19,15 @@ import de.shop.kundenverwaltung.domain.Privatkunde;
 import de.shop.bestellverwaltung.domain.Posten;
 
 public final class Mock {
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+
 	private static final int MAX_ID = 99;
 	private static final int MAX_KUNDEN = 8;
 	private static final int MAX_BESTELLUNGEN = 4;
 	private static final int MAX_ARTIKEL = 4;
+	private static final int JAHR = 2001;
+	private static final int MONAT = 0; // bei Calendar werden die Monate von 0 bis 11 gezaehlt
+	private static final int TAG = 31;  // bei Calendar die Monatstage ab 1 gezaehlt
 
 	public static AbstractKunde findKundeById(Long id) {
 		if (id > MAX_ID) {
@@ -28,7 +38,7 @@ public final class Mock {
 		kunde.setId(id);
 		kunde.setNachname("Nachname" + id);
 		kunde.setVorname("Vorname");
-		kunde.setErstellungsdatum(new Date().toString());
+		kunde.setErstellungsdatum(new Date());
 		
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("01234");
@@ -59,6 +69,28 @@ public final class Mock {
 			kunden.add(kunde);			
 		}
 		return kunden;
+	}
+	
+	public static AbstractKunde findKundeByEmail(String email) {
+		if (email.startsWith("x")) {
+			return null;
+		}
+		
+		final AbstractKunde kunde = email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
+		kunde.setId(Long.valueOf(email.length()));
+		kunde.setNachname("Nachname");
+		kunde.setEmail(email);
+		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
+		final Date seit = seitCal.getTime();
+		kunde.setErstellungsdatum(seit);
+		
+		final Adresse adresse = new Adresse();
+		adresse.setPostleitzahl("12345");
+		adresse.setStadt("Testort");
+		adresse.setKunde(kunde);
+		kunde.setAdresse(adresse);
+		
+		return kunde;
 	}
 	
 	public static List<Bestellung> findBestellungenByKunde(AbstractKunde kunde) {
@@ -107,7 +139,7 @@ public final class Mock {
 		adresse.setKunde(kunde);
 		kunde.setBestellungen(null);
 		
-		System.out.println("Neuer Kunde: " + kunde);
+		LOGGER.infof("Neuer Kunde: %s", kunde);
 		return kunde;
 	}
 
@@ -199,6 +231,11 @@ public final class Mock {
 		bestellung.setKundenid(kundenid);
 		
 		System.out.println("Neue Bestellung: " + bestellung);	
+		return bestellung;
+	}
+	
+	public static Bestellung createBestellung(Bestellung bestellung, AbstractKunde kunde) {
+		LOGGER.infof("Neue Bestellung: %s fuer Kunde: %s", bestellung, kunde);
 		return bestellung;
 	}
 	

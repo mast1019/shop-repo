@@ -26,10 +26,12 @@ import de.shop.kundenverwaltung.rest.KundeResource;
 import util.Mock;
 import util.rest.UriHelper;
 import util.rest.NotFoundException;
+import util.interceptor.Log;
 
 @Path("/bestellungen")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
 @Consumes
+@Log
 public class BestellungResource {
 	@Context
 	private UriInfo uriInfo;
