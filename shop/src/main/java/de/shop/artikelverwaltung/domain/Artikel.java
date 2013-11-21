@@ -1,8 +1,5 @@
 package de.shop.artikelverwaltung.domain;
 
-import javax.xml.bind.annotation.XmlTransient;
-
-import de.shop.externe.domain.Lieferant;
 
 public class Artikel {	
 	private Long id;
@@ -10,15 +7,13 @@ public class Artikel {
 	private String beschreibung;
 	private Double preis;
 	private Integer gewicht;
-	@XmlTransient
-	private Lieferant lieferant;
+
 	
-	public Artikel(String name, String beschreibung, Double preis, Lieferant lieferant, Integer gewicht)	{
+	public Artikel(String name, String beschreibung, Double preis, Integer gewicht)	{
 		super();
 		this.setName(name);
 		this.setBeschreibung(beschreibung);
 		this.setPreis(preis);
-		this.setLieferant(lieferant);
 		this.setGewicht(gewicht);
 	}
 	
@@ -57,14 +52,6 @@ public class Artikel {
 		this.preis = preis;
 	}
 
-	public Lieferant getLieferant() {
-		return lieferant;
-	}
-
-	public void setLieferant(Lieferant lieferant) {
-		this.lieferant = lieferant;
-	}
-
 	public Integer getGewicht() {
 		return gewicht;
 	}
@@ -81,7 +68,6 @@ public class Artikel {
 				+ ((beschreibung == null) ? 0 : beschreibung.hashCode());
 		result = prime * result + ((gewicht == null) ? 0 : gewicht.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((lieferant == null) ? 0 : lieferant.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((preis == null) ? 0 : preis.hashCode());
 		return result;
@@ -112,18 +98,6 @@ public class Artikel {
 			if (other.id != null)
 				return false;
 		} 
-		else if (!id.equals(other.id))
-			return false;
-		if (lieferant == null) {
-			if (other.lieferant != null)
-				return false;
-		} 
-		else if (!lieferant.equals(other.lieferant))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} 
 		else if (!name.equals(other.name))
 			return false;
 		if (preis == null) {
@@ -138,7 +112,6 @@ public class Artikel {
 	@Override
 	public String toString() {
 		return "Artikel [id=" + id + ", name=" + name + ", beschreibung="
-				+ beschreibung + ", preis=" + preis + ", lieferant="
-				+ lieferant + ", gewicht=" + gewicht + "]";
+				+ beschreibung + ", preis=" + preis + ", gewicht=" + gewicht + "]";
 	}	
 }

@@ -11,7 +11,6 @@ import org.jboss.logging.Logger;
 
 import de.shop.artikelverwaltung.domain.Artikel;
 import de.shop.bestellverwaltung.domain.Bestellung;
-import de.shop.externe.domain.Lieferant;
 import de.shop.kundenverwaltung.domain.Adresse;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.domain.Firmenkunde;
@@ -165,10 +164,6 @@ public final class Mock {
 		final Integer gewicht = 12;
 		artikel.setGewicht(gewicht);
 		
-		final Lieferant lieferant = new Lieferant();
-		lieferant.setId((long) 1);
-		lieferant.setName("Lieferanten-Name");
-		artikel.setLieferant(lieferant);
 		
 		return artikel;		
 	}
@@ -204,8 +199,6 @@ public final class Mock {
 		artikel.setPreis(preis);
 		final Integer gewicht = artikel.getGewicht();
 		artikel.setGewicht(gewicht);
-		final Lieferant lieferant = artikel.getLieferant();
-		artikel.setLieferant(lieferant);
 		System.out.println("Neuer artikel: " + artikel);
 		return artikel;
 	}
