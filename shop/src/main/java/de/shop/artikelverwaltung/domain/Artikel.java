@@ -1,15 +1,41 @@
 package de.shop.artikelverwaltung.domain;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 
-public class Artikel {	
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+
+public class Artikel implements Serializable{	
+	
+	private static final long serialVersionUID = 4593393192027810187L;
 	private Long id;
+	
+	@NotNull
+	@Size(min = 2, max = 32)
+	@Pattern(regexp = "[A-ZÄÖÜ] [a-zäöüß]+")
 	private String name;
+	
+	@NotNull
+	@Size(min = 10, max = 150)
 	private String beschreibung;
-	private Double preis;
-	private Integer gewicht;
+	
+	@NotNull
+	@DecimalMin("0")
+	@DecimalMax("10000")
+	private BigDecimal preis;
+	
+	@NotNull
+	@DecimalMin("0.1")
+	@DecimalMax("100")
+	private BigDecimal gewicht;
 
 	
-	public Artikel(String name, String beschreibung, Double preis, Integer gewicht)	{
+	public Artikel(String name, String beschreibung, BigDecimal preis, BigDecimal gewicht)	{
 		super();
 		this.setName(name);
 		this.setBeschreibung(beschreibung);
@@ -44,19 +70,19 @@ public class Artikel {
 		this.beschreibung = beschreibung;
 	}
 
-	public Double getPreis() {
+	public BigDecimal getPreis() {
 		return preis;
 	}
 
-	public void setPreis(Double preis) {
+	public void setPreis(BigDecimal preis) {
 		this.preis = preis;
 	}
 
-	public Integer getGewicht() {
+	public BigDecimal getGewicht() {
 		return gewicht;
 	}
 
-	public void setGewicht(Integer gewicht) {
+	public void setGewicht(BigDecimal gewicht) {
 		this.gewicht = gewicht;
 	}
 
