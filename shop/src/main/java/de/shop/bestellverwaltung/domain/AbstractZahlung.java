@@ -1,25 +1,45 @@
 package de.shop.bestellverwaltung.domain;
 
+import javax.validation.constraints.*;
+
 public abstract class AbstractZahlung {
 	
-	private String name;
+	@NotNull(message = "{abstractzahlung.vorname.notnull}")
+	@Size(min = 2, max = 32, message = "{abstractzahlung.vorname.size}")
+	@Pattern(regexp = "[A-ZÄÖÜ][a-zäöüß]+", message = "{abstractzahlung.vorname.pattern}")
+	private String vorname;
 
-	public AbstractZahlung(String name) {
+	@NotNull(message = "{abstractzahlung.nachname.notnull}")
+	@Size(min = 2, max = 32, message = "{abstractzahlung.nachname.size}")
+	@Pattern(regexp = "[A-ZÄÖÜ][a-zäöüß]+", message = "{abstractzahlung.nachname.pattern}")
+	private String nachname;
+	
+	
+	public AbstractZahlung(String vn, String nm) {
 		super();
-		this.name = name;
+		this.vorname = vn;
+		this.nachname = nm;
 	}
 	
-	public String getName() {
-		return name;
+	public String getVorname() {
+		return vorname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setVorname(String vn) {
+		this.vorname = vn;
+	}
+	
+	public String getNachname() {
+		return nachname;
+	}
+	
+	public void setNachname(String nm) {
+		this.nachname = nm;
 	}
 
 	@Override
 	public String toString() {
-		return "Name = " + name;
+		return "Name = " + vorname + " " + nachname;
 	}
 	
 }
