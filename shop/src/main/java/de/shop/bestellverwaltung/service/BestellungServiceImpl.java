@@ -64,4 +64,21 @@ public class BestellungServiceImpl implements BestellungService {
 		
 		return bestellung;
 	}
+	
+	@Override
+	public Bestellung createBestellung(Bestellung bestellung) {
+		// TODO Datenbanzugriffsschicht statt Mock
+		bestellung = Mock.createBestellung(bestellung);
+		event.fire(bestellung);
+		
+		return bestellung;
+	}
+	
+	@Override
+	public Bestellung updateBestellung(Bestellung bestellung) {
+		Mock.updateBestellung(bestellung);
+		
+		return bestellung;
+	}
+	
 }

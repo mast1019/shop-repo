@@ -1,14 +1,26 @@
 package de.shop.bestellverwaltung.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.Valid;
+import java.util.Date;
+
 import de.shop.kundenverwaltung.domain.Adresse;
 
 public class Rechnung {
 	
-	private String datum;
+	@Past(message = "{rechnung.datum.past}")
+	private Date datum;
+	
+	@NotNull (message = "{rechnung.bestellnummer.notNull}")
+	@Valid
 	private Bestellung bestellnummer;
+	
+	@NotNull (message = "{rechnung.adresse.notNull")
+	@Valid
 	private Adresse rechnungsadresse;
 	
-	public Rechnung(String date, Bestellung bnr,
+	public Rechnung(Date date, Bestellung bnr,
 			Adresse rechnadr) {
 		super();
 		datum = date;
@@ -16,11 +28,11 @@ public class Rechnung {
 		rechnungsadresse = rechnadr;
 	}
 	
-	public String getDatum() {
+	public Date getDatum() {
 		return datum;
 	}
 
-	public void setDatum(String date) {
+	public void setDatum(Date date) {
 		datum = date;
 	}
 

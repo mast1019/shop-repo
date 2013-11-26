@@ -1,12 +1,15 @@
 package de.shop.bestellverwaltung.rest;
 
 import static de.shop.util.Constants.SELF_LINK;
+import static de.shop.util.Constants.ADD_LINK;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -23,18 +26,21 @@ import javax.ws.rs.core.UriInfo;
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.rest.KundeResource;
-import de.shop.util.Mock;
 import de.shop.util.rest.UriHelper;
-import de.shop.util.rest.NotFoundException;
 import de.shop.util.interceptor.Log;
+import de.shop.bestellverwaltung.service.BestellungService;
 
 @Path("/bestellungen")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
 @Consumes
+@RequestScoped
 @Log
 public class BestellungResource {
 	@Context
 	private UriInfo uriInfo;
+	
+	@Inject
+	private BestellungService bs;
 	
 	@Inject
 	private UriHelper uriHelper;
@@ -45,20 +51,13 @@ public class BestellungResource {
 	@GET
 	@Path("{id:[1-9][0-9]*}")
 	public Response findBestellungById(@PathParam("id") Long id) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
-		final Bestellung bestellung = Mock.findBestellungById(id);
-		if (bestellung == null) {
-			throw new NotFoundException("Keine Bestellung mit der ID " + id + " gefunden.");
-		}
-		
+		final Bestellung bestellung = bs.findBestellungById(id);
 		setStructuralLinks(bestellung, uriInfo);
 		
 		// Link-Header setzen
-		final Response response = Response.ok(bestellung)
-                                          .links(getTransitionalLinks(bestellung, uriInfo))
-                                          .build();
-		
-		return response;
+		return Response.ok(bestellung)
+                       .links(getTransitionalLinks(bestellung, uriInfo))
+                       .build();
 	}
 	
 	public void setStructuralLinks(Bestellung bestellung, UriInfo uriInfo) {
@@ -74,7 +73,11 @@ public class BestellungResource {
 		final Link self = Link.fromUri(getUriBestellung(bestellung, uriInfo))
                               .rel(SELF_LINK)
                               .build();
-		return new Link[]{self };
+		final Link add = Link.fromUri(uriHelper.getUri(BestellungResource.class, uriInfo))
+							 .rel(ADD_LINK)
+							 .build();
+		
+		return new Link[]{self, add };
 	}
 	
 	public URI getUriBestellung(Bestellung bestellung, UriInfo uriInfo) {
@@ -85,16 +88,18 @@ public class BestellungResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createBestellung(Bestellung bestellung) {
-		bestellung = Mock.createBestellung(bestellung);
+		bestellung = bs.createBestellung(bestellung);
+		
 		return Response.created(getUriBestellung(bestellung, uriInfo))
 			           .build();
 	}
-	
+	 
 	@PUT
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
-	public void updateBestellung(Bestellung bestellung) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
-		Mock.updateBestellung(bestellung);
-		}
+	public void updateBestellung(@Valid Bestellung bestellung) {
+		bs.updateBestellung(bestellung);
+	}
+	
+	
 }

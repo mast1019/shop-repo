@@ -1,14 +1,27 @@
 package de.shop.bestellverwaltung.domain;
 
+import java.math.BigDecimal;
+
 import de.shop.artikelverwaltung.domain.Artikel;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.DecimalMin;
 
 public class Posten {
 	
 	private Long id;
+	
+	@Valid
+	@NotNull(message = "{posten.artikel.notNull}")
 	private Artikel artikel;
+	
+	@Min(0)
 	private Integer anzahl;
-	private Double gesamtpreis;
+	
+	@DecimalMin("0,0")
+	private BigDecimal gesamtpreis;
 
 	public Posten(Long id, Artikel artikel, Integer anzahl) {
 		super();
@@ -44,12 +57,12 @@ public class Posten {
 		this.anzahl = anzahl;
 	}
 	
-	public Double getGesamtpreis() {
+	public BigDecimal getGesamtpreis() {
 		gesamtpreis = artikel.getPreis() * anzahl;
 		return gesamtpreis;
 	}
 	
-	public void setGesamtpreis(Double gesamtpreis) {
+	public void setGesamtpreis(BigDecimal gesamtpreis) {
 		this.gesamtpreis = gesamtpreis;
 	}
 

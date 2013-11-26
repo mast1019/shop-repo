@@ -1,14 +1,25 @@
 package de.shop.bestellverwaltung.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Kreditkarte extends AbstractZahlung {
 	
+	@NotNull (message = "{kreditkarte.kartennummer.notNull}")
+	@Size(min = 2, max = 36)
 	private String kartennummer;
+	
+	@NotNull (message = "{kreditkarte.ablaufdatum.notNull}")
+	@Size(min = 5, max = 10)
 	private String ablaufdatum;
+	
+	@NotNull (message = "{kreditkarte.sicherheitscode.notNull}")
+	@Size(min = 1, max = 4)
 	private String sicherheitscode;
 
-	public Kreditkarte(String name, String kartennummer, String ablaufdatum,
+	public Kreditkarte(String vorname, String nachname, String kartennummer, String ablaufdatum,
 			String sicherheitscode) {
-		super(name);
+		super(vorname, nachname);
 		this.kartennummer = kartennummer;
 		this.ablaufdatum = ablaufdatum;
 		this.sicherheitscode = sicherheitscode;
