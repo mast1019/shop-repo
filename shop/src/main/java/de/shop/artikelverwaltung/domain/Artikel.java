@@ -15,21 +15,21 @@ public class Artikel implements Serializable{
 	private static final long serialVersionUID = 4593393192027810187L;
 	private Long id;
 	
-	@NotNull
-	@Size(min = 2, max = 32)
+	@NotNull(message="{artikel.name.notNull}")
+	@Size(min = 2, max = 32, message = "{artikel.name.length}")
 	@Pattern(regexp = "[A-ZÄÖÜ] [a-zäöüß]+")
 	private String name;
 	
-	@NotNull
-	@Size(min = 10, max = 150)
+	@NotNull(message="{artikel.beschreibung.notNull}")
+	@Size(min = 10, max = 150, message = "{artikel.beschreibung.length}")
 	private String beschreibung;
 	
-	@NotNull
+	@NotNull(message="{artikel.preis.notNull}")
 	@DecimalMin("0")
-	@DecimalMax("10000")
+	@DecimalMax("10000") 
 	private BigDecimal preis;
 	
-	@NotNull
+	@NotNull(message="{artikel.gewicht.notNull}")
 	@DecimalMin("0.1")
 	@DecimalMax("100")
 	private BigDecimal gewicht;
