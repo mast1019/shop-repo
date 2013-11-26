@@ -15,9 +15,9 @@ import java.net.URI;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
-import javax.ws.rs.DefaultValue;
+//import javax.validation.Valid;
+//import javax.validation.constraints.Pattern;
+//import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -36,10 +36,10 @@ import javax.ws.rs.core.UriInfo;
 //brauche ich das Mock noch??
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.bestellverwaltung.rest.BestellungResource;
-import de.shop.bestellverwaltung.service.BestellungService;//
+//import de.shop.bestellverwaltung.service.BestellungService;//
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.service.KundeService;
-import de.shop.util.interceptor.Log;
+//import de.shop.util.interceptor.Log;
 import de.shop.util.Mock;//
 import de.shop.util.rest.UriHelper;
 import de.shop.util.rest.NotFoundException;
