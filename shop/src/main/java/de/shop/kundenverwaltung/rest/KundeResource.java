@@ -15,6 +15,9 @@ import java.net.URI;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -30,12 +33,18 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+//brauche ich das Mock noch??
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.bestellverwaltung.rest.BestellungResource;
+import de.shop.bestellverwaltung.service.BestellungService;//
 import de.shop.kundenverwaltung.domain.AbstractKunde;
-import de.shop.util.Mock;
+import de.shop.kundenverwaltung.service.KundeService;
+import de.shop.util.interceptor.Log;
+import de.shop.util.Mock;//
 import de.shop.util.rest.UriHelper;
 import de.shop.util.rest.NotFoundException;
+
+
 
 @Path("/kunden")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
@@ -43,9 +52,22 @@ import de.shop.util.rest.NotFoundException;
 public class KundeResource {	
 	public static final String KUNDEN_ID_PATH_PARAM = "id";
 	public static final String KUNDEN_NACHNAME_QUERY_PARAM = "nachname";
+public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
+	
+//die 3 werden noch nicht verwendet weil irgendwas fehlt das ich noch nicht herraus
+//gefunden habe 
+	//private static final String NOT_FOUND_ID = "kunde.notFound.id";
+	//private static final String NOT_FOUND_NACHNAME = "kunde.notFound.nachname";
+	//private static final String NOT_FOUND_ALL = "kunde.notFound.all";
 	
 	@Context
 	private UriInfo uriInfo;
+	
+	@Inject
+	private KundeService ks;
+	
+	//@Inject
+	//private BestellungService bs;
 	
 	@Inject
 	private BestellungResource bestellungResource;
@@ -63,9 +85,9 @@ public class KundeResource {
 	@GET
 	@Path("{" + KUNDEN_ID_PATH_PARAM + ":[1-9][0-9]*}")
 	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
-		final AbstractKunde kunde = Mock.findKundeById(id);
+		final AbstractKunde kunde = ks.findKundeById(id);
 		if (kunde == null) {
-			throw new NotFoundException("Kein Kunde mit der ID " + id + " gefunden.");
+			throw new NotFoundException (" Kein Kunde mit der ID"+ id +"gefunden");
 		}
 		
 		setStructuralLinks(kunde, uriInfo);
@@ -113,15 +135,13 @@ public class KundeResource {
 	public Response findKundenByNachname(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM) String nachname) {
 		List<? extends AbstractKunde> kunden = null;
 		if (nachname != null) {
-			//TODO Mock ersetzen mit Locale
-			kunden = Mock.findKundenByNachname(nachname);
+			kunden = ks.findKundenByNachname(nachname);
 			if (kunden.isEmpty()) {
 				throw new NotFoundException("Kein Kunde mit Nachname " + nachname + " gefunden.");
 			}
 		}
 		else {
-			//TODO Moch ersetzen mit Locale
-			kunden = Mock.findAllKunden();
+			kunden = ks.findAllKunden();
 			if (kunden.isEmpty()) {
 				throw new NotFoundException("Keine Kunden vorhanden.");
 			}
@@ -197,7 +217,7 @@ public class KundeResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createKunde(AbstractKunde kunde) {
-		kunde = Mock.createKunde(kunde);
+		kunde = ks.createKunde(kunde);
 		return Response.created(getUriKunde(kunde, uriInfo))
 			           .build();
 	}
@@ -206,14 +226,13 @@ public class KundeResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public void updateKunde(AbstractKunde kunde) {
-		Mock.updateKunde(kunde);
+		ks.updateKunde(kunde);
 	}
 	
 	@DELETE
 	@Path("{id:[1-9][0-9]*}")
 	@Produces
 	public void deleteKunde(@PathParam("id") Long kundeId) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
-		Mock.deleteKunde(kundeId);
+		ks.deleteKunde(kundeId);
 	}
 }
