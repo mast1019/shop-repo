@@ -19,9 +19,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import de.shop.artikelverwaltung.domain.Artikel;
-import util.Mock;
-import util.rest.UriHelper;
-import util.rest.NotFoundException;
+import de.shop.util.Mock;
+import de.shop.util.rest.UriHelper;
+import de.shop.util.rest.NotFoundException;
 	
 @Path("/artikel")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })

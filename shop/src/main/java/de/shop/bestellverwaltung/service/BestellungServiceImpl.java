@@ -13,8 +13,8 @@ import org.jboss.logging.Logger;
 
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
-import util.interceptor.Log;
-import util.Mock;
+import de.shop.util.interceptor.Log;
+import de.shop.util.Mock;
 
 @Log
 public class BestellungServiceImpl implements BestellungService {

@@ -1,6 +1,6 @@
 package de.shop.bestellverwaltung.rest;
 
-import static util.Constants.SELF_LINK;
+import static de.shop.util.Constants.SELF_LINK;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
@@ -23,10 +23,10 @@ import javax.ws.rs.core.UriInfo;
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.rest.KundeResource;
-import util.Mock;
-import util.rest.UriHelper;
-import util.rest.NotFoundException;
-import util.interceptor.Log;
+import de.shop.util.Mock;
+import de.shop.util.rest.UriHelper;
+import de.shop.util.rest.NotFoundException;
+import de.shop.util.interceptor.Log;
 
 @Path("/bestellungen")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })

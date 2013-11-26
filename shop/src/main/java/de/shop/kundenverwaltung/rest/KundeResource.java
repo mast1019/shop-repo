@@ -1,11 +1,11 @@
 package de.shop.kundenverwaltung.rest;
 
-import static util.Constants.ADD_LINK;
-import static util.Constants.FIRST_LINK;
-import static util.Constants.LAST_LINK;
-import static util.Constants.REMOVE_LINK;
-import static util.Constants.SELF_LINK;
-import static util.Constants.UPDATE_LINK;
+import static de.shop.util.Constants.ADD_LINK;
+import static de.shop.util.Constants.FIRST_LINK;
+import static de.shop.util.Constants.LAST_LINK;
+import static de.shop.util.Constants.REMOVE_LINK;
+import static de.shop.util.Constants.SELF_LINK;
+import static de.shop.util.Constants.UPDATE_LINK;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
