@@ -25,13 +25,13 @@ public class Artikel implements Serializable{
 	private String beschreibung;
 	
 	@NotNull(message="{artikel.preis.notNull}")
-	@DecimalMin("0")
-	@DecimalMax("10000") 
+	@DecimalMin(value="0",message = "{artikel.preis.min}")
+	@DecimalMax(value="10000", message = "{artikel.preis.max}") 
 	private BigDecimal preis;
 	
 	@NotNull(message="{artikel.gewicht.notNull}")
-	@DecimalMin("0.1")
-	@DecimalMax("100")
+	@DecimalMin(value="0.1", message = "{artikel.gewicht.min}")
+	@DecimalMax(value="100", message = "{artikel.gewicht.max}")
 	private BigDecimal gewicht;
 
 	
