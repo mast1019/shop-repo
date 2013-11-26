@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 import java.lang.invoke.MethodHandles;
+import java.math.BigDecimal;
 
 import org.jboss.logging.Logger;
 
@@ -159,9 +159,9 @@ public final class Mock {
 		artikel.setId(id);
 		artikel.setName("Test-Fahrrad");
 		artikel.setBeschreibung("ein Fahrrad zum testen!");
-		final double preis = 200.00;
+		final BigDecimal preis = new BigDecimal(200.00);
 		artikel.setPreis(preis);
-		final Integer gewicht = 12;
+		final BigDecimal gewicht = new BigDecimal(12);
 		artikel.setGewicht(gewicht);
 		
 		
