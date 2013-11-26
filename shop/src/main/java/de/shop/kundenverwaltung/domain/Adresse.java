@@ -43,8 +43,6 @@ public class Adresse implements Serializable {
 	@Size(min = ORT_LENGTH_MIN, max = ORT_LENGTH_MAX, message = "{adresse.ort.length}")
 	private String stadt;
 	
-	
-	@XmlTransient
 	private AbstractKunde kunde;
 	
 	public Adresse(String str, String hnr, String plz, String stdt) {
@@ -98,6 +96,7 @@ public class Adresse implements Serializable {
 		stadt = stdt;
 	}
 	
+	@XmlTransient
 	public AbstractKunde getKunde() {
 		return kunde;
 	}

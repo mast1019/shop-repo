@@ -25,7 +25,6 @@ public class Bestellung {
 	@DecimalMin(value = "0.0", message = "{bestellung.gesamtpreis.decimalmin}")
 	private BigDecimal gesamtpreis;
 
-	@XmlTransient
 	@Valid
 	private AbstractKunde kundenid;
 	
@@ -68,7 +67,7 @@ public class Bestellung {
 		this.gesamtpreis = gesamtpreis;
 	}
 	
-	
+	@XmlTransient
 	public AbstractKunde getKundenid() {
 		return kundenid;
 	}
