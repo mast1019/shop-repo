@@ -1,8 +1,10 @@
 package de.shop.bestellverwaltung.domain;
 
 import java.util.List;
+import java.math.BigDecimal;
 import java.net.URI;
 
+import javax.validation.constraints.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -12,12 +14,26 @@ import de.shop.kundenverwaltung.domain.AbstractKunde;
 public class Bestellung {
 	
 	private Long bestellnummer;
+	
+	@NotNull(message = "{bestellung.posten.notnull}")
+	@Size(min = 1, message = "{bestellung.posten.size}")
+	@Valid
 	private List<Posten> posten;
-	private Double gesamtpreis;
+	
+	@NotNull(message = "{bestellung.gesamtpreis.notnull}")
+	@DecimalMin(value = "0.0", message = "{bestellung.gesamtpreis.decimalmin}")
+	private BigDecimal gesamtpreis;
+
 	@XmlTransient
+	@Valid
 	private AbstractKunde kundenid;
+	
+	@NotNull(message = "{bestellung.ausgeliegert.notnull}")
 	private Boolean ausgeliefert;
+	
 	private URI kundeUri;
+	
+	
 	
 	public Long getBestellnummer() {
 		return bestellnummer;
@@ -35,7 +51,7 @@ public class Bestellung {
 		this.posten = posten;
 	}
 	
-	public Double getGesamtpreis() {
+	public BigDecimal getGesamtpreis() {
 		if (posten == null) {
 			gesamtpreis = 0.0;
 		}
@@ -47,7 +63,7 @@ public class Bestellung {
 		return gesamtpreis;
 	}
 	
-	public void setGesamtpreis(Double gesamtpreis) {
+	public void setGesamtpreis(BigDecimal gesamtpreis) {
 		this.gesamtpreis = gesamtpreis;
 	}
 	
