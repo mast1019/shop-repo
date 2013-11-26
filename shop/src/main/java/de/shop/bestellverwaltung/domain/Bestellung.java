@@ -4,6 +4,7 @@ import java.util.List;
 import java.math.BigDecimal;
 import java.net.URI;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -53,11 +54,11 @@ public class Bestellung {
 	
 	public BigDecimal getGesamtpreis() {
 		if (posten == null) {
-			gesamtpreis = 0.0;
+			gesamtpreis = new BigDecimal(0.0);
 		}
 		else {
 			for (Posten p : posten) {
-				gesamtpreis += p.getGesamtpreis();
+				gesamtpreis.add(p.getGesamtpreis());
 			}
 		}
 		return gesamtpreis;

@@ -58,7 +58,8 @@ public class Posten {
 	}
 	
 	public BigDecimal getGesamtpreis() {
-		gesamtpreis = artikel.getPreis() * anzahl;
+		BigDecimal anz = new BigDecimal(anzahl);
+		gesamtpreis = artikel.getPreis().multiply(anz);
 		return gesamtpreis;
 	}
 	

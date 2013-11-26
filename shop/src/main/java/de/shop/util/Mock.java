@@ -119,7 +119,7 @@ public final class Mock {
 		// TODO bestellung.setPosten(bestellung.getPosten())
 		final List<Posten> posten = bestellung.getPosten();
 		bestellung.setPosten(posten);
-		final Double gesamtpreis = bestellung.getGesamtpreis();
+		final BigDecimal gesamtpreis = bestellung.getGesamtpreis();
 		bestellung.setGesamtpreis(gesamtpreis);
 		bestellung.setKundenid(kunde);
 		
@@ -195,9 +195,9 @@ public final class Mock {
 		artikel.setId(Long.valueOf(name.length()));
 		final String beschreibung = artikel.getBeschreibung();
 		artikel.setBeschreibung(beschreibung);
-		final Double preis = artikel.getPreis();
+		final BigDecimal preis = artikel.getPreis();
 		artikel.setPreis(preis);
-		final Integer gewicht = artikel.getGewicht();
+		final BigDecimal gewicht = artikel.getGewicht();
 		artikel.setGewicht(gewicht);
 		System.out.println("Neuer artikel: " + artikel);
 		return artikel;
@@ -218,7 +218,7 @@ public final class Mock {
 		bestellung.setBestellnummer(bestellnummer);
 		bestellung.setPosten(bestellung.getPosten());
 		bestellung.setAusgeliefert(false);
-		final Double gesamtpreis = bestellung.getGesamtpreis();
+		final BigDecimal gesamtpreis = bestellung.getGesamtpreis();
 		bestellung.setGesamtpreis(gesamtpreis);
 		final AbstractKunde kundenid = bestellung.getKundenid();
 		bestellung.setKundenid(kundenid);
