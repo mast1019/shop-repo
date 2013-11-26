@@ -54,9 +54,9 @@ public abstract class AbstractKunde implements Serializable {
 	@Pattern(regexp = NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
 	private String nachname;
 	
-	@NotNull(message = "{kunde.nachname.notNull}")
+	@NotNull(message = "{kunde.vorname.notNull}")
 	@Size(min = NACHNAME_LENGTH_MIN, max = NACHNAME_LENGTH_MAX,
-	      message = "{kunde.nachname.length}")
+	      message = "{kunde.vorname.length}")
 	@Pattern(regexp = NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
 	private String vorname;
 	

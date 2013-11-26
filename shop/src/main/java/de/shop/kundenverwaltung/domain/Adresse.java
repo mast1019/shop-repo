@@ -14,8 +14,7 @@ public class Adresse implements Serializable {
 	 */
 	private static final long serialVersionUID = -7904673428542887485L;
 	
-	private static final int PLZ_LENGTH_MAX = 5;
-	private static final int PLZ_LENGTH_MIN = 5;
+	
 	private static final int STRASSE_LENGTH_MAX = 60;
 	private static final int STRASSE_LENGTH_MIN = 1;
 	private static final int ORT_LENGTH_MIN = 2;
@@ -24,19 +23,15 @@ public class Adresse implements Serializable {
 	private Long id; 
 	
 	@NotNull(message = "{adresse.plz.notNull}")
-	@Size(min = PLZ_LENGTH_MIN, max = PLZ_LENGTH_MAX,
-    message = "{adresse.plz.length}")
 	@Pattern(regexp = "\\d{5}", message = "{adresse.plz}")
 	private String postleitzahl;
 	
 	@NotNull(message = "{adresse.strasse.notNull}")
 	@Size(min = STRASSE_LENGTH_MIN, max = STRASSE_LENGTH_MAX,
     message = "{adresse.strasse.length}")
-	@Pattern(regexp = "\\d{5}", message = "{adresse.strasse}")
 	private String strasse;
 	
 	@NotNull(message = "{adresse.hausnummer.notNull}")
-	@Pattern(regexp = "\\d{5}", message = "{adresse.hausnummer}")
 	private String hausnummer;
 	
 	@NotNull(message = "{adresse.ort.notNull}")
