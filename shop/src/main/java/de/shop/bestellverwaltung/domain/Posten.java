@@ -1,20 +1,25 @@
 package de.shop.bestellverwaltung.domain;
 
 import java.math.BigDecimal;
+import java.io.Serializable;
+import java.net.URI;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import de.shop.artikelverwaltung.domain.Artikel;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.DecimalMin;
 
-public class Posten {
-	
+@XmlRootElement
+public class Posten implements Serializable {
+	private static final long serialVersionUID = -6546634107480260335L;
+
 	private Long id;
 	
 	@Valid
-	@NotNull(message = "{posten.artikel.notNull}")
 	private Artikel artikel;
 	
 	@Min(0)
@@ -22,6 +27,8 @@ public class Posten {
 	
 	@DecimalMin("0,0")
 	private BigDecimal gesamtpreis;
+	
+	private URI artikelUri;
 
 	public Posten(Long id, Artikel artikel, Integer anzahl) {
 		super();
@@ -41,6 +48,7 @@ public class Posten {
 		this.id = id;
 	}
 
+	@XmlTransient
 	public Artikel getArtikel() {
 		return artikel;
 	}
@@ -65,6 +73,14 @@ public class Posten {
 	
 	public void setGesamtpreis(BigDecimal gesamtpreis) {
 		this.gesamtpreis = gesamtpreis;
+	}
+	
+	public URI getArtikelUri() {
+		return artikelUri;
+	}
+	
+	public void setArtikelUri(URI artikeluri) {
+		this.artikelUri = artikeluri;
 	}
 
 	@Override

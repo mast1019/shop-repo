@@ -33,8 +33,6 @@ public class Bestellung {
 	
 	private URI kundeUri;
 	
-	
-	
 	public Long getBestellnummer() {
 		return bestellnummer;
 	}
