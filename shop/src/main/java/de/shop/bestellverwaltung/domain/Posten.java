@@ -10,22 +10,28 @@ import javax.xml.bind.annotation.XmlTransient;
 import de.shop.artikelverwaltung.domain.Artikel;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @XmlRootElement
 public class Posten implements Serializable {
 	private static final long serialVersionUID = -6546634107480260335L;
 
+	public static final int ANZAHL_MIN = 1;
+	
 	private Long id;
 	
 	@Valid
+	@NotNull(message = "{posten.artikel.notNull}")
 	private Artikel artikel;
 	
-	@Min(0)
+	@NotNull(message = "{posten.anzahl.notNull}")
+	@Size(min = ANZAHL_MIN, message = "{posten.anzahl.size}")	
 	private Integer anzahl;
 	
-	@DecimalMin("0,0")
+	@NotNull(message = "{posten.gesamtpreis.notNull}")
+	@DecimalMin(value = "0.0", message = "{posten.gesamtpreis.decimalmin}")
 	private BigDecimal gesamtpreis;
 	
 	private URI artikelUri;

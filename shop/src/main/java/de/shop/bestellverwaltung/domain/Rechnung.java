@@ -1,7 +1,6 @@
 package de.shop.bestellverwaltung.domain;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.Valid;
 import java.util.Date;
 
@@ -9,7 +8,7 @@ import de.shop.kundenverwaltung.domain.Adresse;
 
 public class Rechnung {
 	
-	@Past(message = "{rechnung.datum.past}")
+	@NotNull (message = "{rechnung.datum.notNull}")
 	private Date datum;
 	
 	@NotNull (message = "{rechnung.bestellnummer.notNull}")
