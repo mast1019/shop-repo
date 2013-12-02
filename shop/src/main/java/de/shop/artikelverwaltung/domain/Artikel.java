@@ -10,28 +10,28 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 
-public class Artikel implements Serializable{	
+public class Artikel implements Serializable {	
 	
 	private static final long serialVersionUID = 4593393192027810187L;
 	private Long id;
 	
-	@NotNull(message="{artikel.name.notNull}")
+	@NotNull(message = "{artikel.name.notNull}")
 	@Size(min = 2, max = 32, message = "{artikel.name.length}")
 	@Pattern(regexp = "[A-ZÄÖÜ] [a-zäöüß]+")
 	private String name;
 	
-	@NotNull(message="{artikel.beschreibung.notNull}")
+	@NotNull(message = "{artikel.beschreibung.notNull}")
 	@Size(min = 10, max = 150, message = "{artikel.beschreibung.length}")
 	private String beschreibung;
 	
-	@NotNull(message="{artikel.preis.notNull}")
-	@DecimalMin(value="0",message = "{artikel.preis.min}")
-	@DecimalMax(value="10000", message = "{artikel.preis.max}") 
+	@NotNull(message = "{artikel.preis.notNull}")
+	@DecimalMin(value = "0",message = "{artikel.preis.min}")
+	@DecimalMax(value = "10000", message = "{artikel.preis.max}") 
 	private BigDecimal preis;
 	
-	@NotNull(message="{artikel.gewicht.notNull}")
-	@DecimalMin(value="0.1", message = "{artikel.gewicht.min}")
-	@DecimalMax(value="100", message = "{artikel.gewicht.max}")
+	@NotNull(message = "{artikel.gewicht.notNull}")
+	@DecimalMin(value = "0.1", message = "{artikel.gewicht.min}")
+	@DecimalMax(value = "100", message = "{artikel.gewicht.max}")
 	private BigDecimal gewicht;
 
 	

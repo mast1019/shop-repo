@@ -72,7 +72,7 @@ public class Posten implements Serializable {
 	}
 	
 	public BigDecimal getGesamtpreis() {
-		BigDecimal anz = new BigDecimal(anzahl);
+		final BigDecimal anz = new BigDecimal(anzahl);
 		gesamtpreis = artikel.getPreis().multiply(anz);
 		return gesamtpreis;
 	}

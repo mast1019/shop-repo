@@ -122,36 +122,42 @@ public class Adresse implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Adresse other = (Adresse) obj;
+		final Adresse other = (Adresse) obj;
 		if (hausnummer == null) {
 			if (other.hausnummer != null)
 				return false;
-		} else if (!hausnummer.equals(other.hausnummer))
+		}
+		else if (!hausnummer.equals(other.hausnummer))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		}
+		else if (!id.equals(other.id))
 			return false;
 		if (kunde == null) {
 			if (other.kunde != null)
 				return false;
-		} else if (!kunde.equals(other.kunde))
+		}
+		else if (!kunde.equals(other.kunde))
 			return false;
 		if (postleitzahl == null) {
 			if (other.postleitzahl != null)
 				return false;
-		} else if (!postleitzahl.equals(other.postleitzahl))
+		}
+		else if (!postleitzahl.equals(other.postleitzahl))
 			return false;
 		if (stadt == null) {
 			if (other.stadt != null)
 				return false;
-		} else if (!stadt.equals(other.stadt))
+		}
+		else if (!stadt.equals(other.stadt))
 			return false;
 		if (strasse == null) {
 			if (other.strasse != null)
 				return false;
-		} else if (!strasse.equals(other.strasse))
+		}
+		else if (!strasse.equals(other.strasse))
 			return false;
 		return true;
 	}

@@ -231,7 +231,8 @@ public abstract class AbstractKunde implements Serializable {
 	@Override
 	public String toString() {
 		return "AbstractKunde [id=" + id + ", nachname=" + nachname + ", vorname="
-				+ vorname + ", email=" + email + ", erstellungsdatum=" + erstellungsdatum + ", bestellungenURI=" + bestellungenURI + "]";
+				+ vorname + ", email=" + email + ", erstellungsdatum=" 
+				+ erstellungsdatum + ", bestellungenURI=" + bestellungenURI + "]";
 	}
 }
 

@@ -45,7 +45,7 @@ public class KundeService {
 	 */
 	public List<AbstractKunde> findKundenByNachname(String nachname) {
 		// TODO Datenbanzugriffsschicht statt Mock
-		List<AbstractKunde> kunden = Mock.findKundenByNachname(nachname);
+		final List<AbstractKunde> kunden = Mock.findKundenByNachname(nachname);
 		return kunden;
 	}
 

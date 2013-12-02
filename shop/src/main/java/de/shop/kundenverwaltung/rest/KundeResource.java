@@ -40,7 +40,7 @@ import de.shop.bestellverwaltung.rest.BestellungResource;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.service.KundeService;
 //import de.shop.util.interceptor.Log;
-import de.shop.util.Mock;//
+import de.shop.util.Mock;
 import de.shop.util.rest.UriHelper;
 import de.shop.util.rest.NotFoundException;
 
@@ -87,7 +87,7 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
 		final AbstractKunde kunde = ks.findKundeById(id);
 		if (kunde == null) {
-			throw new NotFoundException (" Kein Kunde mit der ID"+ id +"gefunden");
+			throw new NotFoundException(" Kein Kunde mit der ID"+id+"gefunden");
 		}
 		
 		setStructuralLinks(kunde, uriInfo);
