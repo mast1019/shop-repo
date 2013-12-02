@@ -38,7 +38,7 @@ import javax.ws.rs.core.UriInfo;
 //brauche ich das Mock noch??
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.bestellverwaltung.rest.BestellungResource;
-import de.shop.bestellverwaltung.service.BestellungService;//
+import de.shop.bestellverwaltung.service.BestellungService;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.service.KundeService;
 import de.shop.util.interceptor.Log;
@@ -131,7 +131,8 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	
 	@GET
 	public Response findKundenByNachname(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
-										@Pattern (regexp = AbstractKunde.NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
+										@Pattern (regexp = AbstractKunde.NACHNAME_PATTERN,
+										message = "{kunde.nachname.pattern}")
 										String nachname) {
 		List<? extends AbstractKunde> kunden = null;
 		if (nachname != null) {
