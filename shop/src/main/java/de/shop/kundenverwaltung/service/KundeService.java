@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.validation.constraints.NotNull;
 
 import org.jboss.logging.Logger;
 
@@ -49,6 +50,16 @@ public class KundeService {
 		return kunden;
 	}
 
+	@NotNull(message = "{kunde.notFound.email}") 
+	public AbstractKunde findKundeByEmail(String email) { 
+		if (email == null) { 
+			return null; 
+		} 
+		// TODO Datenbanzugriffsschicht statt Mock 
+		return Mock.findKundeByEmail(email);
+	}
+	
+	
 	public <T extends AbstractKunde> T createKunde(T kunde) {
 		if (kunde == null) {
 			return kunde;
@@ -56,12 +67,12 @@ public class KundeService {
 
 		// Pruefung, ob die Email-Adresse schon existiert
 		// TODO Datenbanzugriffsschicht statt Mock
-		if (Mock.findKundeByEmail(kunde.getEmail()) != null) {
-			throw new EmailExistsException(kunde.getEmail());
-		}
 
-		//kunde = Mock.createKunde(kunde);
-		//TODO schauen, wie es funktioniert
+//		final AbstractKunde tmp = findKundeByEmail(kunde.getEmail());
+//		if (kunde != null)
+//			throw new EmailExistsException(kunde.getEmail());
+
+		kunde = Mock.createKunde(kunde);
 
 		return kunde;
 	}
