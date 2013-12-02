@@ -135,9 +135,9 @@ public class KundeResource {
 	public Response findKunden(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
    	                           @Pattern(regexp = AbstractKunde.NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
 							   String nachname,
-							   @QueryParam(KUNDEN_EMAIL_QUERY_PARAM)
-   	                           @Email(message = "{kunde.email}")
-							   String email,
+							   //@QueryParam(KUNDEN_EMAIL_QUERY_PARAM)
+   	                           //@Email(message = "{kunde.email}")
+							   //String email,
 							   @QueryParam(KUNDEN_PLZ_QUERY_PARAM)
    	                           @Pattern(regexp = "\\d{5}", message = "{adresse.plz}")
 							   String plz) {
@@ -146,9 +146,9 @@ public class KundeResource {
 		if (nachname != null) {
 			kunden = ks.findKundenByNachname(nachname);
 		}
-		else if (email != null) {
-			kunde = ks.findKundeByEmail(email);
-		}
+//		else if (email != null) {
+//			kunde = ks.findKundeByEmail(email);
+//		}
 		else if (plz != null) {
 			// TODO Beispiel fuer ein TODO bei fehlender Implementierung
 			throw new RuntimeException("Suche nach PLZ noch nicht implementiert");
@@ -169,7 +169,9 @@ public class KundeResource {
 			entity = new GenericEntity<List<? extends AbstractKunde>>(kunden){};
 			links = getTransitionalLinksKunden(kunden, uriInfo);
 		}
-		else if (kunde != null) {
+		
+		//im Beispiel ist hier auch ein != ist das == trozdem richtig?
+		else if (kunde == null) {
 			entity = kunde;
 			links = getTransitionalLinks(kunde, uriInfo);
 		}
@@ -230,16 +232,16 @@ public class KundeResource {
 	public Response findBestellungenByKundeId(@PathParam("id") Long kundeId) {
 		final AbstractKunde kunde = ks.findKundeById(kundeId);
 		final List<Bestellung> bestellungen = bs.findBestellungenByKunde(kunde);
-		if (bestellungen.isEmpty()) {
-			throw new NotFoundException("Zur ID " + kundeId + " wurden keine Bestellungen gefunden");
+		if (bestellungen != null) {
+			for (Bestellung bestellung : bestellungen) {
+				bestellungResource.setStructuralLinks(bestellung, uriInfo);
+			}
+			// FIXME JDK 8 hat Lambda-Ausdruecke, aber Proxy-Klassen von Weld funktionieren noch nicht mit Lambda-Ausdruecken
+			//bestellungen.parallelStream()
+			//            .forEach(b -> bestellungResource.setStructuralLinks(b, uriInfo));
 		}
 		
-		// URIs innerhalb der gefundenen Bestellungen anpassen
-		for (Bestellung bestellung : bestellungen) {
-			bestellungResource.setStructuralLinks(bestellung, uriInfo);
-		}
-		
-		return Response.ok(new GenericEntity<List<Bestellung>>(bestellungen) { })
+		return Response.ok(new GenericEntity<List<Bestellung>>(bestellungen){})
                        .links(getTransitionalLinksBestellungen(bestellungen, kunde, uriInfo))
                        .build();
 	}
