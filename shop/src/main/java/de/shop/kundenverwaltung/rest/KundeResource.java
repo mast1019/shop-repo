@@ -87,7 +87,7 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
 		final AbstractKunde kunde = ks.findKundeById(id);
 		if (kunde == null) {
-			throw new NotFoundException(" Kein Kunde mit der ID"+id+"gefunden");
+			throw new NotFoundException("Kein Kunde mit der ID" + id + "gefunden");
 		}
 		
 		setStructuralLinks(kunde, uriInfo);
