@@ -7,6 +7,7 @@ import static javax.ws.rs.core.MediaType.TEXT_XML;
 import java.net.URI;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -50,14 +51,14 @@ public class ArtikelResource {
 		return response;
 	}
 		
-	public URI getUriArtikel(Artikel artikel, UriInfo uriInfo) {
+	public URI getUriArtikel(@Valid Artikel artikel, UriInfo uriInfo) {
 		return uriHelper.getUri(ArtikelResource.class, "findArtikelById", artikel.getId(), uriInfo);
 	}
 		
 	@POST
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
-	public Response createArtikel(Artikel artikel) {
+	public Response createArtikel(@Valid Artikel artikel) {
 		artikel = Mock.createArtikel(artikel);
 		return Response.created(getUriArtikel(artikel, uriInfo))
 			           .build();
@@ -66,7 +67,7 @@ public class ArtikelResource {
 	@PUT
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
-	public void updateArtikel(Artikel artikel) {
+	public void updateArtikel(@Valid Artikel artikel) {
 		// TODO Anwendungskern statt Mock, Verwendung von Locale
 		Mock.updateArtikel(artikel);
 	}
