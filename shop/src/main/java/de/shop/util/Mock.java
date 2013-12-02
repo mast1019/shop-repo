@@ -26,7 +26,7 @@ public final class Mock {
 	private static final int MAX_ARTIKEL = 4;
 	private static final int JAHR = 2001;
 	private static final int MONAT = 0; // bei Calendar werden die Monate von 0 bis 11 gezaehlt!!
-	private static final int TAG = 31;  // bei Calendar die Monatstage ab 1 gezaehlt
+	private static final int TAG = 31;  // bei Calendar die Monatstage ab 1 gezaehlt!
 
 	public static AbstractKunde findKundeById(Long id) {
 		if (id > MAX_ID) {
