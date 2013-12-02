@@ -32,7 +32,7 @@ public class Rechnung {
 	}
 
 	public void setDatum(Date date) {
-		datum = date;
+		datum = new Date(datum.getTime());
 	}
 
 	public Bestellung getBestellnummer() {
@@ -49,5 +49,11 @@ public class Rechnung {
 
 	public void setRechnungsadresse(Adresse rechnadr) {
 		rechnungsadresse = rechnadr;
+	}
+
+	@Override
+	public String toString() {
+		return "Rechnung [datum=" + datum + ", bestellnummer=" + bestellnummer
+				+ ", rechnungsadresse=" + rechnungsadresse + "]";
 	}
 }
