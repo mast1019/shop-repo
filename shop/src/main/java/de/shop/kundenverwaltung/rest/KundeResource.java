@@ -14,9 +14,10 @@ import static javax.ws.rs.core.MediaType.TEXT_XML;
 import java.net.URI;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-//import javax.validation.Valid;
-//import javax.validation.constraints.Pattern;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 //import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -33,32 +34,29 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+
 //brauche ich das Mock noch??
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.bestellverwaltung.rest.BestellungResource;
-//import de.shop.bestellverwaltung.service.BestellungService;//
+import de.shop.bestellverwaltung.service.BestellungService;//
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.service.KundeService;
-//import de.shop.util.interceptor.Log;
-import de.shop.util.Mock;
+import de.shop.util.interceptor.Log;
+//import de.shop.util.Mock;
 import de.shop.util.rest.UriHelper;
 import de.shop.util.rest.NotFoundException;
-
 
 
 @Path("/kunden")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
 @Consumes
+@RequestScoped
+@Log
 public class KundeResource {	
 	public static final String KUNDEN_ID_PATH_PARAM = "id";
 	public static final String KUNDEN_NACHNAME_QUERY_PARAM = "nachname";
 public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
-	
-//die 3 werden noch nicht verwendet weil irgendwas fehlt das ich noch nicht herraus
-//gefunden habe 
-	//private static final String NOT_FOUND_ID = "kunde.notFound.id";
-	//private static final String NOT_FOUND_NACHNAME = "kunde.notFound.nachname";
-	//private static final String NOT_FOUND_ALL = "kunde.notFound.all";
+
 	
 	@Context
 	private UriInfo uriInfo;
@@ -66,8 +64,8 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	@Inject
 	private KundeService ks;
 	
-	//@Inject
-	//private BestellungService bs;
+	@Inject
+	private BestellungService bs;
 	
 	@Inject
 	private BestellungResource bestellungResource;
@@ -132,7 +130,9 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	}
 	
 	@GET
-	public Response findKundenByNachname(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM) String nachname) {
+	public Response findKundenByNachname(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
+										@Pattern (regexp = AbstractKunde.NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
+										String nachname) {
 		List<? extends AbstractKunde> kunden = null;
 		if (nachname != null) {
 			kunden = ks.findKundenByNachname(nachname);
@@ -155,7 +155,7 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
                        .links(getTransitionalLinksKunden(kunden, uriInfo))
                        .build();
 	}
-	
+		
 	private Link[] getTransitionalLinksKunden(List<? extends AbstractKunde> kunden, UriInfo uriInfo) {
 		if (kunden == null || kunden.isEmpty()) {
 			return null;
@@ -175,8 +175,8 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	@GET
 	@Path("{id:[1-9][0-9]*}/bestellungen")
 	public Response findBestellungenByKundeId(@PathParam("id") Long kundeId) {
-		final AbstractKunde kunde = Mock.findKundeById(kundeId);
-		final List<Bestellung> bestellungen = Mock.findBestellungenByKunde(kunde);
+		final AbstractKunde kunde = ks.findKundeById(kundeId);
+		final List<Bestellung> bestellungen = bs.findBestellungenByKunde(kunde);
 		if (bestellungen.isEmpty()) {
 			throw new NotFoundException("Zur ID " + kundeId + " wurden keine Bestellungen gefunden");
 		}
@@ -216,7 +216,7 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	@POST
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
-	public Response createKunde(AbstractKunde kunde) {
+	public Response createKunde(@Valid AbstractKunde kunde) {
 		kunde = ks.createKunde(kunde);
 		return Response.created(getUriKunde(kunde, uriInfo))
 			           .build();
@@ -225,7 +225,7 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	@PUT
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
-	public void updateKunde(AbstractKunde kunde) {
+	public void updateKunde(@Valid AbstractKunde kunde) {
 		ks.updateKunde(kunde);
 	}
 	
