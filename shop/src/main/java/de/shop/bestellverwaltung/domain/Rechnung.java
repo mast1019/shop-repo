@@ -22,7 +22,7 @@ public class Rechnung {
 	public Rechnung(Date date, Bestellung bnr,
 			Adresse rechnadr) {
 		super();
-		datum = date;
+		datum = date == null ? null : (Date) date.clone();
 		bestellnummer = bnr;
 		rechnungsadresse = rechnadr;
 	}

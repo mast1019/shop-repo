@@ -82,7 +82,7 @@ public abstract class AbstractKunde implements Serializable {
 		nachname = nname;
 		vorname = vname;
 		adresse = adr;
-		erstellungsdatum = erstellung;
+		erstellungsdatum = erstellung == null ? null : (Date) erstellung.clone();
 		email = mail;
 	}
 	
