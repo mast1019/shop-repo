@@ -57,7 +57,7 @@ public class Bestellung {
 		}
 		else {
 			for (Posten p : posten) {
-				gesamtpreis.add(p.getGesamtpreis());
+				gesamtpreis=gesamtpreis.add(p.getGesamtpreis());
 			}
 		}
 		return gesamtpreis;
