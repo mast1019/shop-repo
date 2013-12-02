@@ -13,6 +13,7 @@ import org.jboss.logging.Logger;
 
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
+//import de.shop.kundenverwaltung.service.KundeService;
 import de.shop.util.interceptor.Log;
 import de.shop.util.Mock;
 
@@ -20,6 +21,9 @@ import de.shop.util.Mock;
 public class BestellungServiceImpl implements BestellungService {
 	
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+	
+	//@Inject
+	//private KundeService ks;
 	
 	@Inject
 	@NeueBestellung
@@ -35,9 +39,6 @@ public class BestellungServiceImpl implements BestellungService {
 		LOGGER.debugf("CDI-faehiges Bean %s wird geloescht", this);
 	}
 	
-	/**
-	 * {inheritDoc}
-	 */
 	@Override
 	public Bestellung findBestellungById(Long id) {
 		// TODO Datenbanzugriffsschicht statt Mock
