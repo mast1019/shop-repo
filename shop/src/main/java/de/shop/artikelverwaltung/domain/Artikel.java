@@ -17,7 +17,7 @@ public class Artikel implements Serializable {
 	
 	@NotNull(message = "{artikel.name.notNull}")
 	@Size(min = 2, max = 32, message = "{artikel.name.length}")
-	@Pattern(regexp = "[A-ZÄÖÜ] [a-zäöüß]+")
+	@Pattern(regexp = "[A-ZÄÖÜ][a-zäöüß]+")
 	private String name;
 	
 	@NotNull(message = "{artikel.beschreibung.notNull}")
