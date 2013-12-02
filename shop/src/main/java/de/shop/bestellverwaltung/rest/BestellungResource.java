@@ -54,14 +54,12 @@ public class BestellungResource {
 		final Bestellung bestellung = bs.findBestellungById(id);
 		setStructuralLinks(bestellung, uriInfo);
 		
-		// Link-Header setzen
 		return Response.ok(bestellung)
                        .links(getTransitionalLinks(bestellung, uriInfo))
                        .build();
 	}
 	
 	public void setStructuralLinks(Bestellung bestellung, UriInfo uriInfo) {
-		// URI fuer Kunde setzen
 		final AbstractKunde kunde = bestellung.getKundenid();
 		if (kunde != null) {
 			final URI kundeUri = kundeResource.getUriKunde(bestellung.getKundenid(), uriInfo);
