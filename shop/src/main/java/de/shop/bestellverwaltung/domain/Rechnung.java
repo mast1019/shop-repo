@@ -22,17 +22,17 @@ public class Rechnung {
 	public Rechnung(Date date, Bestellung bnr,
 			Adresse rechnadr) {
 		super();
-		datum = date;
+		datum = date == null ? null : (Date) date.clone();
 		bestellnummer = bnr;
 		rechnungsadresse = rechnadr;
 	}
 	
 	public Date getDatum() {
-		return datum;
+		return datum == null ? null : (Date) datum.clone();
 	}
 
 	public void setDatum(Date date) {
-		datum = date;
+		this.datum = date == null ? null : (Date) datum.clone(); 
 	}
 
 	public Bestellung getBestellnummer() {
@@ -49,5 +49,11 @@ public class Rechnung {
 
 	public void setRechnungsadresse(Adresse rechnadr) {
 		rechnungsadresse = rechnadr;
+	}
+
+	@Override
+	public String toString() {
+		return "Rechnung [datum=" + datum + ", bestellnummer=" + bestellnummer
+				+ ", rechnungsadresse=" + rechnungsadresse + "]";
 	}
 }
