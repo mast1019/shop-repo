@@ -33,7 +33,7 @@ public final class Mock {
 			return null;
 		}
 		
-		final AbstractKunde kunde = id % 2 == 1 ? new Privatkunde() : new Firmenkunde();
+		final AbstractKunde kunde = id % 2 != 0 ? new Privatkunde() : new Firmenkunde();
 		kunde.setId(id);
 		kunde.setNachname("Nachname" + id);
 		kunde.setVorname("Vorname");
