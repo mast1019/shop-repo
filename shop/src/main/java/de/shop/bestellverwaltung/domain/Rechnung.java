@@ -28,11 +28,11 @@ public class Rechnung {
 	}
 	
 	public Date getDatum() {
-		return datum;
+		return datum == null ? null : (Date) datum.clone();
 	}
 
 	public void setDatum(Date date) {
-		datum = new Date(datum.getTime());
+		this.datum = date == null ? null : (Date) datum.clone(); 
 	}
 
 	public Bestellung getBestellnummer() {

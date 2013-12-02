@@ -123,11 +123,11 @@ public abstract class AbstractKunde implements Serializable {
 	}
 
 	public Date getErstellungsdatum() {
-		return erstellungsdatum;
+		return erstellungsdatum == null ? null : (Date) erstellungsdatum.clone();
 	}
 
 	public void setErstellungsdatum(Date erstellung) {
-		erstellungsdatum = erstellung;
+		this.erstellungsdatum = erstellung == null ? null : (Date) erstellung.clone();
 	}
 	
 	public String getEmail() {
