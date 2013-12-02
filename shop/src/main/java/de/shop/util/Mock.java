@@ -137,6 +137,8 @@ public final class Mock {
 		final Adresse adresse = kunde.getAdresse();
 		adresse.setKunde(kunde);
 		kunde.setBestellungen(null);
+		final String email = kunde.getEmail();
+		kunde.setEmail(email);
 		
 		LOGGER.infof("Neuer Kunde: %s", kunde);
 		return kunde;
