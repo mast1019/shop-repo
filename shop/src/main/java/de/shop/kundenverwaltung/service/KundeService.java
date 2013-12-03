@@ -1,5 +1,6 @@
 package de.shop.kundenverwaltung.service;
 
+import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 
@@ -17,7 +18,11 @@ import de.shop.util.Mock;
 
 @Dependent
 @Log
-public class KundeService{
+public class KundeService implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5317923555756524732L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
 	@PostConstruct
