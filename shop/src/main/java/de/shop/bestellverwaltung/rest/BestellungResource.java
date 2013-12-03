@@ -50,7 +50,8 @@ public class BestellungResource {
 	
 	@GET
 	@Path("{id:[1-9][0-9]*}")
-	public Response findBestellungById(@PathParam("id") Long id) {
+	public Response findBestellungById(@PathParam("id")
+									   Long id) {
 		final Bestellung bestellung = bs.findBestellungById(id);
 		setStructuralLinks(bestellung, uriInfo);
 		
@@ -85,7 +86,7 @@ public class BestellungResource {
 	@POST
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
-	public Response createBestellung(Bestellung bestellung) {
+	public Response createBestellung(@Valid Bestellung bestellung) {
 		bestellung = bs.createBestellung(bestellung);
 		
 		return Response.created(getUriBestellung(bestellung, uriInfo))

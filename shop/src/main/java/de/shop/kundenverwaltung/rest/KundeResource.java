@@ -55,8 +55,8 @@ import de.shop.util.rest.NotFoundException;
 public class KundeResource {	
 	public static final String KUNDEN_ID_PATH_PARAM = "id";
 	public static final String KUNDEN_NACHNAME_QUERY_PARAM = "nachname";
-public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
-
+	public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
+	public static final String KUNDEN_EMAIL_QUERY_PARAM = "email";
 	
 	@Context
 	private UriInfo uriInfo;
@@ -84,6 +84,7 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	@Path("{" + KUNDEN_ID_PATH_PARAM + ":[1-9][0-9]*}")
 	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
 		final AbstractKunde kunde = ks.findKundeById(id);
+		setStructuralLinks(kunde, uriInfo);
 		if (kunde == null) {
 			throw new NotFoundException("Kein Kunde mit der ID" + id + "gefunden");
 		}
@@ -128,6 +129,59 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	public URI getUriKunde(AbstractKunde kunde, UriInfo uriInfo) {
 		return uriHelper.getUri(KundeResource.class, "findKundeById", kunde.getId(), uriInfo);
 	}
+	
+	
+	@GET
+	public Response findKunden(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
+   	                           @Pattern(regexp = AbstractKunde.NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
+							   String nachname,
+							   //@QueryParam(KUNDEN_EMAIL_QUERY_PARAM)
+   	                           //@Email(message = "{kunde.email}")
+							   //String email,
+							   @QueryParam(KUNDEN_PLZ_QUERY_PARAM)
+   	                           @Pattern(regexp = "\\d{5}", message = "{adresse.plz}")
+							   String plz) {
+		List<? extends AbstractKunde> kunden = null;
+		AbstractKunde kunde = null;
+		if (nachname != null) {
+			kunden = ks.findKundenByNachname(nachname);
+		}
+//		else if (email != null) {
+//			kunde = ks.findKundeByEmail(email);
+//		}
+		else if (plz != null) {
+			// TODO Beispiel fuer ein TODO bei fehlender Implementierung
+			throw new RuntimeException("Suche nach PLZ noch nicht implementiert");
+		}
+		else {
+			kunden = ks.findAllKunden();
+		}
+		
+		Object entity = null;
+		Link[] links = null;
+		if (kunden != null) {
+			for (AbstractKunde k : kunden) {
+				setStructuralLinks(k, uriInfo);
+			}
+			// FIXME JDK 8 hat Lambda-Ausdruecke, aber Proxy-Klassen von Weld funktionieren noch nicht mit Lambda-Ausdruecken
+			//kunden.parallelStream()
+			//      .forEach(k -> setStructuralLinks(k, uriInfo));
+			entity = new GenericEntity<List<? extends AbstractKunde>>(kunden){};
+			links = getTransitionalLinksKunden(kunden, uriInfo);
+		}
+		
+		//im Beispiel ist hier auch ein != ist das == trozdem richtig?
+		else if (kunde == null) {
+			entity = kunde;
+			links = getTransitionalLinks(kunde, uriInfo);
+		}
+		
+		return Response.ok(entity)
+                       .links(links)
+                       .build();
+	}
+	
+	
 	
 	@GET
 	public Response findKundenByNachname(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
@@ -178,16 +232,16 @@ public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
 	public Response findBestellungenByKundeId(@PathParam("id") Long kundeId) {
 		final AbstractKunde kunde = ks.findKundeById(kundeId);
 		final List<Bestellung> bestellungen = bs.findBestellungenByKunde(kunde);
-		if (bestellungen.isEmpty()) {
-			throw new NotFoundException("Zur ID " + kundeId + " wurden keine Bestellungen gefunden");
+		if (bestellungen != null) {
+			for (Bestellung bestellung : bestellungen) {
+				bestellungResource.setStructuralLinks(bestellung, uriInfo);
+			}
+			// FIXME JDK 8 hat Lambda-Ausdruecke, aber Proxy-Klassen von Weld funktionieren noch nicht mit Lambda-Ausdruecken
+			//bestellungen.parallelStream()
+			//            .forEach(b -> bestellungResource.setStructuralLinks(b, uriInfo));
 		}
 		
-		// URIs innerhalb der gefundenen Bestellungen anpassen
-		for (Bestellung bestellung : bestellungen) {
-			bestellungResource.setStructuralLinks(bestellung, uriInfo);
-		}
-		
-		return Response.ok(new GenericEntity<List<Bestellung>>(bestellungen) { })
+		return Response.ok(new GenericEntity<List<Bestellung>>(bestellungen){})
                        .links(getTransitionalLinksBestellungen(bestellungen, kunde, uriInfo))
                        .build();
 	}
