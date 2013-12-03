@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
@@ -13,17 +14,18 @@ import org.jboss.logging.Logger;
 
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
-//import de.shop.kundenverwaltung.service.KundeService;
+import de.shop.kundenverwaltung.service.KundeService;
 import de.shop.util.interceptor.Log;
 import de.shop.util.Mock;
 
 @Log
+@Dependent
 public class BestellungServiceImpl implements BestellungService {
 	
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
-	//@Inject
-	//private KundeService ks;
+	@Inject
+	private KundeService ks;
 	
 	@Inject
 	@NeueBestellung
@@ -54,9 +56,6 @@ public class BestellungServiceImpl implements BestellungService {
 		return Mock.findBestellungenByKunde(kunde);
 	}
 
-	/**
-	 * {inheritDoc}
-	 */
 	@Override
 	public Bestellung createBestellung(Bestellung bestellung, AbstractKunde kunde, Locale locale) {
 		// TODO Datenbanzugriffsschicht statt Mock
@@ -74,6 +73,17 @@ public class BestellungServiceImpl implements BestellungService {
 		
 		return bestellung;
 	}
+	
+	@Override
+	public Bestellung createBestellung(Bestellung bestellung, Long kundeId, Locale locale) {
+		if (bestellung == null) {
+			return null;
+		}
+		
+		final AbstractKunde kunde = ks.findKundeById(kundeId);
+		return createBestellung(bestellung, kunde, locale);
+	}
+	
 	
 	@Override
 	public Bestellung updateBestellung(Bestellung bestellung) {
