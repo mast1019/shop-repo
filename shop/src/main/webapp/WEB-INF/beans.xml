@@ -11,9 +11,9 @@
   <stereotype>de.shop.util.cdi.MockService</stereotype>
  </alternatives>
  
-
+ -->
  <decorators>
   <class>de.shop.bestellverwaltung.service.BestellungServiceMitGeschenkverpackung</class>
  </decorators>
- -->
+
 </beans>
