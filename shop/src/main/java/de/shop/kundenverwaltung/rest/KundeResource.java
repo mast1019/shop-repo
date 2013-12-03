@@ -171,7 +171,6 @@ public class KundeResource {
 			links = getTransitionalLinksKunden(kunden, uriInfo);
 		}
 		
-		//im Beispiel ist hier auch ein != ist das == trozdem richtig?
 		else if (kunde != null) {
 			entity = kunde;
 			links = getTransitionalLinks(kunde, uriInfo);
