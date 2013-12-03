@@ -6,6 +6,7 @@ import static javax.ws.rs.core.MediaType.TEXT_XML;
 
 import java.net.URI;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -20,6 +21,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import de.shop.artikelverwaltung.domain.Artikel;
+import de.shop.artikelverwaltung.service.ArtikelService;
 import de.shop.util.Mock;
 import de.shop.util.rest.UriHelper;
 import de.shop.util.rest.NotFoundException;
@@ -27,10 +29,14 @@ import de.shop.util.rest.NotFoundException;
 @Path("/artikel")
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
 @Consumes
+@RequestScoped
 public class ArtikelResource {
 	@Context
 	private UriInfo uriInfo;
 		
+	@Inject
+	private ArtikelService as;
+	
 	@Inject
 	private UriHelper uriHelper;
 		
@@ -59,7 +65,7 @@ public class ArtikelResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createArtikel(@Valid Artikel artikel) {
-		artikel = Mock.createArtikel(artikel);
+		artikel = as.createArtikel(artikel);
 		return Response.created(getUriArtikel(artikel, uriInfo))
 			           .build();
 	}
