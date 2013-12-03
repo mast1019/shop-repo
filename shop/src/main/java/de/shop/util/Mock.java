@@ -75,7 +75,7 @@ public final class Mock {
 			return null;
 		}
 		
-		final AbstractKunde kunde = email.length() % 2 == 1 ? new Privatkunde() : new Firmenkunde();
+		final AbstractKunde kunde = Math.abs(email.length()) % 2 == 1 ? new Privatkunde() : new Firmenkunde();
 		kunde.setId(Long.valueOf(email.length()));
 		kunde.setNachname("Nachname");
 		kunde.setEmail(email);
