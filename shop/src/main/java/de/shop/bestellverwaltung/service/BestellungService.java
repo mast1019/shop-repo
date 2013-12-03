@@ -12,4 +12,5 @@ public interface BestellungService {
 	Bestellung createBestellung(Bestellung bestellung);
 	Bestellung createBestellung(Bestellung bestellung, AbstractKunde kunde, Locale locale);
 	Bestellung updateBestellung(Bestellung bestellung);
+	Bestellung createBestellung(Bestellung bestellung, Long kundeId, Locale locale);
 }
