@@ -30,7 +30,7 @@ public class Bestellung {
 	@Valid
 	private AbstractKunde kundenid;
 	
-	@NotNull(message = "{bestellung.ausgeliegert.notnull}")
+	@NotNull(message = "{bestellung.ausgeliefert.notnull}")
 	private Boolean ausgeliefert;
 	
 	private URI kundeUri;
