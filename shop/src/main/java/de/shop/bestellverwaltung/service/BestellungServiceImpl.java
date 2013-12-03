@@ -1,5 +1,6 @@
 package de.shop.bestellverwaltung.service;
 
+import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.Locale;
@@ -9,23 +10,21 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.jboss.logging.Logger;
 
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
-import de.shop.kundenverwaltung.service.KundeService;
 import de.shop.util.interceptor.Log;
 import de.shop.util.Mock;
 
 @Log
 @Dependent
-public class BestellungServiceImpl implements BestellungService {
-	
+public class BestellungServiceImpl implements BestellungService, Serializable {
+	private static final long serialVersionUID = -969877439632396666L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
-	
-	@Inject
-	private KundeService ks;
 	
 	@Inject
 	@NeueBestellung
@@ -42,15 +41,14 @@ public class BestellungServiceImpl implements BestellungService {
 	}
 	
 	@Override
+	@NotNull(message = "{bestellung.notFound.id}")
 	public Bestellung findBestellungById(Long id) {
 		// TODO Datenbanzugriffsschicht statt Mock
 		return Mock.findBestellungById(id);
 	}
 
-	/**
-	 * {inheritDoc}
-	 */
 	@Override
+	@Size(min = 1, message = "{bestellung.notFound.kunde}")
 	public List<Bestellung> findBestellungenByKunde(AbstractKunde kunde) {
 		// TODO Datenbanzugriffsschicht statt Mock
 		return Mock.findBestellungenByKunde(kunde);
@@ -73,18 +71,7 @@ public class BestellungServiceImpl implements BestellungService {
 		
 		return bestellung;
 	}
-	
-	@Override
-	public Bestellung createBestellung(Bestellung bestellung, Long kundeId, Locale locale) {
-		if (bestellung == null) {
-			return null;
-		}
 		
-		final AbstractKunde kunde = ks.findKundeById(kundeId);
-		return createBestellung(bestellung, kunde, locale);
-	}
-	
-	
 	@Override
 	public Bestellung updateBestellung(Bestellung bestellung) {
 		Mock.updateBestellung(bestellung);
