@@ -164,10 +164,11 @@ public class KundeResource {
 			for (AbstractKunde k : kunden) {
 				setStructuralLinks(k, uriInfo);
 			}
-			// FIXME JDK 8 hat Lambda-Ausdruecke, aber Proxy-Klassen von Weld funktionieren noch nicht mit Lambda-Ausdruecken
+			// FIXME JDK 8 hat Lambda-Ausdruecke, 
+			//aber Proxy-Klassen von Weld funktionieren noch nicht mit Lambda-Ausdruecken
 			//kunden.parallelStream()
 			//      .forEach(k -> setStructuralLinks(k, uriInfo));
-			entity = new GenericEntity<List<? extends AbstractKunde>>(kunden){};
+			entity = new GenericEntity<List<? extends AbstractKunde>>(kunden) { } ;
 			links = getTransitionalLinksKunden(kunden, uriInfo);
 		}
 		
@@ -236,12 +237,13 @@ public class KundeResource {
 			for (Bestellung bestellung : bestellungen) {
 				bestellungResource.setStructuralLinks(bestellung, uriInfo);
 			}
-			// FIXME JDK 8 hat Lambda-Ausdruecke, aber Proxy-Klassen von Weld funktionieren noch nicht mit Lambda-Ausdruecken
+			// FIXME JDK 8 hat Lambda-Ausdruecke, 
+			//aber Proxy-Klassen von Weld funktionieren noch nicht mit Lambda-Ausdruecken
 			//bestellungen.parallelStream()
 			//            .forEach(b -> bestellungResource.setStructuralLinks(b, uriInfo));
 		}
 		
-		return Response.ok(new GenericEntity<List<Bestellung>>(bestellungen){})
+		return Response.ok(new GenericEntity<List<Bestellung>>(bestellungen) { } )
                        .links(getTransitionalLinksBestellungen(bestellungen, kunde, uriInfo))
                        .build();
 	}
