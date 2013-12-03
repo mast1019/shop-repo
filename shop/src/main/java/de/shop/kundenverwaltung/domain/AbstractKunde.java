@@ -68,6 +68,7 @@ public abstract class AbstractKunde implements Serializable {
 	@Size(max = EMAIL_LENGTH_MAX, message = "{kunde.email.length}")
 	private String email;
 	
+	@XmlTransient
 	private List<Bestellung> bestellungen;
 	
 	private URI bestellungenURI;
@@ -134,7 +135,6 @@ public abstract class AbstractKunde implements Serializable {
 		email = mail;
 	}
 	
-	@XmlTransient
 	public List<Bestellung> getBestellungen() {
 		return bestellungen;
 	}
