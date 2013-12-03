@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.enterprise.context.Dependent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.jboss.logging.Logger;
 
@@ -13,8 +15,9 @@ import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.util.interceptor.Log;
 import de.shop.util.Mock;
 
+@Dependent
 @Log
-public class KundeService {
+public class KundeService{
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
 	@PostConstruct
@@ -27,6 +30,7 @@ public class KundeService {
 		LOGGER.debugf("CDI-faehiges Bean %s wird geloescht", this);
 	}
 
+	@NotNull(message = "{kunde.notFound.id}")
 	public AbstractKunde findKundeById(Long id) {
 		if (id == null) {
 			return null;
@@ -42,8 +46,7 @@ public class KundeService {
 		return kunden;
 	}
 	
-	/**
-	 */
+	@Size (min = 1, message = "{kunde.notFound.nachname}")
 	public List<AbstractKunde> findKundenByNachname(String nachname) {
 		// TODO Datenbanzugriffsschicht statt Mock
 		final List<AbstractKunde> kunden = Mock.findKundenByNachname(nachname);
@@ -65,13 +68,11 @@ public class KundeService {
 			return kunde;
 		}
 
-		// Pruefung, ob die Email-Adresse schon existiert
+		final AbstractKunde tmp = findKundeByEmail(kunde.getEmail());
+		if (tmp != null)
+			throw new EmailExistsException(kunde.getEmail());
+		
 		// TODO Datenbanzugriffsschicht statt Mock
-
-//		final AbstractKunde tmp = findKundeByEmail(kunde.getEmail());
-//		if (kunde != null)
-//			throw new EmailExistsException(kunde.getEmail());
-
 		kunde = Mock.createKunde(kunde);
 
 		return kunde;
@@ -107,7 +108,7 @@ public class KundeService {
 			throw new KundeDeleteBestellungException(kunde);
 		}
 		
-		// TODO Datenbanzugriffsschicht statt Mock
+		// TODO Datenbankzugriffsschicht statt Mock
 		Mock.deleteKunde(kundeId);
 	}
 }

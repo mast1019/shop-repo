@@ -35,14 +35,15 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 
-//brauche ich das Mock noch??
+
+import org.hibernate.validator.constraints.Email;
+
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.bestellverwaltung.rest.BestellungResource;
 import de.shop.bestellverwaltung.service.BestellungService;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.service.KundeService;
 import de.shop.util.interceptor.Log;
-//import de.shop.util.Mock;
 import de.shop.util.rest.UriHelper;
 import de.shop.util.rest.NotFoundException;
 
@@ -135,9 +136,9 @@ public class KundeResource {
 	public Response findKunden(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
    	                           @Pattern(regexp = AbstractKunde.NACHNAME_PATTERN, message = "{kunde.nachname.pattern}")
 							   String nachname,
-							   //@QueryParam(KUNDEN_EMAIL_QUERY_PARAM)
-   	                           //@Email(message = "{kunde.email}")
-							   //String email,
+							   @QueryParam(KUNDEN_EMAIL_QUERY_PARAM)
+   	                           @Email(message = "{kunde.email}")
+							   String email,
 							   @QueryParam(KUNDEN_PLZ_QUERY_PARAM)
    	                           @Pattern(regexp = "\\d{5}", message = "{adresse.plz}")
 							   String plz) {
@@ -146,9 +147,9 @@ public class KundeResource {
 		if (nachname != null) {
 			kunden = ks.findKundenByNachname(nachname);
 		}
-//		else if (email != null) {
-//			kunde = ks.findKundeByEmail(email);
-//		}
+		else if (email != null) {
+			kunde = ks.findKundeByEmail(email);
+		}
 		else if (plz != null) {
 			// TODO Beispiel fuer ein TODO bei fehlender Implementierung
 			throw new RuntimeException("Suche nach PLZ noch nicht implementiert");
