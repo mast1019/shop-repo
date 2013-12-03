@@ -172,7 +172,7 @@ public class KundeResource {
 		}
 		
 		//im Beispiel ist hier auch ein != ist das == trozdem richtig?
-		else if (kunde == null) {
+		else if (kunde != null) {
 			entity = kunde;
 			links = getTransitionalLinks(kunde, uriInfo);
 		}
