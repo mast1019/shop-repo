@@ -12,4 +12,13 @@ public class ArtikelService {
 		// TODO Datenbanzugriffsschicht statt Mock
 		return Mock.findArtikelById(id);
 	}
+	
+	public Artikel  createArtikel(Artikel artikel) {
+		if (artikel == null) {
+			return artikel;
+		}
+
+		artikel = Mock.createArtikel(artikel);
+		return artikel;
+	}
 }
