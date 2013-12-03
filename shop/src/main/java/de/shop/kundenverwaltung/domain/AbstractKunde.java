@@ -29,10 +29,6 @@ import de.shop.bestellverwaltung.domain.Bestellung;
 	@Type(value = Firmenkunde.class, name = AbstractKunde.FIRMENKUNDE) })
 public abstract class AbstractKunde implements Serializable {
 	
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 12639985364951030L;
 	
 	public static final String PRIVATKUNDE = "P";
@@ -123,7 +119,7 @@ public abstract class AbstractKunde implements Serializable {
 	}
 
 	public Date getErstellungsdatum() {
-		return erstellungsdatum == null ? null : (Date) erstellungsdatum.clone();
+		return erstellungsdatum == null ? null: (Date) erstellungsdatum.clone();
 	}
 
 	public void setErstellungsdatum(Date erstellung) {
