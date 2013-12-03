@@ -168,7 +168,7 @@ public class KundeResource {
 			//aber Proxy-Klassen von Weld funktionieren noch nicht mit Lambda-Ausdruecken
 			//kunden.parallelStream()
 			//      .forEach(k -> setStructuralLinks(k, uriInfo));
-			entity = new GenericEntity<List<? extends AbstractKunde>>(kunden) { } ;
+			entity = new GenericEntity<List<? extends AbstractKunde>>(kunden) { };
 			links = getTransitionalLinksKunden(kunden, uriInfo);
 		}
 		
@@ -243,7 +243,7 @@ public class KundeResource {
 			//            .forEach(b -> bestellungResource.setStructuralLinks(b, uriInfo));
 		}
 		
-		return Response.ok(new GenericEntity<List<Bestellung>>(bestellungen) { } )
+		return Response.ok(new GenericEntity<List<Bestellung>>(bestellungen) { })
                        .links(getTransitionalLinksBestellungen(bestellungen, kunde, uriInfo))
                        .build();
 	}
