@@ -18,7 +18,7 @@ import de.shop.util.Mock;
 
 @Dependent
 @Log
-public class KundeService implements Serializable{
+public class KundeService implements Serializable {
 	/**
 	 * 
 	 */
