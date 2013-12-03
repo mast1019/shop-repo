@@ -32,18 +32,21 @@ public final class Mock {
 		if (id > MAX_ID) {
 			return null;
 		}
-		
-		final AbstractKunde kunde = ((id % 2) == 0 || id < 0) ? new Privatkunde() : new Firmenkunde();
+		final AbstractKunde kunde = Math.abs(id % 2) == 0 ? new Privatkunde() : new Firmenkunde();
 		kunde.setId(id);
 		kunde.setNachname("Nachname" + id);
 		kunde.setVorname("Vorname");
-		kunde.setErstellungsdatum(new Date());
+		kunde.setEmail("" + id + "@hska.de");
+		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
+		final Date seit = seitCal.getTime();
+		kunde.setErstellungsdatum(seit);
 		
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("01234");
 		adresse.setStadt("Testort");
 		adresse.setStrasse("Teststrasse");
 		adresse.setHausnummer("22");
+		adresse.setId(id + 1);
 		kunde.setAdresse(adresse);
 		
 		return kunde;
@@ -244,4 +247,3 @@ public final class Mock {
 
 	private Mock() { /**/ }
 }
-
