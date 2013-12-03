@@ -11,6 +11,7 @@ import de.shop.artikelverwaltung.domain.Artikel;
 
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -27,7 +28,7 @@ public class Posten implements Serializable {
 	private Artikel artikel;
 	
 	@NotNull(message = "{posten.anzahl.notNull}")
-	@Size(min = ANZAHL_MIN, message = "{posten.anzahl.size}")	
+	@Min(value=1, message = "{posten.anzahl.min}")	
 	private Integer anzahl;
 	
 	@NotNull(message = "{posten.gesamtpreis.notNull}")
