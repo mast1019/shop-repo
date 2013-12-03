@@ -68,14 +68,14 @@ public class KundeService implements Serializable {
 	}
 	
 	
-	public <T extends AbstractKunde> T createKunde(T kunde) {
+	public AbstractKunde createKunde(AbstractKunde kunde) {
 		if (kunde == null) {
 			return kunde;
 		}
 
-		final AbstractKunde tmp = findKundeByEmail(kunde.getEmail());
-		if (tmp != null)
-			throw new EmailExistsException(kunde.getEmail());
+//		final AbstractKunde tmp = findKundeByEmail(kunde.getEmail());
+//		if (tmp != null)
+//			throw new EmailExistsException(kunde.getEmail());
 		
 		// TODO Datenbanzugriffsschicht statt Mock
 		kunde = Mock.createKunde(kunde);
