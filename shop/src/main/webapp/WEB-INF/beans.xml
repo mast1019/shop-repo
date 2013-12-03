@@ -2,11 +2,8 @@
 <beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
  bean-discovery-mode="annotated" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd">
  <interceptors>
-  <class>de.shop.util.interceptor.LogInterceptor</class>
+ <class>de.shop.util.interceptor.LogInterceptor</class>
  </interceptors>
- <decorators>
-  <class>de.shop.bestellverwaltung.service.BestellungMitGeschenkverpackung</class>
- </decorators>
  <!--
  <alternatives>
   <stereotype>de.shop.util.cdi.MockService</stereotype>
