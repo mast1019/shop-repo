@@ -67,7 +67,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	public Bestellung createBestellung(Bestellung bestellung) {
 		// TODO Datenbanzugriffsschicht statt Mock
 		bestellung = Mock.createBestellung(bestellung);
-		event.fire(bestellung);
+//		event.fire(bestellung);
 		
 		return bestellung;
 	}
