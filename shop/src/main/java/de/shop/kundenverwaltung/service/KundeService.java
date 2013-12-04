@@ -83,7 +83,7 @@ public class KundeService implements Serializable {
 		return kunde;
 	}
 
-	public <T extends AbstractKunde> T updateKunde(T kunde) {
+	public void updateKunde(AbstractKunde kunde) {
 		if (kunde == null) {
 			return null;
 		}
@@ -99,7 +99,6 @@ public class KundeService implements Serializable {
 		// TODO Datenbanzugriffsschicht statt Mock
 		Mock.updateKunde(kunde);
 		
-		return kunde;
 	}
 
 	public void deleteKunde(Long kundeId) {
