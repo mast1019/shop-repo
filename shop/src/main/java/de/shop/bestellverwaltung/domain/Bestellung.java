@@ -26,7 +26,8 @@ public class Bestellung {
 	@NotNull(message = "{bestellung.gesamtpreis.notnull}")
 	@DecimalMin(value = "0.0", message = "{bestellung.gesamtpreis.decimalmin}")
 	private BigDecimal gesamtpreis;
-
+	
+	@XmlTransient
 	@Valid
 	private AbstractKunde kundenid;
 	
