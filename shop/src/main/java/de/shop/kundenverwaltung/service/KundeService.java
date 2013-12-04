@@ -84,9 +84,7 @@ public class KundeService implements Serializable {
 	}
 
 	public void updateKunde(AbstractKunde kunde) {
-		if (kunde == null) {
-			return null;
-		}
+		
 
 		// Pruefung, ob die Email-Adresse schon existiert
 		final AbstractKunde vorhandenerKunde = Mock.findKundeByEmail(kunde.getEmail());
