@@ -88,14 +88,14 @@ public class KundeService implements Serializable {
 			return null;
 		}
 
-		// Pruefung, ob die Email-Adresse schon existiert
-		final AbstractKunde vorhandenerKunde = findKundeByEmail(kunde.getEmail());  // Kein Aufruf als Business-Methode
-		if (vorhandenerKunde != null) {
-			// Gibt es die Email-Adresse bei einem anderen, bereits vorhandenen Kunden?
-			if (vorhandenerKunde.getId().longValue() != kunde.getId().longValue()) {
-				throw new EmailExistsException(kunde.getEmail());
-			}
-		}
+//		Pruefung, ob die Email-Adresse schon existiert
+//		final AbstractKunde vorhandenerKunde = findKundeByEmail(kunde.getEmail());  // Kein Aufruf als Business-Methode
+//		if (vorhandenerKunde != null) {
+//			// Gibt es die Email-Adresse bei einem anderen, bereits vorhandenen Kunden?
+//			if (vorhandenerKunde.getId().longValue() != kunde.getId().longValue()) {
+//				throw new EmailExistsException(kunde.getEmail());
+//			}
+//		}
 
 		// TODO Datenbanzugriffsschicht statt Mock
 		Mock.updateKunde(kunde);
