@@ -83,7 +83,7 @@ public class KundeService implements Serializable {
 		return kunde;
 	}
 
-	public <T extends AbstractKunde> T updateKunde(T kunde) {
+	public AbstractKunde updateKunde(AbstractKunde kunde) {
 		if (kunde == null) {
 			return null;
 		}
