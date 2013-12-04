@@ -75,7 +75,7 @@ public class ArtikelResource {
 	@Produces
 	public void updateArtikel(@Valid Artikel artikel) {
 		// TODO Anwendungskern statt Mock, Verwendung von Locale
-		Mock.updateArtikel(artikel);
+		as.updateArtikel(artikel);
 	}
 }
 

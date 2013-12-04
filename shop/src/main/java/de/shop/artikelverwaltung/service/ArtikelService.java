@@ -13,12 +13,16 @@ public class ArtikelService {
 		return Mock.findArtikelById(id);
 	}
 	
-	public Artikel  createArtikel(Artikel artikel) {
+	public Artikel createArtikel(Artikel artikel) {
 		if (artikel == null) {
 			return artikel;
 		}
 
 		artikel = Mock.createArtikel(artikel);
 		return artikel;
+	}
+	
+	public void updateArtikel(Artikel artikel){
+		Mock.updateArtikel(artikel);
 	}
 }
