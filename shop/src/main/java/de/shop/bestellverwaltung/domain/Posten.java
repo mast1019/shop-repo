@@ -35,6 +35,7 @@ public class Posten implements Serializable {
 	@DecimalMin(value = "0.0", message = "{posten.gesamtpreis.decimalmin}")
 	private BigDecimal gesamtpreis;
 	
+	@XmlTransient
 	private URI artikelUri;
 
 	public Posten(Long id, Artikel artikel, Integer anzahl) {
