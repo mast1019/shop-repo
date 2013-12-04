@@ -120,8 +120,14 @@ public final class Mock {
 		bestellung.setBestellnummer(id);
 		bestellung.setAusgeliefert(false);
 		// TODO bestellung.setPosten(bestellung.getPosten())
-		final List<Posten> posten = bestellung.getPosten();
-		bestellung.setPosten(posten);
+		final Posten posten = new Posten();
+		posten.setAnzahl(2);
+		posten.setArtikel(findArtikelById((long)1));
+		posten.setGesamtpreis(new BigDecimal(400.00));
+		
+		final List<Posten> listeposten = new ArrayList<Posten>();
+		listeposten.add(posten);
+		bestellung.setPosten(listeposten);
 		final BigDecimal gesamtpreis = bestellung.getGesamtpreis();
 		bestellung.setGesamtpreis(gesamtpreis);
 		bestellung.setKundenid(kunde);
