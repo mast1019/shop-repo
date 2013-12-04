@@ -34,7 +34,7 @@ public final class Mock {
 		}
 		final AbstractKunde kunde = Math.abs(id % 2) == 0 ? new Privatkunde() : new Firmenkunde();
 		kunde.setId(id);
-		kunde.setNachname("Nachname" + id);
+		kunde.setNachname("Nachname");
 		kunde.setVorname("Vorname");
 		kunde.setEmail("" + id + "@hska.de");
 		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
@@ -162,7 +162,7 @@ public final class Mock {
 		
 		final Artikel artikel = new Artikel();
 		artikel.setId(id);
-		artikel.setName("Test-Fahrrad");
+		artikel.setName("Testfahrrad");
 		artikel.setBeschreibung("ein Fahrrad zum testen!");
 		final BigDecimal preis = new BigDecimal(200.00);
 		artikel.setPreis(preis);
