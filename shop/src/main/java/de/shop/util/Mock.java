@@ -128,8 +128,7 @@ public final class Mock {
 		final List<Posten> listeposten = new ArrayList<Posten>();
 		listeposten.add(posten);
 		bestellung.setPosten(listeposten);
-		final BigDecimal gesamtpreis = bestellung.getGesamtpreis();
-		bestellung.setGesamtpreis(gesamtpreis);
+		bestellung.setGesamtpreis(new BigDecimal(400.00));
 		bestellung.setKundenid(kunde);
 		
 		return bestellung;
