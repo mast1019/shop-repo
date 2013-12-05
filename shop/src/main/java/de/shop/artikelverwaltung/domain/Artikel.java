@@ -86,16 +86,13 @@ public class Artikel implements Serializable {
 		this.gewicht = gewicht;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
 				+ ((beschreibung == null) ? 0 : beschreibung.hashCode());
-		result = prime * result + ((gewicht == null) ? 0 : gewicht.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((preis == null) ? 0 : preis.hashCode());
 		return result;
 	}
 
@@ -107,30 +104,11 @@ public class Artikel implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final Artikel other = (Artikel) obj;
-		if (beschreibung == null)	{
+		Artikel other = (Artikel) obj;
+		if (beschreibung == null) {
 			if (other.beschreibung != null)
 				return false;
-		} 
-		else if (!beschreibung.equals(other.beschreibung))
-			return false;
-		if (gewicht == null) {
-			if (other.gewicht != null)
-				return false;
-		}
-		else if (!gewicht.equals(other.gewicht))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} 
-		else if (!name.equals(other.name))
-			return false;
-		if (preis == null) {
-			if (other.preis != null)
-				return false;
-		} 
-		else if (!preis.equals(other.preis))
+		} else if (!beschreibung.equals(other.beschreibung))
 			return false;
 		return true;
 	}
