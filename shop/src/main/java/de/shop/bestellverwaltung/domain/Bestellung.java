@@ -127,43 +127,11 @@ public class Bestellung {
 		if (getClass() != obj.getClass())
 			return false;
 		final Bestellung other = (Bestellung) obj;
-		if (ausgeliefert == null) {
-			if (other.ausgeliefert != null)
-				return false;
+		
+		if (bestellnummer.equals(other.bestellnummer)) {
+			return true;
 		}
-		else if (!ausgeliefert.equals(other.ausgeliefert))
-			return false;
-		if (bestellnummer == null) {
-			if (other.bestellnummer != null)
-				return false;
-		}
-		else if (!bestellnummer.equals(other.bestellnummer))
-			return false;
-		if (gesamtpreis == null) {
-			if (other.gesamtpreis != null)
-				return false;
-		}
-		else if (!gesamtpreis.equals(other.gesamtpreis))
-			return false;
-		if (kundeUri == null) {
-			if (other.kundeUri != null)
-				return false;
-		} 
-		else if (!kundeUri.equals(other.kundeUri))
-			return false;
-		if (kundenid == null) {
-			if (other.kundenid != null)
-				return false;
-		} 
-		else if (!kundenid.equals(other.kundenid))
-			return false;
-		if (posten == null) {
-			if (other.posten != null)
-				return false;
-		}
-		else if (!posten.equals(other.posten))
-			return false;
-		return true;
+		return false;
 	}
 	
 }
