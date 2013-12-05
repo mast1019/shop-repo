@@ -121,15 +121,16 @@ public final class Mock {
 		bestellung.setAusgeliefert(false);
 		// TODO bestellung.setPosten(bestellung.getPosten())
 		final Posten posten = new Posten();
-		posten.setId((long)1);
+		posten.setId((long) 1);
 		posten.setAnzahl(2);
-		posten.setArtikel(findArtikelById((long)1));
-		posten.setGesamtpreis(new BigDecimal(400.00));
+		posten.setArtikel(findArtikelById((long) 1));
+		final BigDecimal gp = new BigDecimal(400.00);
+		posten.setGesamtpreis(gp);
 		
 		final List<Posten> listeposten = new ArrayList<Posten>();
 		listeposten.add(posten);
 		bestellung.setPosten(listeposten);
-		bestellung.setGesamtpreis(new BigDecimal(400.00));
+		bestellung.setGesamtpreis(gp);
 		bestellung.setKundenid(kunde);
 		
 		return bestellung;
