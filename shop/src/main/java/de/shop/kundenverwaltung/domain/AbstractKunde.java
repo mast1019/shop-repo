@@ -120,7 +120,7 @@ public abstract class AbstractKunde implements Serializable {
 	}
 
 	public Date getErstellungsdatum() {
-		return erstellungsdatum == null ? null: (Date) erstellungsdatum.clone();
+		return erstellungsdatum == null ? null : (Date) erstellungsdatum.clone();
 	}
 
 	public void setErstellungsdatum(Date erstellung) {

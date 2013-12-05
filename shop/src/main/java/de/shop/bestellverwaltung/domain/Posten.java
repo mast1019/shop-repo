@@ -28,7 +28,7 @@ public class Posten implements Serializable {
 	private Artikel artikel;
 	
 	@NotNull(message = "{posten.anzahl.notNull}")
-	@Min(value=1, message = "{posten.anzahl.min}")	
+	@Min(value = 1, message = "{posten.anzahl.min}")	
 	private Integer anzahl;
 	
 	@NotNull(message = "{posten.gesamtpreis.notNull}")
