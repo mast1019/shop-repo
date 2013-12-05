@@ -99,18 +99,16 @@ public class Adresse implements Serializable {
 		this.kunde = kunde;
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((hausnummer == null) ? 0 : hausnummer.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((kunde == null) ? 0 : kunde.hashCode());
 		result = prime * result
 				+ ((postleitzahl == null) ? 0 : postleitzahl.hashCode());
 		result = prime * result + ((stadt == null) ? 0 : stadt.hashCode());
-		result = prime * result + ((strasse == null) ? 0 : strasse.hashCode());
 		return result;
 	}
 
@@ -122,42 +120,21 @@ public class Adresse implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final Adresse other = (Adresse) obj;
-		if (hausnummer == null) {
-			if (other.hausnummer != null)
-				return false;
-		}
-		else if (!hausnummer.equals(other.hausnummer))
-			return false;
+		Adresse other = (Adresse) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		}
-		else if (!id.equals(other.id))
-			return false;
-		if (kunde == null) {
-			if (other.kunde != null)
-				return false;
-		}
-		else if (!kunde.equals(other.kunde))
+		} else if (!id.equals(other.id))
 			return false;
 		if (postleitzahl == null) {
 			if (other.postleitzahl != null)
 				return false;
-		}
-		else if (!postleitzahl.equals(other.postleitzahl))
+		} else if (!postleitzahl.equals(other.postleitzahl))
 			return false;
 		if (stadt == null) {
 			if (other.stadt != null)
 				return false;
-		}
-		else if (!stadt.equals(other.stadt))
-			return false;
-		if (strasse == null) {
-			if (other.strasse != null)
-				return false;
-		}
-		else if (!strasse.equals(other.strasse))
+		} else if (!stadt.equals(other.stadt))
 			return false;
 		return true;
 	}

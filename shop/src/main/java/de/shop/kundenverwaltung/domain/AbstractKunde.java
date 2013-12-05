@@ -151,22 +151,13 @@ public abstract class AbstractKunde implements Serializable {
 		this.bestellungenURI = bestellungenURI;
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
-		result = prime * result
-				+ ((bestellungen == null) ? 0 : bestellungen.hashCode());
-		result = prime * result
-				+ ((bestellungenURI == null) ? 0 : bestellungenURI.hashCode());
-		result = prime
-				* result
-				+ ((erstellungsdatum == null) ? 0 : erstellungsdatum.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((nachname == null) ? 0 : nachname.hashCode());
-		result = prime * result + ((vorname == null) ? 0 : vorname.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		return result;
 	}
 
@@ -178,48 +169,11 @@ public abstract class AbstractKunde implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final AbstractKunde other = (AbstractKunde) obj;
-		if (adresse == null) {
-			if (other.adresse != null)
+		AbstractKunde other = (AbstractKunde) obj;
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		}
-		else if (!adresse.equals(other.adresse))
-			return false;
-		if (bestellungen == null) {
-			if (other.bestellungen != null)
-				return false;
-		}
-		else if (!bestellungen.equals(other.bestellungen))
-			return false;
-		if (bestellungenURI == null) {
-			if (other.bestellungenURI != null)
-				return false;
-		}
-		else if (!bestellungenURI.equals(other.bestellungenURI))
-			return false;
-		if (erstellungsdatum == null) {
-			if (other.erstellungsdatum != null)
-				return false;
-		}
-		else if (!erstellungsdatum.equals(other.erstellungsdatum))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		}
-		else if (!id.equals(other.id))
-			return false;
-		if (nachname == null) {
-			if (other.nachname != null)
-				return false;
-		}
-		else if (!nachname.equals(other.nachname))
-			return false;
-		if (vorname == null) {
-			if (other.vorname != null)
-				return false;
-		}
-		else if (!vorname.equals(other.vorname))
+		} else if (!email.equals(other.email))
 			return false;
 		return true;
 	}
