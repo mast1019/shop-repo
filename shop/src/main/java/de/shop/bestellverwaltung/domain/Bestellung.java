@@ -104,17 +104,7 @@ public class Bestellung {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((ausgeliefert == null) ? 0 : ausgeliefert.hashCode());
-		result = prime * result
-				+ ((bestellnummer == null) ? 0 : bestellnummer.hashCode());
-		result = prime * result
-				+ ((gesamtpreis == null) ? 0 : gesamtpreis.hashCode());
-		result = prime * result
-				+ ((kundeUri == null) ? 0 : kundeUri.hashCode());
-		result = prime * result
-				+ ((kundenid == null) ? 0 : kundenid.hashCode());
-		result = prime * result + ((posten == null) ? 0 : posten.hashCode());
+		result = prime * result + ((kundenid == null) ? 0 : kundenid.hashCode());
 		return result;
 	}
 	
@@ -127,11 +117,13 @@ public class Bestellung {
 		if (getClass() != obj.getClass())
 			return false;
 		final Bestellung other = (Bestellung) obj;
-		
-		if (bestellnummer.equals(other.bestellnummer)) {
-			return true;
+		if (bestellnummer == null) {
+			if (other.bestellnummer != null)
+				return false;
 		}
-		return false;
+		else if (!bestellnummer.equals(other.bestellnummer))
+			return false;
+		return true;
 	}
 	
 }
