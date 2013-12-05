@@ -22,7 +22,7 @@ public class ArtikelService {
 		return artikel;
 	}
 	
-	public void updateArtikel(Artikel artikel){
+	public void updateArtikel(Artikel artikel) {
 		Mock.updateArtikel(artikel);
 	}
 }
