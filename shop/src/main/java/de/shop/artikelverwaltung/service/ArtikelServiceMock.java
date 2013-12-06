@@ -8,6 +8,11 @@ import de.shop.util.interceptor.Log;
 @Log
 public class ArtikelServiceMock extends ArtikelService {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5302107556277473090L;
+
 	@Override
 	public Artikel findArtikelById(Long id) {
 		final Artikel artikel = new Artikel();
