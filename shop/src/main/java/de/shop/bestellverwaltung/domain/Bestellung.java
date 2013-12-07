@@ -1,6 +1,7 @@
 package de.shop.bestellverwaltung.domain;
 
 import java.util.List;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.net.URI;
 
@@ -14,8 +15,9 @@ import javax.xml.bind.annotation.XmlTransient;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 
 @XmlRootElement
-public class Bestellung {
-	
+public class Bestellung implements Serializable {
+	private static final long serialVersionUID = 1369903391973996134L;
+
 	private Long bestellnummer;
 	
 	@NotNull(message = "{bestellung.posten.notnull}")
@@ -28,7 +30,6 @@ public class Bestellung {
 	private BigDecimal gesamtpreis;
 	
 	@XmlTransient
-	@Valid
 	private AbstractKunde kundenid;
 	
 	@NotNull(message = "{bestellung.ausgeliefert.notnull}")
@@ -95,9 +96,8 @@ public class Bestellung {
 	
 	@Override
 	public String toString() {
-		return "Bestellung [bestellnummer=" + bestellnummer + ", posten="
-				+ posten + ", gesamtpreis=" + gesamtpreis + ", kundenid="
-				+ kundenid + ", ausgeliefert=" + ausgeliefert + "]";
+		return "Bestellung [bestellnummer=" + bestellnummer + ", kundeuri="
+				+ kundeUri + ", ausgeliefert=" + ausgeliefert + "]";
 	}
 	
 	@Override
@@ -105,16 +105,7 @@ public class Bestellung {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((ausgeliefert == null) ? 0 : ausgeliefert.hashCode());
-		result = prime * result
 				+ ((bestellnummer == null) ? 0 : bestellnummer.hashCode());
-		result = prime * result
-				+ ((gesamtpreis == null) ? 0 : gesamtpreis.hashCode());
-		result = prime * result
-				+ ((kundeUri == null) ? 0 : kundeUri.hashCode());
-		result = prime * result
-				+ ((kundenid == null) ? 0 : kundenid.hashCode());
-		result = prime * result + ((posten == null) ? 0 : posten.hashCode());
 		return result;
 	}
 	
@@ -127,41 +118,11 @@ public class Bestellung {
 		if (getClass() != obj.getClass())
 			return false;
 		final Bestellung other = (Bestellung) obj;
-		if (ausgeliefert == null) {
-			if (other.ausgeliefert != null)
-				return false;
-		}
-		else if (!ausgeliefert.equals(other.ausgeliefert))
-			return false;
 		if (bestellnummer == null) {
 			if (other.bestellnummer != null)
 				return false;
 		}
 		else if (!bestellnummer.equals(other.bestellnummer))
-			return false;
-		if (gesamtpreis == null) {
-			if (other.gesamtpreis != null)
-				return false;
-		}
-		else if (!gesamtpreis.equals(other.gesamtpreis))
-			return false;
-		if (kundeUri == null) {
-			if (other.kundeUri != null)
-				return false;
-		} 
-		else if (!kundeUri.equals(other.kundeUri))
-			return false;
-		if (kundenid == null) {
-			if (other.kundenid != null)
-				return false;
-		} 
-		else if (!kundenid.equals(other.kundenid))
-			return false;
-		if (posten == null) {
-			if (other.posten != null)
-				return false;
-		}
-		else if (!posten.equals(other.posten))
 			return false;
 		return true;
 	}

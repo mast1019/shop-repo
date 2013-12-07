@@ -18,7 +18,6 @@ import javax.validation.constraints.NotNull;
 @XmlRootElement
 public class Posten implements Serializable {
 	private static final long serialVersionUID = -6546634107480260335L;
-
 	public static final int ANZAHL_MIN = 1;
 	
 	private Long id;

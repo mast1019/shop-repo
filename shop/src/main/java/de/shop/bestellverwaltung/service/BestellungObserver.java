@@ -1,5 +1,6 @@
 package de.shop.bestellverwaltung.service;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.lang.invoke.MethodHandles;
 
@@ -16,7 +17,6 @@ import javax.mail.internet.MimeMessage;
 
 import org.jboss.logging.Logger;
 
-import de.shop.bestellverwaltung.domain.Posten;
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.util.interceptor.Log;
@@ -25,9 +25,9 @@ import de.shop.util.mail.AbsenderName;
 
 @ApplicationScoped
 @Log
-public class BestellungObserver {
+public class BestellungObserver implements Serializable {
+	private static final long serialVersionUID = -5462271675529289734L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
-	private static final String NEWLINE = System.getProperty("line.separator");
 	
 	@Inject
 	private transient Session session;
@@ -41,12 +41,11 @@ public class BestellungObserver {
 	private String absenderName;
 
 	@PostConstruct
-	private void init() {
+	private void postConstruct() {
 		if (absenderMail == null) {
 			LOGGER.warn("Der Absender fuer Bestellung-Emails ist nicht gesetzt.");
 			return;
 		}
-		LOGGER.infof("Absender fuer Bestellung-Emails: %s <%s>", absenderName, absenderMail);
 	}
 	
 	public void onCreateBestellung(@Observes @NeueBestellung Bestellung bestellung) {
@@ -55,8 +54,7 @@ public class BestellungObserver {
 		if (absenderMail == null || empfaengerMail == null) {
 			return;
 		}
-		final String vorname = kunde.getVorname() == null ? "" : kunde.getVorname();
-		final String empfaengerName = vorname + " " + kunde.getNachname();
+		final String empfaengerName = kunde.getNachname();
 		
 		final MimeMessage message = new MimeMessage(session);
 
@@ -73,12 +71,7 @@ public class BestellungObserver {
 			message.setSubject("Neue Bestellung Nr. " + bestellung.getBestellnummer());
 			
 			// Text setzen mit MIME Type "text/plain"
-			final StringBuilder sb = new StringBuilder(256);
-			sb.append("<h3>Neue Bestellung Nr. <b>" + bestellung.getBestellnummer() + "</b></h3>" + NEWLINE);
-			for (Posten p : bestellung.getPosten()) {
-				sb.append(p.getAnzahl() + "\t" + p.getArtikel().getName() + "<br/>" + NEWLINE);
-			}
-			final String text = sb.toString();
+			final String text = "<h3>Neue Bestellung Nr. <b>" + bestellung.getBestellnummer() + "</b></h3>";
 			LOGGER.trace(text);
 			message.setContent(text, "text/html;charset=iso-8859-1");
 
