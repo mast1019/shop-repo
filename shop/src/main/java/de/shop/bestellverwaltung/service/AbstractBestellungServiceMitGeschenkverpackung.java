@@ -15,9 +15,6 @@ import org.jboss.logging.Logger;
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 
-/**
- * @author <a href="mailto:Juergen.Zimmermann@HS-Karlsruhe.de">J&uuml;rgen Zimmermann</a>
- */
 @Decorator
 @Dependent
 public abstract class AbstractBestellungServiceMitGeschenkverpackung implements BestellungService {
@@ -28,25 +25,16 @@ public abstract class AbstractBestellungServiceMitGeschenkverpackung implements 
 	@Any
 	private BestellungService bs;
 
-	/**
-	 * {inheritDoc}
-	 */
 	@Override
 	public Bestellung findBestellungById(Long id) {
 		return bs.findBestellungById(id);
 	}
 
-	/**
-	 * {inheritDoc}
-	 */
 	@Override
 	public List<Bestellung> findBestellungenByKunde(AbstractKunde kunde) {
 		return bs.findBestellungenByKunde(kunde);
 	}
 
-	/**
-	 * {inheritDoc}
-	 */
 	@Override
 	public Bestellung createBestellung(Bestellung bestellung, AbstractKunde kunde, Locale locale) {
 		LOGGER.warn("Geschenkverpackung noch nicht implementiert");

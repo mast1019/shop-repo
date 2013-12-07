@@ -104,11 +104,12 @@ public class Artikel implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Artikel other = (Artikel) obj;
+		final Artikel other = (Artikel) obj;
 		if (beschreibung == null) {
 			if (other.beschreibung != null)
 				return false;
-		} else if (!beschreibung.equals(other.beschreibung))
+		}
+		else if (!beschreibung.equals(other.beschreibung))
 			return false;
 		return true;
 	}

@@ -9,9 +9,6 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class Adresse implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7904673428542887485L;
 	
 	
@@ -99,8 +96,6 @@ public class Adresse implements Serializable {
 		this.kunde = kunde;
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -120,21 +115,24 @@ public class Adresse implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Adresse other = (Adresse) obj;
+		final Adresse other = (Adresse) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		}
+		else if (!id.equals(other.id))
 			return false;
 		if (postleitzahl == null) {
 			if (other.postleitzahl != null)
 				return false;
-		} else if (!postleitzahl.equals(other.postleitzahl))
+		}
+		else if (!postleitzahl.equals(other.postleitzahl))
 			return false;
 		if (stadt == null) {
 			if (other.stadt != null)
 				return false;
-		} else if (!stadt.equals(other.stadt))
+		}
+		else if (!stadt.equals(other.stadt))
 			return false;
 		return true;
 	}
@@ -145,9 +143,4 @@ public class Adresse implements Serializable {
 				+ ", strasse=" + strasse + ", hausnummer=" + hausnummer
 				+ ", stadt=" + stadt + ", kunde=" + kunde + "]";
 	}
-
-	
-	
-
-	
 }
