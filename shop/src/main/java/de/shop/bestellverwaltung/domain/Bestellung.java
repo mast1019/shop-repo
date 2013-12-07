@@ -1,6 +1,7 @@
 package de.shop.bestellverwaltung.domain;
 
 import java.util.List;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.net.URI;
 
@@ -14,8 +15,9 @@ import javax.xml.bind.annotation.XmlTransient;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 
 @XmlRootElement
-public class Bestellung {
-	
+public class Bestellung implements Serializable {
+	private static final long serialVersionUID = 1369903391973996134L;
+
 	private Long bestellnummer;
 	
 	@NotNull(message = "{bestellung.posten.notnull}")
@@ -28,7 +30,6 @@ public class Bestellung {
 	private BigDecimal gesamtpreis;
 	
 	@XmlTransient
-	@Valid
 	private AbstractKunde kundenid;
 	
 	@NotNull(message = "{bestellung.ausgeliefert.notnull}")
@@ -95,16 +96,16 @@ public class Bestellung {
 	
 	@Override
 	public String toString() {
-		return "Bestellung [bestellnummer=" + bestellnummer + ", posten="
-				+ posten + ", gesamtpreis=" + gesamtpreis + ", kundenid="
-				+ kundenid + ", ausgeliefert=" + ausgeliefert + "]";
+		return "Bestellung [bestellnummer=" + bestellnummer + ", kundeuri="
+				+ kundeUri + ", ausgeliefert=" + ausgeliefert + "]";
 	}
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((kundenid == null) ? 0 : kundenid.hashCode());
+		result = prime * result
+				+ ((bestellnummer == null) ? 0 : bestellnummer.hashCode());
 		return result;
 	}
 	
