@@ -37,9 +37,9 @@ public final class Mock {
 		kunde.setNachname("Nachname");
 		kunde.setVorname("Vorname");
 		kunde.setEmail(kunde.getNachname() + id + "@hska.de");
-		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
-		final Date seit = seitCal.getTime();
-		kunde.setErstellungsdatum(seit);
+		final GregorianCalendar date = new GregorianCalendar();
+		final Date date2 = date.getTime();
+		kunde.setErstellungsdatum(date2);
 		
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("01234");
@@ -149,6 +149,10 @@ public final class Mock {
 		kunde.setBestellungen(null);
 		final String email = kunde.getEmail();
 		kunde.setEmail(email);
+		final GregorianCalendar date = new GregorianCalendar();
+		final Date date2 = date.getTime();
+		kunde.setErstellungsdatum(date2);
+		
 		
 		LOGGER.infof("Neuer Kunde: %s", kunde);
 		return kunde;
