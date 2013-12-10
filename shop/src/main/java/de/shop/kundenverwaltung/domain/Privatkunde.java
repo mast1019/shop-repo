@@ -9,5 +9,10 @@ public class Privatkunde extends AbstractKunde {
 	 * 
 	 */
 	private static final long serialVersionUID = 2695290962230475993L;
+
+	@Override
+	public String toString() {
+		return "Privatkunde " + super.toString();
+	}
 	
 }
