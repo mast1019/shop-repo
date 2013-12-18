@@ -86,7 +86,7 @@ import de.shop.util.persistence.AbstractAuditable;
     @NamedQuery(name  = AbstractKunde.FIND_KUNDEN_BY_PLZ,
 	            query = "SELECT k"
 				        + " FROM  AbstractKunde k"
-			            + " WHERE k.adresse.plz = :" + AbstractKunde.PARAM_KUNDE_ADRESSE_PLZ),
+			            + " WHERE k.adresse.postleitzahl = :" + AbstractKunde.PARAM_KUNDE_ADRESSE_PLZ),
 	@NamedQuery(name = AbstractKunde.FIND_KUNDEN_BY_DATE,
 			    query = "SELECT k"
 			            + " FROM  AbstractKunde k"
@@ -137,7 +137,7 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 	public static final String PARAM_KUNDE_ID_PREFIX = "idPrefix";
 	public static final String PARAM_KUNDE_NACHNAME = "nachname";
 	public static final String PARAM_KUNDE_NACHNAME_PREFIX = "nachnamePrefix";
-	public static final String PARAM_KUNDE_ADRESSE_PLZ = "plz";
+	public static final String PARAM_KUNDE_ADRESSE_PLZ = "postleitzahl";
 	public static final String PARAM_KUNDE_SEIT = "erzeugt";
 	public static final String PARAM_KUNDE_EMAIL = "email";
 	
