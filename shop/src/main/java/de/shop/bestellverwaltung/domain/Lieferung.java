@@ -11,15 +11,15 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Convert;
-//import javax.persistence.Entity;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-//import javax.persistence.NamedAttributeNode;
-//import javax.persistence.NamedEntityGraph;
-//import javax.persistence.NamedEntityGraphs;
-//import javax.persistence.NamedQueries;
-//import javax.persistence.NamedQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
+import javax.persistence.NamedQuery;
 import javax.persistence.PostPersist;
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,6 +32,17 @@ import de.shop.util.persistence.AbstractAuditable;
 
 
 @XmlRootElement
+@Entity
+@NamedQueries({
+	@NamedQuery(name  = Lieferung.FIND_LIEFERUNGEN_BY_LIEFERNR,
+                query = "SELECT l"
+                	    + " FROM Lieferung l"
+			            + " WHERE l.liefernr LIKE :" + Lieferung.PARAM_LIEFERNR)
+})
+@NamedEntityGraphs({
+	@NamedEntityGraph(name = Lieferung.GRAPH_BESTELLUNGEN,
+					  attributeNodes = @NamedAttributeNode("bestellungen"))
+})
 public class Lieferung extends AbstractAuditable {
 	private static final long serialVersionUID = 7560752199018702446L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());

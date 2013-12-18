@@ -3,14 +3,16 @@ package de.shop.bestellverwaltung.domain;
 import java.util.List;
 import java.util.Collections;
 import java.io.Serializable;
-//import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.net.URI;
 
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -18,7 +20,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedEntityGraphs;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PostPersist;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -27,7 +33,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-//import org.jboss.logging.Logger;
+import org.jboss.logging.Logger;
 
 import static de.shop.util.Constants.KEINE_ID;
 import static javax.persistence.CascadeType.PERSIST;
@@ -36,16 +42,31 @@ import static javax.persistence.FetchType.EAGER;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.util.persistence.AbstractAuditable;
 
+
+@Entity
+@Table(indexes = {
+	@Index(columnList = "kunde_fk"),
+	@Index(columnList = "erzeugt")
+})
+@NamedQueries({
+	@NamedQuery(name  = Bestellung.FIND_BESTELLUNGEN_BY_KUNDE,
+                query = "SELECT b"
+			            + " FROM   Bestellung b"
+						+ " WHERE  b.kunde = :" + Bestellung.PARAM_KUNDE),
+	@NamedQuery(name  = Bestellung.FIND_KUNDE_BY_ID,
+ 			    query = "SELECT b.kunde"
+                        + " FROM   Bestellung b"
+  			            + " WHERE  b.id = :" + Bestellung.PARAM_ID)
+})
+@Cacheable
 @XmlRootElement
 @NamedEntityGraphs({
 	@NamedEntityGraph(name = Bestellung.GRAPH_LIEFERUNGEN,
 					  attributeNodes = @NamedAttributeNode("lieferungen"))
 })
-@Cacheable
 public class Bestellung extends AbstractAuditable implements Serializable {
 	private static final long serialVersionUID = 1369903391973996134L;
-//	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
-	
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());	
 	private static final String PREFIX = "Bestellung.";
 	public static final String FIND_BESTELLUNGEN_BY_KUNDE = PREFIX + "findBestellungenByKunde";
 	public static final String FIND_KUNDE_BY_ID = PREFIX + "findBestellungKundeById";
@@ -55,6 +76,7 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 	
 	public static final String GRAPH_LIEFERUNGEN = PREFIX + "lieferungen";
 
+	
 	@Id
 	@GeneratedValue
 	@Basic(optional = false)
@@ -96,6 +118,11 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 	public Bestellung (List<Posten> bestellpositionen) {
 		super();
 		this.posten = bestellpositionen;
+	}
+	
+	@PostPersist
+	private void postPersist() {
+	LOGGER.debugf("Neue Bestellung mit Bestellnummer = %d", bestellnummer);
 	}
 	
 	public Long getBestellnummer() {
@@ -183,7 +210,7 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 	public URI getKundeUri() {
 		return kundeUri;
 	}
-	
+		
 	public void setKundeUri(URI kundeUri) {
 		this.kundeUri = kundeUri;
 	}
