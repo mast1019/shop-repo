@@ -1,6 +1,6 @@
 package de.shop.kundenverwaltung.domain;
 
-//import static de.shop.util.Constants.KEINE_ID;
+import static de.shop.util.Constants.KEINE_ID;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.REMOVE;
 import static javax.persistence.TemporalType.DATE;
@@ -48,6 +48,7 @@ import org.hibernate.validator.constraints.Email;
 import org.jboss.logging.Logger;
 
 import de.shop.bestellverwaltung.domain.Bestellung;
+import de.shop.util.persistence.AbstractAuditable;
 
 @XmlRootElement
 @XmlSeeAlso({ Firmenkunde.class, Privatkunde.class })
@@ -106,7 +107,7 @@ import de.shop.bestellverwaltung.domain.Bestellung;
 					  attributeNodes = @NamedAttributeNode("wartungsvertraege"))
 })
 
-public abstract class AbstractKunde implements Serializable {
+public abstract class AbstractKunde extends AbstractAuditable implements Serializable {
 	
 	private static final long serialVersionUID = 12639985364951030L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
@@ -150,8 +151,7 @@ public abstract class AbstractKunde implements Serializable {
 	@Id
 	@GeneratedValue
 	@Basic(optional = false)
-	private Long id;
-	//private Long id = KEINE_ID;
+	private Long id = KEINE_ID;
 	
 	@NotNull(message = "{kunde.nachname.notNull}")
 	@Size(min = NACHNAME_LENGTH_MIN, max = NACHNAME_LENGTH_MAX,

@@ -1,9 +1,10 @@
 package de.shop.kundenverwaltung.domain;
 
-//import static de.shop.util.Constants.KEINE_ID;
+import static de.shop.util.Constants.KEINE_ID;
 
 import java.io.Serializable;
 //import java.lang.invoke.MethodHandles;
+
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -19,11 +20,13 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
+import de.shop.util.persistence.AbstractAuditable;
+
 //import org.jboss.logging.Logger;
 
 @Entity
 @Table(indexes = @Index(columnList = "plz"))
-public class Adresse implements Serializable {
+public class Adresse extends AbstractAuditable implements Serializable {
 	
 	private static final long serialVersionUID = -7904673428542887485L;
 	//private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
@@ -37,8 +40,7 @@ public class Adresse implements Serializable {
 	@Id
 	@GeneratedValue
 	@Basic(optional = false)
-	private Long id;
-	//private Long id = KEINE_ID;
+	private Long id = KEINE_ID;
 	
 	@NotNull(message = "{adresse.plz.notNull}")
 	@Pattern(regexp = "\\d{5}", message = "{adresse.plz}")
