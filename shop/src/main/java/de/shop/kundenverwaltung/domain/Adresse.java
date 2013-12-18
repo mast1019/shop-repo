@@ -25,7 +25,7 @@ import de.shop.util.persistence.AbstractAuditable;
 //import org.jboss.logging.Logger;
 
 @Entity
-@Table(indexes = @Index(columnList = "plz"))
+@Table(indexes = @Index(columnList = "postleitzahl"))
 public class Adresse extends AbstractAuditable implements Serializable {
 	
 	private static final long serialVersionUID = -7904673428542887485L;
