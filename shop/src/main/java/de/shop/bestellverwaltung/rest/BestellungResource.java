@@ -13,7 +13,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
+//import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -83,7 +83,7 @@ public class BestellungResource {
 		return uriHelper.getUri(BestellungResource.class, "findBestellungById", bestellung.getBestellnummer(), uriInfo);
 	}
 	
-	@POST
+/*	@POST
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createBestellung(@Valid Bestellung bestellung) {
@@ -91,7 +91,7 @@ public class BestellungResource {
 		
 		return Response.created(getUriBestellung(bestellung, uriInfo))
 			           .build();
-	}
+	}*/
 	 
 	@PUT
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })

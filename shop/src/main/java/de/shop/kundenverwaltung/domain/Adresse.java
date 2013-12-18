@@ -3,7 +3,7 @@ package de.shop.kundenverwaltung.domain;
 //import static de.shop.util.Constants.KEINE_ID;
 
 import java.io.Serializable;
-import java.lang.invoke.MethodHandles;
+//import java.lang.invoke.MethodHandles;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -19,14 +19,14 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.jboss.logging.Logger;
+//import org.jboss.logging.Logger;
 
 @Entity
 @Table(indexes = @Index(columnList = "plz"))
 public class Adresse implements Serializable {
 	
 	private static final long serialVersionUID = -7904673428542887485L;
-	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+	//private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
 	private static final int PLZ_LENGTH_MAX = 5;
 	private static final int STRASSE_LENGTH_MAX = 60;

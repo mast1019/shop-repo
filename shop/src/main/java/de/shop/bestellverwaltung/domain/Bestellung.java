@@ -3,16 +3,21 @@ package de.shop.bestellverwaltung.domain;
 import java.util.List;
 import java.util.Collections;
 import java.io.Serializable;
+//import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.net.URI;
 
 import javax.persistence.Basic;
+import javax.persistence.Cacheable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedEntityGraphs;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedAttributeNode;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.Valid;
@@ -22,6 +27,8 @@ import javax.validation.constraints.DecimalMin;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+//import org.jboss.logging.Logger;
+
 import static de.shop.util.Constants.KEINE_ID;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.REMOVE;
@@ -30,8 +37,23 @@ import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.util.persistence.AbstractAuditable;
 
 @XmlRootElement
+@NamedEntityGraphs({
+	@NamedEntityGraph(name = Bestellung.GRAPH_LIEFERUNGEN,
+					  attributeNodes = @NamedAttributeNode("lieferungen"))
+})
+@Cacheable
 public class Bestellung extends AbstractAuditable implements Serializable {
 	private static final long serialVersionUID = 1369903391973996134L;
+//	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+	
+	private static final String PREFIX = "Bestellung.";
+	public static final String FIND_BESTELLUNGEN_BY_KUNDE = PREFIX + "findBestellungenByKunde";
+	public static final String FIND_KUNDE_BY_ID = PREFIX + "findBestellungKundeById";
+	
+	public static final String PARAM_KUNDE = "kunde";
+	public static final String PARAM_ID = "id";
+	
+	public static final String GRAPH_LIEFERUNGEN = PREFIX + "lieferungen";
 
 	@Id
 	@GeneratedValue

@@ -22,7 +22,10 @@ import org.jboss.logging.Logger;
 
 import com.google.common.base.Splitter;
 
+import de.shop.util.interceptor.Log;
+
 @ApplicationScoped
+@Log
 public class Messages {
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
