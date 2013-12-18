@@ -1,10 +1,20 @@
 package de.shop.bestellverwaltung.domain;
 
 import java.util.List;
+import java.util.Collections;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.net.URI;
 
+import javax.persistence.Basic;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,30 +22,59 @@ import javax.validation.constraints.DecimalMin;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import static de.shop.util.Constants.KEINE_ID;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REMOVE;
+import static javax.persistence.FetchType.EAGER;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
+import de.shop.util.persistence.AbstractAuditable;
 
 @XmlRootElement
-public class Bestellung implements Serializable {
+public class Bestellung extends AbstractAuditable implements Serializable {
 	private static final long serialVersionUID = 1369903391973996134L;
 
-	private Long bestellnummer;
+	@Id
+	@GeneratedValue
+	@Basic(optional = false)
+	private Long bestellnummer = KEINE_ID;
 	
+	@OneToMany(fetch = EAGER, cascade = { PERSIST, REMOVE })
+	@JoinColumn(name = "bestellung_fk", nullable = false)
 	@NotNull(message = "{bestellung.posten.notnull}")
 	@Size(min = 1, message = "{bestellung.posten.size}")
 	@Valid
 	private List<Posten> posten;
 	
+	@ManyToMany
+	@JoinTable(name = "bestellung_lieferung",
+	   joinColumns = @JoinColumn(name = "bestellung_fk"),
+	                 inverseJoinColumns = @JoinColumn(name = "lieferung_fk"))
+	@XmlTransient
+	private List<Lieferung> lieferungen;
+	
 	@NotNull(message = "{bestellung.gesamtpreis.notnull}")
 	@DecimalMin(value = "0.0", message = "{bestellung.gesamtpreis.decimalmin}")
 	private BigDecimal gesamtpreis;
 	
+	@ManyToOne
+	@JoinColumn(name = "kunde_fk", nullable = false, insertable = false, updatable = false)	
 	@XmlTransient
 	private AbstractKunde kundenid;
 	
 	@NotNull(message = "{bestellung.ausgeliefert.notnull}")
 	private Boolean ausgeliefert;
 	
+	@Transient
 	private URI kundeUri;
+	
+	public Bestellung () {
+		super();
+	}
+
+	public Bestellung (List<Posten> bestellpositionen) {
+		super();
+		this.posten = bestellpositionen;
+	}
 	
 	public Long getBestellnummer() {
 		return bestellnummer;
@@ -53,6 +92,39 @@ public class Bestellung implements Serializable {
 		this.posten = posten;
 	}
 	
+	public List<Lieferung> getLieferungen() {
+		return lieferungen == null ? null : Collections.unmodifiableList(lieferungen);
+	}
+
+	public void setLieferungen(List<Lieferung> lieferungen) {
+		if (this.lieferungen == null) {
+			this.lieferungen = lieferungen;
+			return;
+		}
+		
+		this.lieferungen.clear();
+		if (lieferungen != null) {
+			this.lieferungen.addAll(lieferungen);
+		}
+	}
+	
+	public void addLieferung(Lieferung l) {
+		if (l == null) {
+			return;
+		}
+		this.lieferungen.add(l);
+	}
+	
+	public void addMehrereLieferungen(List<Lieferung> lieferungen) {
+		if (lieferungen == null) {
+			this.lieferungen = lieferungen;
+			return;
+		}
+		for (Lieferung l : lieferungen) {
+			this.lieferungen.add(l);
+		}
+	}
+
 	public BigDecimal getGesamtpreis() {
 		if (posten == null) {
 			gesamtpreis = new BigDecimal(0.0);
@@ -94,6 +166,23 @@ public class Bestellung implements Serializable {
 		this.kundeUri = kundeUri;
 	}
 	
+	public void addPosten(Posten p) {
+		if (p == null) {
+			return;
+		}
+		this.posten.add(p);
+	}	
+	
+	public void addMehrerePosten(List<Posten> posten) {
+		if (posten == null) {
+			this.posten = posten;
+			return;
+		}
+		for (Posten p : posten) {
+			this.posten.add(p);
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "Bestellung [bestellnummer=" + bestellnummer + ", kundeuri="
