@@ -204,13 +204,15 @@ public abstract class AbstractKunde implements Serializable {
 		passwordWdh = password;
 	}
 	
-	public AbstractKunde(String nname, String vname, Adresse adr, Date erstellung, String mail) {
+	public AbstractKunde(String nname, String vname, Adresse adr, Date erstellung, String mail, String pw, String pwwdh) {
 		super();
 		nachname = nname;
 		vorname = vname;
 		adresse = adr;
 		erstellungsdatum = erstellung == null ? null : (Date) erstellung.clone();
 		email = mail;
+		password = pw;
+		passwordWdh = pwwdh;
 	}
 	
 	//Standardkonstruktor
