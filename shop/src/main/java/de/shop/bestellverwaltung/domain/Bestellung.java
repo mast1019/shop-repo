@@ -52,11 +52,11 @@ import de.shop.util.persistence.AbstractAuditable;
 	@NamedQuery(name  = Bestellung.FIND_BESTELLUNGEN_BY_KUNDE,
                 query = "SELECT b"
 			            + " FROM   Bestellung b"
-						+ " WHERE  b.kunde = :" + Bestellung.PARAM_KUNDE),
+						+ " WHERE  b.kunde_fk = :" + Bestellung.PARAM_KUNDE),
 	@NamedQuery(name  = Bestellung.FIND_KUNDE_BY_ID,
- 			    query = "SELECT b.kunde"
+ 			    query = "SELECT b.kunde_fk"
                         + " FROM   Bestellung b"
-  			            + " WHERE  b.id = :" + Bestellung.PARAM_ID)
+  			            + " WHERE  b.bestellnummer = :" + Bestellung.PARAM_ID)
 })
 @Cacheable
 @XmlRootElement
@@ -71,8 +71,8 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 	public static final String FIND_BESTELLUNGEN_BY_KUNDE = PREFIX + "findBestellungenByKunde";
 	public static final String FIND_KUNDE_BY_ID = PREFIX + "findBestellungKundeById";
 	
-	public static final String PARAM_KUNDE = "kunde";
-	public static final String PARAM_ID = "id";
+	public static final String PARAM_KUNDE = "kundenid";
+	public static final String PARAM_ID = "bestellnummer";
 	
 	public static final String GRAPH_LIEFERUNGEN = PREFIX + "lieferungen";
 
