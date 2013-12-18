@@ -1,19 +1,64 @@
 package de.shop.artikelverwaltung.domain;
 
 import java.io.Serializable;
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.PostPersist;
+import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import org.jboss.logging.Logger;
 
-public class Artikel implements Serializable {	
+@XmlRootElement
+@Entity
+@Table(indexes = @Index(columnList = "name"))
+@NamedQueries({
+	@NamedQuery(name  = Artikel.FIND_VERFUEGBARE_ARTIKEL,
+        	query = "SELECT      a"
+        	        + " FROM     Artikel a"
+					+ " WHERE    a.ausgesondert = FALSE"
+                    + " ORDER BY a.id ASC"),
+	@NamedQuery(name  = Artikel.FIND_ARTIKEL_BY_NAME,
+            	query = "SELECT      a"
+                        + " FROM     Artikel a"
+						+ " WHERE    a.name LIKE :" + Artikel.PARAM_NAME
+			 	        + " ORDER BY a.id ASC"),
+   	@NamedQuery(name  = Artikel.FIND_ARTIKEL_MAX_PREIS,
+            	query = "SELECT      a"
+                        + " FROM     Artikel a"
+						+ " WHERE    a.preis < :" + Artikel.PARAM_PREIS
+			 	        + " ORDER BY a.id ASC")
+})
+public class Artikel implements Serializable {	 //TODO extends AbstractAuditable
 	
 	private static final long serialVersionUID = 4593393192027810187L;
-	private Long id;
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+	
+	private static final String PREFIX = "Artikel.";
+	public static final String FIND_VERFUEGBARE_ARTIKEL = PREFIX + "findVerfuegbareArtikel";
+	public static final String FIND_ARTIKEL_BY_NAME = PREFIX + "findArtikelByName";
+	public static final String FIND_ARTIKEL_MAX_PREIS = PREFIX + "findArtikelByMaxPreis";
+
+	public static final String PARAM_NAME = "name";
+	public static final String PARAM_PREIS = "preis";
+	
+	@Id
+	@GeneratedValue
+	@Basic(optional = false)
+	private Long id; //TODO KEINE_ID
 	
 	@NotNull(message = "{artikel.name.notNull}")
 	@Size(min = 2, max = 32, message = "{artikel.name.length}")
@@ -33,6 +78,9 @@ public class Artikel implements Serializable {
 	@DecimalMin(value = "0.1", message = "{artikel.gewicht.min}")
 	@DecimalMax(value = "100", message = "{artikel.gewicht.max}")
 	private BigDecimal gewicht;
+	
+	@Basic(optional = false)
+	private boolean ausgesondert;
 
 	
 	public Artikel(String name, String beschreibung, BigDecimal preis, BigDecimal gewicht)	{
@@ -43,7 +91,13 @@ public class Artikel implements Serializable {
 		this.setGewicht(gewicht);
 	}
 	
-	public Artikel() {	
+	public Artikel() {
+		super();
+	}
+	
+	@PostPersist
+	private void postPersist() {
+		LOGGER.debugf("Neuer Artikel mit ID=%d", id);
 	}
 
 	public Long getId() {
@@ -85,14 +139,26 @@ public class Artikel implements Serializable {
 	public void setGewicht(BigDecimal gewicht) {
 		this.gewicht = gewicht;
 	}
+	
+	public boolean isAusgesondert() {
+		return ausgesondert;
+	}
 
+	public void setAusgesondert(boolean ausgesondert) {
+		this.ausgesondert = ausgesondert;
+	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (ausgesondert ? 1231 : 1237);
 		result = prime * result
 				+ ((beschreibung == null) ? 0 : beschreibung.hashCode());
+		result = prime * result + ((gewicht == null) ? 0 : gewicht.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((preis == null) ? 0 : preis.hashCode());
 		return result;
 	}
 
@@ -104,19 +170,36 @@ public class Artikel implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final Artikel other = (Artikel) obj;
+		Artikel other = (Artikel) obj;
+		if (ausgesondert != other.ausgesondert)
+			return false;
 		if (beschreibung == null) {
 			if (other.beschreibung != null)
 				return false;
-		}
-		else if (!beschreibung.equals(other.beschreibung))
+		} else if (!beschreibung.equals(other.beschreibung))
+			return false;
+		if (gewicht == null) {
+			if (other.gewicht != null)
+				return false;
+		} else if (!gewicht.equals(other.gewicht))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (preis == null) {
+			if (other.preis != null)
+				return false;
+		} else if (!preis.equals(other.preis))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Artikel [id=" + id + ", name=" + name + ", beschreibung="
-				+ beschreibung + ", preis=" + preis + ", gewicht=" + gewicht + "]";
-	}	
+		return "Artikel [id=" + id + ", name=" + name
+		       + ", preis=" + preis + ", gewicht=" + gewicht + ", ausgesondert=" + ausgesondert
+		       + ", " + super.toString() + "]";
+	}
 }
