@@ -1,3 +1,5 @@
+// habe auskommentiert statt gelöscht
+// weiß nicht ob wir den Mock Code nochmal brauchen
 package de.shop.util;
 
 import java.util.ArrayList;
@@ -37,9 +39,9 @@ public final class Mock {
 		kunde.setNachname("Nachname");
 		kunde.setVorname("Vorname");
 		kunde.setEmail(kunde.getNachname() + id + "@hska.de");
-		final GregorianCalendar date = new GregorianCalendar();
-		final Date date2 = date.getTime();
-		kunde.setErstellungsdatum(date2);
+//		final GregorianCalendar date = new GregorianCalendar();
+//		final Date date2 = date.getTime();
+//		kunde.setErstellungsdatum(date2);
 		
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("01234");
@@ -82,9 +84,9 @@ public final class Mock {
 		kunde.setId(Long.valueOf(email.length()));
 		kunde.setNachname("Nachname");
 		kunde.setEmail(email);
-		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
-		final Date seit = seitCal.getTime();
-		kunde.setErstellungsdatum(seit);
+//		final GregorianCalendar seitCal = new GregorianCalendar(JAHR, MONAT, TAG);
+//		final Date seit = seitCal.getTime();
+//		kunde.setErstellungsdatum(seit);
 		
 		final Adresse adresse = new Adresse();
 		adresse.setPostleitzahl("12345");
@@ -149,9 +151,9 @@ public final class Mock {
 		kunde.setBestellungen(null);
 		final String email = kunde.getEmail();
 		kunde.setEmail(email);
-		final GregorianCalendar date = new GregorianCalendar();
-		final Date date2 = date.getTime();
-		kunde.setErstellungsdatum(date2);
+//		final GregorianCalendar date = new GregorianCalendar();
+//		final Date date2 = date.getTime();
+//		kunde.setErstellungsdatum(date2);
 		
 		
 		LOGGER.infof("Neuer Kunde: %s", kunde);
