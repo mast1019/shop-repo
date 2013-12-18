@@ -3,11 +3,9 @@ package de.shop.kundenverwaltung.domain;
 import static de.shop.util.Constants.KEINE_ID;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.REMOVE;
-import static javax.persistence.TemporalType.DATE;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Date;
 import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
 
@@ -30,11 +28,9 @@ import javax.persistence.OrderColumn;
 import javax.persistence.PostLoad;
 import javax.persistence.PostPersist;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -64,7 +60,7 @@ import de.shop.util.persistence.AbstractAuditable;
 @NamedQueries({
 	@NamedQuery(name  = AbstractKunde.FIND_KUNDEN,
                 query = "SELECT k"
-				        + " FROM   AbstractKunde k"),
+				        + " FROM  AbstractKunde k"),
 	@NamedQuery(name  = AbstractKunde.FIND_KUNDEN_ORDER_BY_ID,
 		        query = "SELECT   k"
 				        + " FROM  AbstractKunde k"
@@ -94,7 +90,7 @@ import de.shop.util.persistence.AbstractAuditable;
 	@NamedQuery(name = AbstractKunde.FIND_KUNDEN_BY_DATE,
 			    query = "SELECT k"
 			            + " FROM  AbstractKunde k"
-			    		+ " WHERE k.seit = :" + AbstractKunde.PARAM_KUNDE_SEIT),
+			    		+ " WHERE k.erzeugt = :" + AbstractKunde.PARAM_KUNDE_SEIT),
 	@NamedQuery(name = AbstractKunde.FIND_PRIVATKUNDEN_FIRMENKUNDEN,
 			    query = "SELECT k"
 			            + " FROM  AbstractKunde k"
@@ -142,7 +138,7 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 	public static final String PARAM_KUNDE_NACHNAME = "nachname";
 	public static final String PARAM_KUNDE_NACHNAME_PREFIX = "nachnamePrefix";
 	public static final String PARAM_KUNDE_ADRESSE_PLZ = "plz";
-	public static final String PARAM_KUNDE_SEIT = "seit";
+	public static final String PARAM_KUNDE_SEIT = "erzeugt";
 	public static final String PARAM_KUNDE_EMAIL = "email";
 	
 	public static final String GRAPH_BESTELLUNGEN = PREFIX + "bestellungen";
@@ -169,10 +165,6 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 	@Valid
 	@NotNull(message = "{kunde.adresse.notNull}")
 	private Adresse adresse;
-	
-	@Temporal(DATE)
-	@Past(message = "{kunde.seit.past}")
-	private Date erstellungsdatum;
 	
 	@Email(message = "{kunde.email.pattern}")
 	@NotNull(message = "{kunde.email.notNull}")
@@ -204,12 +196,11 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 		passwordWdh = password;
 	}
 	
-	public AbstractKunde(String nname, String vname, Adresse adr, Date erstellung, String mail, String pw, String pwwdh) {
+	public AbstractKunde(String nname, String vname, Adresse adr, String mail, String pw, String pwwdh) {
 		super();
 		nachname = nname;
 		vorname = vname;
 		adresse = adr;
-		erstellungsdatum = erstellung == null ? null : (Date) erstellung.clone();
 		email = mail;
 		password = pw;
 		passwordWdh = pwwdh;
@@ -251,14 +242,6 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 		adresse = adr;
 	}
 
-	public Date getErstellungsdatum() {
-		return erstellungsdatum == null ? null : (Date) erstellungsdatum.clone();
-	}
-
-	public void setErstellungsdatum(Date erstellung) {
-		this.erstellungsdatum = erstellung == null ? null : (Date) erstellung.clone();
-	}
-	
 	public String getEmail() {
 		return email;
 	}
@@ -327,8 +310,8 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 	@Override
 	public String toString() {
 		return "[id=" + id + ", nachname=" + nachname + ", vorname="
-				+ vorname + ", email=" + email + ", erstellungsdatum=" 
-				+ erstellungsdatum + ", bestellungenURI=" + bestellungenURI + "]";
+				+ vorname + ", email=" + email + ", bestellungenURI="
+				+ bestellungenURI + super.toString() + "]";
 	}
 
 }
