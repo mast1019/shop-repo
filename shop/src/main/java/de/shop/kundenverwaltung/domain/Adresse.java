@@ -1,26 +1,48 @@
 package de.shop.kundenverwaltung.domain;
 
-import java.io.Serializable;
+//import static de.shop.util.Constants.KEINE_ID;
 
+import java.io.Serializable;
+import java.lang.invoke.MethodHandles;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.jboss.logging.Logger;
+
+@Entity
+@Table(indexes = @Index(columnList = "plz"))
 public class Adresse implements Serializable {
 	
 	private static final long serialVersionUID = -7904673428542887485L;
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
-	
+	private static final int PLZ_LENGTH_MAX = 5;
 	private static final int STRASSE_LENGTH_MAX = 60;
 	private static final int STRASSE_LENGTH_MIN = 1;
 	private static final int ORT_LENGTH_MIN = 2;
 	private static final int ORT_LENGTH_MAX = 32;
 	
-	private Long id; 
+	@Id
+	@GeneratedValue
+	@Basic(optional = false)
+	private Long id;
+	//private Long id = KEINE_ID;
 	
 	@NotNull(message = "{adresse.plz.notNull}")
 	@Pattern(regexp = "\\d{5}", message = "{adresse.plz}")
+	@Column(length = PLZ_LENGTH_MAX)
 	private String postleitzahl;
 	
 	@NotNull(message = "{adresse.strasse.notNull}")
@@ -35,6 +57,8 @@ public class Adresse implements Serializable {
 	@Size(min = ORT_LENGTH_MIN, max = ORT_LENGTH_MAX, message = "{adresse.ort.length}")
 	private String stadt;
 	
+	@OneToOne
+	@JoinColumn(name = "kunde_fk", nullable = false, unique = true)
 	@XmlTransient
 	private AbstractKunde kunde;
 	
