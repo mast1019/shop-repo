@@ -99,8 +99,6 @@ import de.shop.util.persistence.AbstractAuditable;
 @NamedEntityGraphs({
 	@NamedEntityGraph(name = AbstractKunde.GRAPH_BESTELLUNGEN,
 					  attributeNodes = @NamedAttributeNode("bestellungen")),
-	@NamedEntityGraph(name = AbstractKunde.GRAPH_WARTUNGSVERTRAEGE,
-					  attributeNodes = @NamedAttributeNode("wartungsvertraege"))
 })
 
 public abstract class AbstractKunde extends AbstractAuditable implements Serializable {
@@ -142,7 +140,6 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 	public static final String PARAM_KUNDE_EMAIL = "email";
 	
 	public static final String GRAPH_BESTELLUNGEN = PREFIX + "bestellungen";
-	public static final String GRAPH_WARTUNGSVERTRAEGE = PREFIX + "wartungsvertraege";
 	
 	@Id
 	@GeneratedValue
