@@ -1,6 +1,8 @@
 package de.shop.kundenverwaltung.domain;
 
 //import static de.shop.util.Constants.KEINE_ID;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REMOVE;
 import static javax.persistence.TemporalType.DATE;
 
 import java.net.URI;
@@ -16,11 +18,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraphs;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
+import javax.persistence.PostLoad;
+import javax.persistence.PostPersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
@@ -157,6 +165,7 @@ public abstract class AbstractKunde implements Serializable {
 	@Pattern(regexp = NACHNAME_PATTERN, message = "{kunde.vorname.pattern}")
 	private String vorname;
 	
+	@OneToOne(cascade = { PERSIST,REMOVE }, mappedBy ="kunde")
 	@Valid
 	@NotNull(message = "{kunde.adresse.notNull}")
 	private Adresse adresse;
@@ -170,9 +179,13 @@ public abstract class AbstractKunde implements Serializable {
 	@Size(max = EMAIL_LENGTH_MAX, message = "{kunde.email.length}")
 	private String email;
 	
+	@OneToMany
+	@JoinColumn(name = "kunde_fk", nullable = false)
+	@OrderColumn(name = "idx", nullable = false)
 	@XmlTransient
 	private List<Bestellung> bestellungen;
 	
+	@Transient
 	private URI bestellungenURI;
 	
 	@Size(max = PASSWORD_LENGTH_MAX, message = "{kunde.password.length}")
@@ -180,7 +193,16 @@ public abstract class AbstractKunde implements Serializable {
 	
 	@Transient
 	private String passwordWdh;
-
+	
+	@PostPersist
+	protected void postPersist() {
+		LOGGER.debugf("Neuer Kunde mit ID=%d", id);
+	}
+	
+	@PostLoad
+	protected void postLoad() {
+		passwordWdh = password;
+	}
 	
 	public AbstractKunde(String nname, String vname, Adresse adr, Date erstellung, String mail) {
 		super();
@@ -258,6 +280,21 @@ public abstract class AbstractKunde implements Serializable {
 	public void setBestellungenURI(URI bestellungenURI) {
 		this.bestellungenURI = bestellungenURI;
 	}
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPasswordWdh() {
+		return passwordWdh;
+	}
+
+	public void setPasswordWdh(String passwordWdh) {
+		this.passwordWdh = passwordWdh;
+	}
 
 	@Override
 	public int hashCode() {
@@ -291,5 +328,6 @@ public abstract class AbstractKunde implements Serializable {
 				+ vorname + ", email=" + email + ", erstellungsdatum=" 
 				+ erstellungsdatum + ", bestellungenURI=" + bestellungenURI + "]";
 	}
+
 }
 
