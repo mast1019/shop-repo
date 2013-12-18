@@ -39,7 +39,7 @@ import org.jboss.logging.Logger;
  @NamedQuery(name  = Posten.FIND_LADENHUETER,
 	            query = "SELECT a"
 	            	    + " FROM   Artikel a"
-	            	    + " WHERE  a NOT IN (SELECT bp.artikel FROM Bestellposition bp)")
+	            	    + " WHERE  a NOT IN (SELECT p.artikel FROM Posten p)")
 })
 @XmlRootElement
 public class Posten implements Serializable {

@@ -52,7 +52,7 @@ import de.shop.util.persistence.AbstractAuditable;
 	@NamedQuery(name  = Bestellung.FIND_BESTELLUNGEN_BY_KUNDE,
                 query = "SELECT b"
 			            + " FROM   Bestellung b"
-						+ " WHERE  b.kunde_fk = :" + Bestellung.PARAM_KUNDE),
+						+ " WHERE  b.kundenid = :" + Bestellung.PARAM_KUNDE),
 	@NamedQuery(name  = Bestellung.FIND_KUNDE_BY_ID,
  			    query = "SELECT b.kundenid"
                         + " FROM   Bestellung b"

@@ -34,10 +34,10 @@ import de.shop.util.persistence.AbstractAuditable;
 @XmlRootElement
 @Entity
 @NamedQueries({
-	@NamedQuery(name  = Lieferung.FIND_LIEFERUNGEN_BY_LIEFERNR,
+	@NamedQuery(name  = Lieferung.FIND_LIEFERUNGEN_BY_ID,
                 query = "SELECT l"
                 	    + " FROM Lieferung l"
-			            + " WHERE l.liefernr LIKE :" + Lieferung.PARAM_LIEFERNR)
+			            + " WHERE id LIKE :" + Lieferung.PARAM_LIEFERNR)
 })
 @NamedEntityGraphs({
 	@NamedEntityGraph(name = Lieferung.GRAPH_BESTELLUNGEN,
@@ -48,8 +48,8 @@ public class Lieferung extends AbstractAuditable {
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
 	private static final String PREFIX = "Lieferung.";
-	public static final String FIND_LIEFERUNGEN_BY_LIEFERNR = PREFIX + "findLieferungenByLieferNr";
-	public static final String PARAM_LIEFERNR = "lieferNr";
+	public static final String FIND_LIEFERUNGEN_BY_ID = PREFIX + "findLieferungenByID";
+	public static final String PARAM_LIEFERNR = "id";
 	
 	public static final String GRAPH_BESTELLUNGEN = PREFIX + "bestellungen";
 
