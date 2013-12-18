@@ -209,8 +209,8 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	@Size(min = 1, message = "{lieferung.notFound.nr}")
 	public List<Lieferung> findLieferungen(String nr) {
 		final EntityGraph<?> entityGraph = em.getEntityGraph(Lieferung.GRAPH_BESTELLUNGEN);
-		return em.createNamedQuery(Lieferung.FIND_LIEFERUNGEN_BY_LIEFERNR, Lieferung.class)
-				 .setParameter(Lieferung.PARAM_LIEFERNR, nr)
+		return em.createNamedQuery(Lieferung.FIND_LIEFERUNGEN_BY_ID, Lieferung.class)
+				 .setParameter(Lieferung.PARAM_ID, nr)
 				 .setHint(LOADGRAPH, entityGraph)
 				 .getResultList();
 	}
