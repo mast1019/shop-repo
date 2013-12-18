@@ -1,19 +1,58 @@
 package de.shop.artikelverwaltung.domain;
 
 import java.io.Serializable;
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.PostPersist;
+import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import org.jboss.logging.Logger;
 
-public class Artikel implements Serializable {	
+@XmlRootElement
+@Entity
+@Table(indexes = @Index(columnList = "name"))
+@NamedQueries({
+	@NamedQuery(name  = Artikel.FIND_ARTIKEL_BY_NAME,
+            	query = "SELECT      a"
+                        + " FROM     Artikel a"
+						+ " WHERE    a.name LIKE :" + Artikel.PARAM_NAME
+			 	        + " ORDER BY a.id ASC"),
+   	@NamedQuery(name  = Artikel.FIND_ARTIKEL_MAX_PREIS,
+            	query = "SELECT      a"
+                        + " FROM     Artikel a"
+						+ " WHERE    a.preis < :" + Artikel.PARAM_PREIS
+			 	        + " ORDER BY a.id ASC")
+})
+public class Artikel implements Serializable {	 //TODO extends AbstractAuditable
 	
 	private static final long serialVersionUID = 4593393192027810187L;
-	private Long id;
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+	
+	private static final String PREFIX = "Artikel.";
+	public static final String FIND_ARTIKEL_BY_NAME = PREFIX + "findArtikelByName";
+	public static final String FIND_ARTIKEL_MAX_PREIS = PREFIX + "findArtikelByMaxPreis";
+
+	public static final String PARAM_NAME = "name";
+	public static final String PARAM_PREIS = "preis";
+	
+	@Id
+	@GeneratedValue
+	@Basic(optional = false)
+	private Long id; //TODO KEINE_ID
 	
 	@NotNull(message = "{artikel.name.notNull}")
 	@Size(min = 2, max = 32, message = "{artikel.name.length}")
@@ -43,7 +82,13 @@ public class Artikel implements Serializable {
 		this.setGewicht(gewicht);
 	}
 	
-	public Artikel() {	
+	public Artikel() {
+		super();
+	}
+	
+	@PostPersist
+	private void postPersist() {
+		LOGGER.debugf("Neuer Artikel mit ID=%d", id);
 	}
 
 	public Long getId() {

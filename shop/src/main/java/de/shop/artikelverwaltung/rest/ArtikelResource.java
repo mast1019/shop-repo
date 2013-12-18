@@ -42,8 +42,6 @@ public class ArtikelResource {
 	@GET
 	@Path("{id:[1-9][0-9]*}")
 	public Response findArtikelById(@PathParam("id") Long id) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
-		// TODO findartikelbyid in mock hinzufügen 
 		final Artikel artikel = as.findArtikelById(id);
 		if (artikel == null) {
 			throw new NotFoundException("Kein Artikel mit der ID " + id + " gefunden.");
