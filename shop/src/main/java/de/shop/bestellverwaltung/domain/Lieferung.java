@@ -5,11 +5,8 @@ import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.CascadeType.PERSIST;
 
 import java.lang.invoke.MethodHandles;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -25,8 +22,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.PostPersist;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -123,44 +118,47 @@ public class Lieferung extends AbstractAuditable {
 			this.bestellungen.add(b);
 		}
 	}
-	
 
 	@Override
 	public String toString() {
-		return "Lieferung [id=" + id + ", liefernr=" + liefernr + ", transportArt=" + transportArt
-				+ ", " + super.toString() + ']';
+		return "Lieferung [id=" + id + ", transportArt=" + transportArt
+				+ ", bestellungen=" + bestellungen + ", toString()="
+				+ super.toString() + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((liefernr == null) ? 0 : liefernr.hashCode());
+		int result = super.hashCode();
+		result = prime * result
+				+ ((bestellungen == null) ? 0 : bestellungen.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((transportArt == null) ? 0 : transportArt.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (!super.equals(obj))
 			return false;
-		}
-		if (getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
-		final Lieferung other = (Lieferung) obj;
-		
-		if (liefernr == null) {
-			if (other.liefernr != null) {
+		Lieferung other = (Lieferung) obj;
+		if (bestellungen == null) {
+			if (other.bestellungen != null)
 				return false;
-			}
-		}
-		else if (!liefernr.equals(other.liefernr)) {
+		} else if (!bestellungen.equals(other.bestellungen))
 			return false;
-		}
-
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (transportArt != other.transportArt)
+			return false;
 		return true;
 	}
 }
