@@ -66,10 +66,6 @@ public class Posten implements Serializable {
 	@Min(value = 1, message = "{posten.anzahl.min}")	
 	private Integer anzahl;
 	
-	@NotNull(message = "{posten.gesamtpreis.notNull}")
-	@DecimalMin(value = "0.0", message = "{posten.gesamtpreis.decimalmin}")
-	private BigDecimal gesamtpreis;
-	
 	@XmlTransient
 	private URI artikelUri;
 
@@ -113,16 +109,6 @@ public class Posten implements Serializable {
 		this.anzahl = anzahl;
 	}
 	
-	public BigDecimal getGesamtpreis() {
-		final BigDecimal anz = new BigDecimal(anzahl);
-		gesamtpreis = artikel.getPreis().multiply(anz);
-		return gesamtpreis;
-	}
-	
-	public void setGesamtpreis(BigDecimal gesamtpreis) {
-		this.gesamtpreis = gesamtpreis;
-	}
-	
 	public URI getArtikelUri() {
 		return artikelUri;
 	}
@@ -134,7 +120,7 @@ public class Posten implements Serializable {
 	@Override
 	public String toString() {
 		return "Posten [id=" + id + ", artikel=" + artikel.toString() + ", anzahl="
-				+ anzahl + ", gesamtpreis=" + gesamtpreis + "]";
+				+ anzahl + "]";
 	}
 	
 	@Override

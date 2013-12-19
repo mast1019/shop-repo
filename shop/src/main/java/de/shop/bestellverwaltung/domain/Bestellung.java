@@ -96,10 +96,6 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 	@XmlTransient
 	private List<Lieferung> lieferungen;
 	
-	@NotNull(message = "{bestellung.gesamtpreis.notnull}")
-	@DecimalMin(value = "0.0", message = "{bestellung.gesamtpreis.decimalmin}")
-	private BigDecimal gesamtpreis;
-	
 	@ManyToOne
 	@JoinColumn(name = "kunde_fk", nullable = false, insertable = false, updatable = false)	
 	@XmlTransient
@@ -172,22 +168,6 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 		for (Lieferung l : lieferungen) {
 			this.lieferungen.add(l);
 		}
-	}
-
-	public BigDecimal getGesamtpreis() {
-		if (posten == null) {
-			gesamtpreis = new BigDecimal(0.0);
-		}
-		else {
-			for (Posten p : posten) {
-				gesamtpreis = gesamtpreis.add(p.getGesamtpreis());
-			}
-		}
-		return gesamtpreis;
-	}
-	
-	public void setGesamtpreis(BigDecimal gesamtpreis) {
-		this.gesamtpreis = gesamtpreis;
 	}
 	
 	@XmlTransient
