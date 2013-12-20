@@ -126,13 +126,10 @@ public final class Mock {
 		posten.setId((long) 1);
 		posten.setAnzahl(2);
 		posten.setArtikel(findArtikelById((long) 1));
-		final BigDecimal gp = new BigDecimal(400.00);
-		posten.setGesamtpreis(gp);
 		
 		final List<Posten> listeposten = new ArrayList<Posten>();
 		listeposten.add(posten);
 		bestellung.setPosten(listeposten);
-		bestellung.setGesamtpreis(gp);
 		bestellung.setKundenid(kunde);
 		
 		return bestellung;
@@ -236,8 +233,6 @@ public final class Mock {
 		bestellung.setBestellnummer(bestellnummer);
 		bestellung.setPosten(bestellung.getPosten());
 		bestellung.setAusgeliefert(false);
-		final BigDecimal gesamtpreis = bestellung.getGesamtpreis();
-		bestellung.setGesamtpreis(gesamtpreis);
 		final AbstractKunde kundenid = bestellung.getKundenid();
 		bestellung.setKundenid(kundenid);
 		

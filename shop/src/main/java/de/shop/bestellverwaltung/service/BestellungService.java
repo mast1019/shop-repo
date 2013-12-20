@@ -2,7 +2,7 @@ package de.shop.bestellverwaltung.service;
 
 import java.util.List;
 
-//import de.shop.artikelverwaltung.domain.Artikel;
+import de.shop.artikelverwaltung.domain.Artikel;
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.bestellverwaltung.domain.Lieferung;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
