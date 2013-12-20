@@ -193,6 +193,15 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 		passwordWdh = password;
 	}
 	
+	public void setValues(AbstractKunde k) {
+		nachname = k.nachname;
+		vorname = k.vorname;
+		adresse = k.adresse;
+		email = k.email;
+		password = k.password;
+		passwordWdh = k.password;
+	}
+	
 	public AbstractKunde(String nname, String vname, Adresse adr, String mail, String pw, String pwwdh) {
 		super();
 		nachname = nname;

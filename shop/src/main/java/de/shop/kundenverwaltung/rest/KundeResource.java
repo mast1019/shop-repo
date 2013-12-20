@@ -2,6 +2,7 @@ package de.shop.kundenverwaltung.rest;
 
 import static de.shop.util.Constants.ADD_LINK;
 import static de.shop.util.Constants.FIRST_LINK;
+import static de.shop.util.Constants.KEINE_ID;
 import static de.shop.util.Constants.LAST_LINK;
 import static de.shop.util.Constants.REMOVE_LINK;
 import static de.shop.util.Constants.SELF_LINK;
@@ -11,11 +12,13 @@ import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
+import java.lang.invoke.MethodHandles;
 import java.net.URI;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 //import javax.ws.rs.DefaultValue;
@@ -34,15 +37,17 @@ import javax.ws.rs.core.Link;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-
-
 import org.hibernate.validator.constraints.Email;
+import org.jboss.logging.Logger;
 
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.bestellverwaltung.rest.BestellungResource;
 import de.shop.bestellverwaltung.service.BestellungService;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
+import de.shop.kundenverwaltung.domain.Adresse;
 import de.shop.kundenverwaltung.service.KundeService;
+import de.shop.kundenverwaltung.service.KundeService.FetchType;
+import de.shop.kundenverwaltung.service.KundeService.OrderType;
 import de.shop.util.interceptor.Log;
 import de.shop.util.rest.UriHelper;
 import de.shop.util.rest.NotFoundException;
@@ -52,8 +57,11 @@ import de.shop.util.rest.NotFoundException;
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
 @Consumes
 @RequestScoped
+@Transactional
 @Log
 public class KundeResource {	
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+	
 	public static final String KUNDEN_ID_PATH_PARAM = "id";
 	public static final String KUNDEN_NACHNAME_QUERY_PARAM = "nachname";
 	public static final String KUNDEN_PLZ_QUERY_PARAM = "plz";
@@ -84,7 +92,7 @@ public class KundeResource {
 	@GET
 	@Path("{" + KUNDEN_ID_PATH_PARAM + ":[1-9][0-9]*}")
 	public Response findKundeById(@PathParam(KUNDEN_ID_PATH_PARAM) Long id) {
-		final AbstractKunde kunde = ks.findKundeById(id);
+		final AbstractKunde kunde = ks.findKundeById(id, FetchType.NUR_KUNDE);
 		setStructuralLinks(kunde, uriInfo);
 		if (kunde == null) {
 			throw new NotFoundException("Kein Kunde mit der ID" + id + "gefunden");
@@ -145,7 +153,7 @@ public class KundeResource {
 		List<? extends AbstractKunde> kunden = null;
 		AbstractKunde kunde = null;
 		if (nachname != null) {
-			kunden = ks.findKundenByNachname(nachname);
+			kunden = ks.findKundenByNachname(nachname, FetchType.NUR_KUNDE);
 		}
 		else if (email != null) {
 			kunde = ks.findKundeByEmail(email);
@@ -155,7 +163,7 @@ public class KundeResource {
 			throw new RuntimeException("Suche nach PLZ noch nicht implementiert");
 		}
 		else {
-			kunden = ks.findAllKunden();
+			kunden = ks.findAllKunden(FetchType.NUR_KUNDE, OrderType.ID);
 		}
 		
 		Object entity = null;
@@ -182,8 +190,7 @@ public class KundeResource {
                        .build();
 	}
 	
-	
-	
+
 	@GET
 	public Response findKundenByNachname(@QueryParam(KUNDEN_NACHNAME_QUERY_PARAM)
 										@Pattern (regexp = AbstractKunde.NACHNAME_PATTERN,
@@ -191,13 +198,13 @@ public class KundeResource {
 										String nachname) {
 		List<? extends AbstractKunde> kunden = null;
 		if (nachname != null) {
-			kunden = ks.findKundenByNachname(nachname);
+			kunden = ks.findKundenByNachname(nachname, FetchType.NUR_KUNDE);
 			if (kunden.isEmpty()) {
 				throw new NotFoundException("Kein Kunde mit Nachname " + nachname + " gefunden.");
 			}
 		}
 		else {
-			kunden = ks.findAllKunden();
+			kunden = ks.findAllKunden(FetchType.NUR_KUNDE, OrderType.ID);
 			if (kunden.isEmpty()) {
 				throw new NotFoundException("Keine Kunden vorhanden.");
 			}
@@ -231,7 +238,7 @@ public class KundeResource {
 	@GET
 	@Path("{id:[1-9][0-9]*}/bestellungen")
 	public Response findBestellungenByKundeId(@PathParam("id") Long kundeId) {
-		final AbstractKunde kunde = ks.findKundeById(kundeId);
+		final AbstractKunde kunde = ks.findKundeById(kundeId, FetchType.MIT_BESTELLUNGEN);
 		final List<Bestellung> bestellungen = bs.findBestellungenByKunde(kunde);
 		if (bestellungen != null) {
 			for (Bestellung bestellung : bestellungen) {
@@ -269,27 +276,45 @@ public class KundeResource {
 		
 		return new Link[] {self, first, last };
 	}
-	
+
 	@POST
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createKunde(@Valid AbstractKunde kunde) {
+		kunde.setId(KEINE_ID);
+		
+		final Adresse adresse = kunde.getAdresse();
+		if (adresse != null) {
+			adresse.setKunde(kunde);
+		}
+		
 		kunde = ks.createKunde(kunde);
+		LOGGER.tracef("Kunde: %s", kunde);
 		return Response.created(getUriKunde(kunde, uriInfo))
 			           .build();
-	}
-	
-	@PUT
-	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
-	@Produces
-	public void updateKunde(@Valid AbstractKunde kunde) {
-		ks.updateKunde(kunde);
 	}
 	
 	@DELETE
 	@Path("{id:[1-9][0-9]*}")
 	@Produces
 	public void deleteKunde(@PathParam("id") Long kundeId) {
-		ks.deleteKunde(kundeId);
+		final AbstractKunde kunde = ks.findKundeById(kundeId, FetchType.NUR_KUNDE);
+		ks.deleteKunde(kunde);
+	}
+	
+	@PUT
+	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
+	@Produces
+	public void updateKunde(@Valid AbstractKunde kunde) {
+		// Vorhandenen Kunden ermitteln
+		final AbstractKunde origKunde = ks.findKundeById(kunde.getId(), FetchType.NUR_KUNDE);
+		LOGGER.tracef("Kunde vorher: %s", origKunde);
+	
+		// Daten des vorhandenen Kunden ueberschreiben
+		origKunde.setValues(kunde);
+		LOGGER.tracef("Kunde nachher: %s", origKunde);
+		
+		// Update durchfuehren
+		ks.updateKunde(origKunde);
 	}
 }
