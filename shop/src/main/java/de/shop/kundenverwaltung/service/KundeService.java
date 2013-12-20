@@ -18,7 +18,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -29,10 +28,10 @@ import org.jboss.logging.Logger;
 
 import com.google.common.collect.ImmutableMap;
 
-import de.shop.bestellverwaltung.domain.Posten;
-import de.shop.bestellverwaltung.domain.Posten_;
-import de.shop.bestellverwaltung.domain.Bestellung;
-import de.shop.bestellverwaltung.domain.Bestellung_;
+//import de.shop.bestellverwaltung.domain.Posten;
+//import de.shop.bestellverwaltung.domain.Posten_;
+//import de.shop.bestellverwaltung.domain.Bestellung;
+//import de.shop.bestellverwaltung.domain.Bestellung_;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.domain.AbstractKunde_;
 import de.shop.kundenverwaltung.domain.Adresse_;
@@ -221,6 +220,7 @@ public class KundeService implements Serializable {
 	 * @return Liste der passenden Kunden
 	 * @exception ConstraintViolationException zu @Size, falls die Liste leer ist
 	 */
+	/*
 	@Size(min = 1, message = "{kunde.notFound.minBestMenge}")
 	public List<AbstractKunde> findKundenMitMinBestMenge(short minMenge) {
 		final CriteriaBuilder builder = em.getCriteriaBuilder();
@@ -229,13 +229,13 @@ public class KundeService implements Serializable {
 
 		final Join<AbstractKunde, Bestellung> b = k.join(AbstractKunde_.bestellungen);
 		//TODO
-		/*final Join<Bestellung, Posten> bp = b.join(Bestellung_.posten);
+		final Join<Bestellung, Posten> bp = b.join(Bestellung_.posten);
 		criteriaQuery.where(builder.gt(bp.<Short>get(Posten_.anzahl), minMenge))
 		             .distinct(true);
-		*/
+		
 		return em.createQuery(criteriaQuery)
 		         .getResultList();
-	}
+	}*/
 
 	/**
 	 * Kunden zu den Suchkriterien suchen
