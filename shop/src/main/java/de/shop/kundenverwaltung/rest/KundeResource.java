@@ -2,6 +2,7 @@ package de.shop.kundenverwaltung.rest;
 
 import static de.shop.util.Constants.ADD_LINK;
 import static de.shop.util.Constants.FIRST_LINK;
+import static de.shop.util.Constants.KEINE_ID;
 import static de.shop.util.Constants.LAST_LINK;
 import static de.shop.util.Constants.REMOVE_LINK;
 import static de.shop.util.Constants.SELF_LINK;
@@ -46,7 +47,7 @@ import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.domain.Adresse;
 import de.shop.kundenverwaltung.service.KundeService;
 import de.shop.kundenverwaltung.service.KundeService.FetchType;
-//import de.shop.kundenverwaltung.service.KundeService.OrderType;
+import de.shop.kundenverwaltung.service.KundeService.OrderType;
 import de.shop.util.interceptor.Log;
 import de.shop.util.rest.UriHelper;
 import de.shop.util.rest.NotFoundException;
@@ -162,7 +163,7 @@ public class KundeResource {
 			throw new RuntimeException("Suche nach PLZ noch nicht implementiert");
 		}
 		else {
-			kunden = ks.findAllKunden();
+			kunden = ks.findAllKunden(FetchType.NUR_KUNDE, OrderType.ID);
 		}
 		
 		Object entity = null;
@@ -203,7 +204,7 @@ public class KundeResource {
 			}
 		}
 		else {
-			kunden = ks.findAllKunden();
+			kunden = ks.findAllKunden(FetchType.NUR_KUNDE, OrderType.ID);
 			if (kunden.isEmpty()) {
 				throw new NotFoundException("Keine Kunden vorhanden.");
 			}
@@ -293,6 +294,14 @@ public class KundeResource {
 			           .build();
 	}
 	
+	@DELETE
+	@Path("{id:[1-9][0-9]*}")
+	@Produces
+	public void deleteKunde(@PathParam("id") Long kundeId) {
+		final AbstractKunde kunde = ks.findKundeById(kundeId, FetchType.NUR_KUNDE);
+		ks.deleteKunde(kunde);
+	}
+	
 	@PUT
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
@@ -308,13 +317,4 @@ public class KundeResource {
 		// Update durchfuehren
 		ks.updateKunde(origKunde);
 	}
-	
-	
-	@DELETE
-	@Path("{id:[1-9][0-9]*}")
-	@Produces
-	public void deleteKunde(@PathParam("id") Long kundeId, FetchType.NUR_KUNDE) {
-		ks.deleteKunde(kundeId);
-	}
-	
 }
