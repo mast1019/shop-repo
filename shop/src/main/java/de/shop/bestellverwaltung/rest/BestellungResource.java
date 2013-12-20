@@ -247,8 +247,8 @@ public class BestellungResource {
 			//}
 		}
 		bestellung.setPosten(neuePosten);
-		
-		bestellung = bs.createBestellung(bestellung, kundeId);
+		//TODO 
+		//bestellung = bs.createBestellung(bestellung, kundeId);
 
 		final URI bestellungUri = getUriBestellung(bestellung, uriInfo);
 		return Response.created(bestellungUri).build();
