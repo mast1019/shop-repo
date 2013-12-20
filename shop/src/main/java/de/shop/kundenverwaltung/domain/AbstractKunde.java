@@ -5,6 +5,7 @@ import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.REMOVE;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
@@ -287,6 +288,14 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 		this.passwordWdh = passwordWdh;
 	}
 
+	public AbstractKunde addBestellung(Bestellung bestellung) {
+		if (bestellungen == null) {
+			bestellungen = new ArrayList<>();
+		}
+		bestellungen.add(bestellung);
+		return this;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -5,7 +5,7 @@ import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-//import java.util.Locale;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -15,7 +15,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
-//import javax.persistence.FetchType;
+import javax.persistence.FetchType;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -32,12 +32,12 @@ import org.jboss.logging.Logger;
 
 import com.google.common.collect.ImmutableMap;
 
-//import de.shop.artikelverwaltung.domain.Artikel;
+import de.shop.artikelverwaltung.domain.Artikel;
 import de.shop.bestellverwaltung.domain.Bestellung;
 import de.shop.bestellverwaltung.domain.Lieferung;
 import de.shop.bestellverwaltung.domain.Posten;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
-//import de.shop.kundenverwaltung.service.KundeService;
+import de.shop.kundenverwaltung.service.KundeService;
 import de.shop.util.interceptor.Log;
 import de.shop.util.Mock;
 import static de.shop.util.Constants.LOADGRAPH;
@@ -52,8 +52,8 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	@Inject
 	private transient EntityManager em;
 	
-//	@Inject
-//	private KundeService ks;
+	@Inject
+	private KundeService ks;
 	
 	@Inject
 	@NeueBestellung
@@ -123,9 +123,9 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		}
 		
 		if (!em.contains(kunde)) {
-		//	kunde = ks.findKundeById(kunde.getId(), KundeService.FetchType.MIT_BESTELLUNGEN);
+			kunde = ks.findKundeById(kunde.getId(), KundeService.FetchType.MIT_BESTELLUNGEN);
 		}
-		//kunde.addBestellung(bestellung);
+		kunde.addBestellung(bestellung);
 		bestellung.setKundenid(kunde);
 		
 		bestellung.setBestellnummer(KEINE_ID);
@@ -139,7 +139,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		return bestellung;
 	}
 	
-	/*@Override
+	@Override
 	public Bestellung createBestellung(Bestellung bestellung, Long kundeId) {
 		if (bestellung == null) {
 			return null;
@@ -147,7 +147,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		
 		final AbstractKunde kunde = ks.findKundeById(kundeId, KundeService.FetchType.MIT_BESTELLUNGEN);
 		return createBestellung(bestellung, kunde);
-	}*/
+	}
 		
 	@Override
 	public Bestellung updateBestellung(Bestellung bestellung) {
@@ -237,10 +237,10 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		return lieferung;
 	}
 	
-	/*@Override
+	@Override
 	public List<Artikel> ladenhueter(int anzahl) {
 		return em.createNamedQuery(Posten.FIND_LADENHUETER, Artikel.class)
 				 .setMaxResults(anzahl)
 				 .getResultList();
-	}*/
+	}
 }
