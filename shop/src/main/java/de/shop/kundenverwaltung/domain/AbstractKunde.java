@@ -159,7 +159,8 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 	@Pattern(regexp = NACHNAME_PATTERN, message = "{kunde.vorname.pattern}")
 	private String vorname;
 	
-	@OneToOne(cascade = { PERSIST,REMOVE }, mappedBy ="kunde")
+	@OneToOne
+	@JoinColumn(name = "adresse_fk", nullable = false)
 	@Valid
 	@NotNull(message = "{kunde.adresse.notNull}")
 	private Adresse adresse;
@@ -169,9 +170,9 @@ public abstract class AbstractKunde extends AbstractAuditable implements Seriali
 	@Size(max = EMAIL_LENGTH_MAX, message = "{kunde.email.length}")
 	private String email;
 	
-	@OneToMany
-	@JoinColumn(name = "kunde_fk", nullable = false)
-	@OrderColumn(name = "idx", nullable = false)
+	// bpk = Bestellung pro Kunde
+	@OneToMany(mappedBy = "kundenid")
+	@OrderColumn(name = "bpk", nullable = false)
 	@XmlTransient
 	private List<Bestellung> bestellungen;
 	

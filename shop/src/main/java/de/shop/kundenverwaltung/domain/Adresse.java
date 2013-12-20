@@ -1,9 +1,12 @@
 package de.shop.kundenverwaltung.domain;
 
 import static de.shop.util.Constants.KEINE_ID;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REMOVE;
 
 import java.io.Serializable;
 //import java.lang.invoke.MethodHandles;
+
 
 
 import javax.persistence.Basic;
@@ -15,6 +18,7 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -59,8 +63,9 @@ public class Adresse extends AbstractAuditable implements Serializable {
 	@Size(min = ORT_LENGTH_MIN, max = ORT_LENGTH_MAX, message = "{adresse.ort.length}")
 	private String stadt;
 	
-	@OneToOne
-	@JoinColumn(name = "kunde_fk", nullable = false, unique = true)
+	// mapped by = Attribut der Klasse AbstractKunde, wo die FK-Spalte definiert ist
+	@OneToOne(cascade = { PERSIST,REMOVE }, mappedBy ="adresse")
+	@Valid
 	@XmlTransient
 	private AbstractKunde kunde;
 	
