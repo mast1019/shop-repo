@@ -1,8 +1,6 @@
 package de.shop.kundenverwaltung.domain;
 
 import static de.shop.util.Constants.KEINE_ID;
-import static javax.persistence.CascadeType.PERSIST;
-import static javax.persistence.CascadeType.REMOVE;
 
 import java.net.URI;
 import java.util.ArrayList;
