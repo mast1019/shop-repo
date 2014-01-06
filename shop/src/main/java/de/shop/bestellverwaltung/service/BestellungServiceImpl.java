@@ -5,7 +5,6 @@ import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -15,7 +14,6 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
-import javax.persistence.FetchType;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -67,13 +65,6 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	@PreDestroy
 	private void preDestroy() {
 		LOGGER.debugf("CDI-faehiges Bean %s wird geloescht", this);
-	}
-	
-	@Override
-	@NotNull(message = "{bestellung.notFound.id}")
-	public Bestellung findBestellungById(Long id) {
-		// TODO Datenbanzugriffsschicht statt Mock
-		return Mock.findBestellungById(id);
 	}
 	
 	@Override

@@ -9,7 +9,6 @@ import de.shop.kundenverwaltung.domain.AbstractKunde;
 
 public interface BestellungService {
 	public enum FetchType { NUR_BESTELLUNG, MIT_LIEFERUNGEN }
-	Bestellung findBestellungById(Long id);
 	Bestellung findBestellungById(Long id, FetchType fetch);
 	List<Bestellung> findBestellungenByKunde(AbstractKunde kunde);
 	Bestellung createBestellung(Bestellung bestellung, Long kundeId);
