@@ -1,7 +1,6 @@
 package de.shop.bestellverwaltung.domain;
 
 import java.lang.invoke.MethodHandles;
-import java.math.BigDecimal;
 import java.io.Serializable;
 import java.net.URI;
 
@@ -23,7 +22,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.PostPersist;
 import javax.persistence.Table;
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 

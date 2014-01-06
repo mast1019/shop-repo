@@ -37,7 +37,6 @@ import de.shop.bestellverwaltung.domain.Posten;
 import de.shop.kundenverwaltung.domain.AbstractKunde;
 import de.shop.kundenverwaltung.service.KundeService;
 import de.shop.util.interceptor.Log;
-import de.shop.util.Mock;
 import static de.shop.util.Constants.LOADGRAPH;
 
 
@@ -142,7 +141,10 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		
 	@Override
 	public Bestellung updateBestellung(Bestellung bestellung) {
-		Mock.updateBestellung(bestellung);
+		if (bestellung == null)
+			return null;
+		
+		//TODO
 		
 		return bestellung;
 	}

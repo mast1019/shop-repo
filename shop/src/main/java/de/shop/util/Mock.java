@@ -1,11 +1,9 @@
 // habe auskommentiert statt gelöscht
 // weiß nicht ob wir den Mock Code nochmal brauchen
-package de.shop.util;
+/*package de.shop.util;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 
@@ -253,7 +251,5 @@ public final class Mock {
 		System.out.println("Aktualisierte Bestellung: " + bestellung);
 	}
 
-	private Mock() { /**/ }
-}
-
+	private Mock() { /**/ 
 

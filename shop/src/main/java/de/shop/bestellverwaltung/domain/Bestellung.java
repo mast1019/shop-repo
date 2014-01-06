@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Collections;
 import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
-import java.math.BigDecimal;
 import java.net.URI;
 
 import javax.persistence.Basic;
@@ -29,7 +28,6 @@ import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.validation.constraints.DecimalMin;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 

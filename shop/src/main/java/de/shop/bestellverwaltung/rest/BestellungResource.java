@@ -12,9 +12,7 @@ import static javax.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -181,9 +179,11 @@ public class BestellungResource {
 		int startPos = kundeUriStr.lastIndexOf('/') + 1;
 		final String kundeIdStr = kundeUriStr.substring(startPos);
 		Long kundeId = null;
+		
 		try {
 			kundeId = Long.valueOf(kundeIdStr);
 		}
+		
 		catch (NumberFormatException e) {
 			kundeIdInvalid();
 		}

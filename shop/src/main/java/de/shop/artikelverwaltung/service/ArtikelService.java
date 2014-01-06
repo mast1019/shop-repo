@@ -2,7 +2,6 @@ package de.shop.artikelverwaltung.service;
 
 import java.io.Serializable;
 import java.lang.invoke.MethodHandles;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,7 +22,6 @@ import org.jboss.logging.Logger;
 
 import de.shop.artikelverwaltung.domain.Artikel;
 import de.shop.util.interceptor.Log;
-import de.shop.util.Mock;
 
 @Log
 @Dependent
@@ -72,12 +70,12 @@ public class ArtikelService implements Serializable {
 			return artikel;
 		}
 
-		artikel = Mock.createArtikel(artikel);
+		//artikel = Mock.createArtikel(artikel);
 		return artikel;
 	}
 	
 	public void updateArtikel(Artikel artikel) {
-		Mock.updateArtikel(artikel);
+		//Mock.updateArtikel(artikel);
 	}
 	
 	public List<Artikel> findArtikelByIds(List<Long> ids) {
