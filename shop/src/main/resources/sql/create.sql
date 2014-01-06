@@ -3,7 +3,6 @@
 -- Kommentare durch -- am Zeilenanfang
 -- ===============================================================================
 
-
 --
 -- hibernate_sequence
 --
