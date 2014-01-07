@@ -64,7 +64,7 @@ public class Adresse extends AbstractAuditable implements Serializable {
 	private String stadt;
 	
 	// mapped by = Attribut der Klasse AbstractKunde, wo die FK-Spalte definiert ist
-	@OneToOne(cascade = { PERSIST,REMOVE }, mappedBy ="adresse")
+	@OneToOne(cascade = { PERSIST, REMOVE }, mappedBy = "adresse")
 	@Valid
 	@XmlTransient
 	private AbstractKunde kunde;

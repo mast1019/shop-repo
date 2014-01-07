@@ -28,7 +28,7 @@ public class Privatkunde extends AbstractKunde {
 	
 	@Override
 	public String toString() {
-		return "Privatkunde ["+ super.toString() + "geschlecht=" + geschlecht + "]";
+		return "Privatkunde [" + super.toString() + "geschlecht=" + geschlecht + "]";
 	}
 	
 }

@@ -97,7 +97,7 @@ import de.shop.util.persistence.AbstractAuditable;
 })
 @NamedEntityGraphs({
 	@NamedEntityGraph(name = AbstractKunde.GRAPH_BESTELLUNGEN,
-					  attributeNodes = @NamedAttributeNode("bestellungen")),
+					  attributeNodes = @NamedAttributeNode("bestellungen"))
 })
 
 public abstract class AbstractKunde extends AbstractAuditable implements Serializable {

@@ -3,7 +3,7 @@ package de.shop.kundenverwaltung.domain;
 
 import javax.persistence.AttributeConverter;
 //import javax.persistence.Converter;
-import de.shop.kundenverwaltung.domain.GeschlechtType;
+//import de.shop.kundenverwaltung.domain.GeschlechtType;
 
 public class GeschlechtTypeConverter implements AttributeConverter<GeschlechtType, String> {
 	@Override
