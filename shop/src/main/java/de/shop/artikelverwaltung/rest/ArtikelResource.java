@@ -1,9 +1,11 @@
 package de.shop.artikelverwaltung.rest;
 
+import static de.shop.util.Constants.KEINE_ID;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static javax.ws.rs.core.MediaType.TEXT_XML;
 
+import java.lang.invoke.MethodHandles;
 import java.net.URI;
 
 import javax.enterprise.context.RequestScoped;
@@ -20,8 +22,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import org.jboss.logging.Logger;
+
 import de.shop.artikelverwaltung.domain.Artikel;
 import de.shop.artikelverwaltung.service.ArtikelService;
+import de.shop.util.interceptor.Log;
 import de.shop.util.rest.UriHelper;
 import de.shop.util.rest.NotFoundException;
 	
@@ -29,7 +34,11 @@ import de.shop.util.rest.NotFoundException;
 @Produces({ APPLICATION_JSON, APPLICATION_XML + ";qs=0.75", TEXT_XML + ";qs=0.5" })
 @Consumes
 @RequestScoped
+@Log
 public class ArtikelResource {
+	
+	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
+	
 	@Context
 	private UriInfo uriInfo;
 		
@@ -62,7 +71,9 @@ public class ArtikelResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public Response createArtikel(@Valid Artikel artikel) {
+		artikel.setId(KEINE_ID);
 		artikel = as.createArtikel(artikel);
+		LOGGER.tracef("Artikel: %s", artikel);
 		return Response.created(getUriArtikel(artikel, uriInfo))
 			           .build();
 	}
@@ -71,7 +82,12 @@ public class ArtikelResource {
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	public void updateArtikel(@Valid Artikel artikel) {
-		// TODO Anwendungskern statt Mock, Verwendung von Locale
+		final Artikel orgArtikel = as.findArtikelById(artikel.getId());
+		LOGGER.tracef("Artikel vorher: %s", orgArtikel);
+		
+		orgArtikel.setValues(artikel);
+		LOGGER.tracef("Arikel nachher: %s, orgArtikel");
+		
 		as.updateArtikel(artikel);
 	}
 }
