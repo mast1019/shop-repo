@@ -19,6 +19,8 @@ import javax.validation.constraints.NotNull;
 
 
 
+import javax.validation.constraints.Size;
+
 import org.jboss.logging.Logger;
 
 import com.google.common.base.Strings;
@@ -57,28 +59,7 @@ public class ArtikelService implements Serializable {
 		return em.find(Artikel.class, id);
 	}
 	
-	public List<Artikel> findArtikelByName(String name) {
-		if (Strings.isNullOrEmpty(name))
-			return findVerfuegbareArtikel();
-		
-		return em.createNamedQuery("FIND_ARTIKEL_BY_NAME", Artikel.class)
-				.setParameter(Artikel.PARAM_NAME, "%" + name + "%")
-				.getResultList();
-	}
-	
-	public Artikel createArtikel(Artikel artikel) {
-		if (artikel == null) {
-			return artikel;
-		}
-
-		//artikel = Mock.createArtikel(artikel);
-		return artikel;
-	}
-	
-	public void updateArtikel(Artikel artikel) {
-		//Mock.updateArtikel(artikel);
-	}
-	
+	@Size(min = 1, message = "{artikel.notFound.ids}")
 	public List<Artikel> findArtikelByIds(List<Long> ids) {
 		if (ids == null || ids.isEmpty()) {
 			return Collections.emptyList();
@@ -117,4 +98,29 @@ public class ArtikelService implements Serializable {
 		return em.createQuery(criteriaQuery)
 		         .getResultList();
 	}
+	
+	
+	@Size(min = 1, message = "{artikel.notFound.bezeichnung")
+	public List<Artikel> findArtikelByName(String name) {
+		if (Strings.isNullOrEmpty(name))
+			return findVerfuegbareArtikel();
+		
+		return em.createNamedQuery("FIND_ARTIKEL_BY_NAME", Artikel.class)
+				.setParameter(Artikel.PARAM_NAME, "%" + name + "%")
+				.getResultList();
+	}
+	
+	public Artikel createArtikel(Artikel artikel) {
+		if (artikel == null) {
+			return artikel;
+		}
+
+		em.persist(artikel);
+		return artikel;
+	}
+	
+	public void updateArtikel(Artikel artikel) {
+		//Mock.updateArtikel(artikel);
+	}
+	
 }

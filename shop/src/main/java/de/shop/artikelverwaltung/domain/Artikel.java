@@ -100,6 +100,14 @@ public class Artikel implements Serializable {	 //TODO extends AbstractAuditable
 		LOGGER.debugf("Neuer Artikel mit ID=%d", id);
 	}
 
+	public void setValues(Artikel k) {
+		name = k.name;
+		beschreibung = k.beschreibung;
+		preis = k.preis;
+		gewicht = k.gewicht;
+		ausgesondert = k.ausgesondert;
+	}
+	
 	public Long getId() {
 		return id;
 	}
