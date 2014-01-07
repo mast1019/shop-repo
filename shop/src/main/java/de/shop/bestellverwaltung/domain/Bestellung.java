@@ -105,11 +105,11 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 	@Transient
 	private URI kundeUri;
 	
-	public Bestellung () {
+	public Bestellung() {
 		super();
 	}
 
-	public Bestellung (List<Posten> bestellpositionen) {
+	public Bestellung(List<Posten> bestellpositionen) {
 		super();
 		this.posten = bestellpositionen;
 	}

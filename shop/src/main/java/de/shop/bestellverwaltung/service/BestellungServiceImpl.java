@@ -98,7 +98,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 	@Override
 	@Size(min = 1, message = "{bestellung.notFound.kunde}")
 	public List<Bestellung> findBestellungenByKunde(AbstractKunde kunde) {
-		if (kunde==null) {
+		if (kunde == null) {
 			return Collections.emptyList();
 		}
 		return em.createNamedQuery(Bestellung.FIND_BESTELLUNGEN_BY_KUNDE, Bestellung.class)

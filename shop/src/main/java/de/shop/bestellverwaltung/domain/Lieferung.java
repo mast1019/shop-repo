@@ -157,16 +157,18 @@ public class Lieferung extends AbstractAuditable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Lieferung other = (Lieferung) obj;
+		final Lieferung other = (Lieferung) obj;
 		if (bestellungen == null) {
 			if (other.bestellungen != null)
 				return false;
-		} else if (!bestellungen.equals(other.bestellungen))
+		} 
+		else if (!bestellungen.equals(other.bestellungen))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} 
+		else if (!id.equals(other.id))
 			return false;
 		if (transportArt != other.transportArt)
 			return false;
