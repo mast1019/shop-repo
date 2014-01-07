@@ -17,8 +17,11 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.validation.constraints.NotNull;
 
-import org.fest.util.Strings;
+
+
 import org.jboss.logging.Logger;
+
+import com.google.common.base.Strings;
 
 import de.shop.artikelverwaltung.domain.Artikel;
 import de.shop.util.interceptor.Log;
