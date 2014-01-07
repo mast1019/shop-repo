@@ -46,8 +46,7 @@ public class ArtikelService implements Serializable {
 		LOGGER.debugf("CDI-faehiges Bean %s wird geloescht", this);
 	}
 	
-	public List<Artikel> findVerfuegbareArtikel()
-	{
+	public List<Artikel> findVerfuegbareArtikel() {
 		return em.createNamedQuery(Artikel.FIND_VERFUEGBARE_ARTIKEL, Artikel.class)
 				.getResultList();
 	}
@@ -58,13 +57,12 @@ public class ArtikelService implements Serializable {
 		return em.find(Artikel.class, id);
 	}
 	
-	public List<Artikel> findArtikelByName(String name)
-	{
+	public List<Artikel> findArtikelByName(String name) {
 		if (Strings.isNullOrEmpty(name))
 			return findVerfuegbareArtikel();
 		
 		return em.createNamedQuery("FIND_ARTIKEL_BY_NAME", Artikel.class)
-				.setParameter(Artikel.PARAM_NAME,"%"+ name + "%")
+				.setParameter(Artikel.PARAM_NAME, "%" + name + "%")
 				.getResultList();
 	}
 	
