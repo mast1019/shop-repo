@@ -139,7 +139,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		return createBestellung(bestellung, kunde);
 	}
 		
-	@Override
+	/*@Override
 	public Bestellung updateBestellung(Bestellung bestellung) {
 		if (bestellung == null)
 			return null;
@@ -147,7 +147,7 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		//TODO
 		
 		return bestellung;
-	}
+	}*/
 	
 	@Override
 	@NotNull(message = "{bestellung.kunde.notFound.id}")
