@@ -26,12 +26,12 @@ INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktu
 --
 -- artikel
 --
--- INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (300,'Fahrrad ''Typ A''',100,10,0,'01.10.2013 00:00:00','01.10.2013 00:00:00');
--- INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (301,'Fahrrad ''Typ B''',200,11,0,'02.10.2013 00:00:00','02.10.2013 00:00:00');
--- INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (302,'Fahrrad ''Typ C''',300,12,0,'03.10.2013 00:00:00','03.10.2013 00:00:00');
--- INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (303,'Fahrrad ''Typ D''',400,13,0,'04.10.2013 00:00:00','04.10.2013 00:00:00');
--- INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (304,'Fahrrad ''Typ E''',500,14,0,'05.10.2013 00:00:00','05.10.2013 00:00:00');
--- INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (305,'Fahrrad ''Typ F''',600,15,0,'06.10.2013 00:00:00','06.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (300,'Fahrrad ','Typ A',100,10,0,'01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (301,'Fahrrad ','Typ B',200,11,0,'02.10.2013 00:00:00','02.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (302,'Fahrrad ','Typ C',300,12,0,'03.10.2013 00:00:00','03.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (303,'Fahrrad ','Typ D',400,13,0,'04.10.2013 00:00:00','04.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (304,'Fahrrad ','Typ E',500,14,0,'05.10.2013 00:00:00','05.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (305,'Fahrrad ','Typ F',600,15,0,'06.10.2013 00:00:00','06.10.2013 00:00:00');
 
 --
 -- bestellung
@@ -46,30 +46,30 @@ INSERT INTO bestellung (bestellnummer, kunde_fk, bpk, ausgeliefert, erzeugt, akt
 --
 -- posten
 --
--- INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (500,400,300,1,'01.08.2006 00:00:00','01.08.2006 00:00:00');
--- INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (501,400,301,4,'01.08.2006 00:00:00','01.08.2006 00:00:00');
--- INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (502,401,302,5,'02.08.2006 00:00:00','02.08.2006 00:00:00');
--- INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (503,402,303,3,'03.08.2006 00:00:00','03.08.2006 00:00:00');
--- INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (504,402,304,2,'03.08.2006 00:00:00','03.08.2006 00:00:00');
--- INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (505,403,305,1,'04.08.2006 00:00:00','04.08.2006 00:00:00');
--- INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (506,404,300,5,'05.08.2006 00:00:00','05.08.2006 00:00:00');
--- INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (507,404,301,2,'05.08.2006 00:00:00','05.08.2006 00:00:00');
--- INSERT INTO bestellposition (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (508,404,302,8,'05.08.2006 00:00:00','05.08.2006 00:00:00');
+INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (500,400,300,1,'01.08.2006 00:00:00','01.08.2006 00:00:00');
+INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (501,400,301,4,'01.08.2006 00:00:00','01.08.2006 00:00:00');
+INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (502,401,302,5,'02.08.2006 00:00:00','02.08.2006 00:00:00');
+INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (503,402,303,3,'03.08.2006 00:00:00','03.08.2006 00:00:00');
+INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (504,402,304,2,'03.08.2006 00:00:00','03.08.2006 00:00:00');
+INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (505,403,305,1,'04.08.2006 00:00:00','04.08.2006 00:00:00');
+INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (506,404,300,5,'05.08.2006 00:00:00','05.08.2006 00:00:00');
+INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (507,404,301,2,'05.08.2006 00:00:00','05.08.2006 00:00:00');
+INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert) VALUES (508,404,302,8,'05.08.2006 00:00:00','05.08.2006 00:00:00');
 
 --
 -- lieferung
 --
--- INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (600,'20051005-001','ST','01.08.2006 00:00:00','01.08.2006 00:00:00');
--- INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (601,'20051005-002','SCH','02.08.2006 00:00:00','02.08.2006 00:00:00');
--- INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (602,'20051005-003','L','03.08.2006 00:00:00','03.08.2006 00:00:00');
--- INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (603,'20051008-001','W','04.08.2006 00:00:00','04.08.2006 00:00:00');
+INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (600,'20051005-001','ST','01.08.2006 00:00:00','01.08.2006 00:00:00');
+INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (601,'20051005-002','SCH','02.08.2006 00:00:00','02.08.2006 00:00:00');
+INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (602,'20051005-003','L','03.08.2006 00:00:00','03.08.2006 00:00:00');
+INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (603,'20051008-001','W','04.08.2006 00:00:00','04.08.2006 00:00:00');
 
 --
 -- bestellung_lieferung
 --
--- INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (400,600);
--- INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (401,600);
--- INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (402,601);
--- INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (402,602);
--- INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (403,602);
--- INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (404,603);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (400,600);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (401,600);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (402,601);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (402,602);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (403,602);
+INSERT INTO bestellung_lieferung (bestellung_fk, lieferung_fk) VALUES (404,603);
