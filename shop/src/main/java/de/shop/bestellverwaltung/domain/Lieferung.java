@@ -121,12 +121,16 @@ public class Lieferung extends AbstractAuditable {
 	}
 	
 	public void addMehrereBestellungen(List<Bestellung> bestellungen) {
-		if (bestellungen == null) {
+		if (this.bestellungen == null) {
 			this.bestellungen = bestellungen;
 			return;
 		}
 		for (Bestellung b : bestellungen) {
+			if (b == null) {
+			}
+			else {
 			this.bestellungen.add(b);
+			}
 		}
 	}
 
