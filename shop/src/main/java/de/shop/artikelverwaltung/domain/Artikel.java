@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.jboss.logging.Logger;
 
+import de.shop.util.persistence.AbstractAuditable;
+
 @XmlRootElement
 @Entity
 @Table(indexes = @Index(columnList = "name"))
@@ -42,7 +44,7 @@ import org.jboss.logging.Logger;
 						+ " WHERE    a.preis < :" + Artikel.PARAM_PREIS
 			 	        + " ORDER BY a.id ASC")
 })
-public class Artikel implements Serializable {	 //TODO extends AbstractAuditable
+public class Artikel extends AbstractAuditable implements Serializable {	 
 	
 	private static final long serialVersionUID = 4593393192027810187L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
