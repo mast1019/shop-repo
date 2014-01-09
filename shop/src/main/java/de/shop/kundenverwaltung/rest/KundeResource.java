@@ -20,7 +20,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
-//import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -157,8 +156,7 @@ public class KundeResource {
 			kunde = ks.findKundeByEmail(email);
 		}
 		else if (plz != null) {
-			// TODO Beispiel fuer ein TODO bei fehlender Implementierung
-			throw new RuntimeException("Suche nach PLZ noch nicht implementiert");
+			kunden = ks.findKundenByPLZ(plz);
 		}
 		else {
 			kunden = ks.findAllKunden(FetchType.NUR_KUNDE, OrderType.ID);
