@@ -120,8 +120,13 @@ public class ArtikelService implements Serializable {
 		return artikel;
 	}
 	
-	public void updateArtikel(Artikel artikel) {
-		//Mock.updateArtikel(artikel);
+	@Transactional
+	public Artikel updateArtikel(Artikel artikel) {
+		if (artikel == null)
+			return null;
+		
+		em.merge(artikel);
+		return artikel;
 	}
 	
 }
