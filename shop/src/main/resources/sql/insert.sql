@@ -3,35 +3,37 @@
 -- Kommentare durch -- am Zeilenanfang
 -- ===============================================================================
 
+
+--
+-- adresse
+--
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (200,'76133','Moltkestra√üe', '30', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (201,'76133','Moltkestra√üe', '31', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (202,'76133','Moltkestra√üe', '32', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (203,'76133','Moltkestra√üe', '33', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (204,'76133','Moltkestra√üe', '34', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (205,'76133','Moltkestra√üe', '35', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+
 --
 -- kunde
 --
 INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (100,'Admin','Admin', 200, 'F', 'admin@hs-karlsruhe.de', null, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
 INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (101,'Admin','Admin', 201, 'F', 'admin@hs-karlsruhe.de', null, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
 INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (102,'Admin','Admin', 202, 'F', 'admin@hs-karlsruhe.de', null, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (103,'Admin','Admin', 203, 'P', 'admin@hs-karlsruhe.de', 'W', 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (104,'Admin','Admin', 204, 'P', 'admin@hs-karlsruhe.de', 'M', 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (105,'Admin','Admin', 205, 'P', 'admin@hs-karlsruhe.de', 'W', 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (103,'Admin','Admin', 203, 'P', 'admin@hs-karlsruhe.de', 0, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (104,'Admin','Admin', 204, 'P', 'admin@hs-karlsruhe.de', 0, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (105,'Admin','Admin', 205, 'P', 'admin@hs-karlsruhe.de', 1, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
 
---
--- adresse
---
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (200,'76133','Moltkestraﬂe', '30', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (201,'76133','Moltkestraﬂe', '31', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (202,'76133','Moltkestraﬂe', '32', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (203,'76133','Moltkestraﬂe', '33', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (204,'76133','Moltkestraﬂe', '34', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (205,'76133','Moltkestraﬂe', '35', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
 
 --
 -- artikel
 --
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (300,'Fahrrad ','Typ A',100,10,0,'01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (301,'Fahrrad ','Typ B',200,11,0,'02.10.2013 00:00:00','02.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (302,'Fahrrad ','Typ C',300,12,0,'03.10.2013 00:00:00','03.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (303,'Fahrrad ','Typ D',400,13,0,'04.10.2013 00:00:00','04.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (304,'Fahrrad ','Typ E',500,14,0,'05.10.2013 00:00:00','05.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (305,'Fahrrad ','Typ F',600,15,0,'06.10.2013 00:00:00','06.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (300,'Fahrrad ','Typ A',100,10,0,'01.10.2013 00:00:00','07.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (301,'Fahrrad ','Typ B',200,11,0,'02.10.2013 00:00:00','08.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (302,'Fahrrad ','Typ C',300,12,0,'03.10.2013 00:00:00','09.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (303,'Fahrrad ','Typ D',400,13,0,'04.10.2013 00:00:00','10.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (304,'Fahrrad ','Typ E',500,14,0,'05.10.2013 00:00:00','11.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (305,'Fahrrad ','Typ F',600,15,0,'06.10.2013 00:00:00','12.10.2013 00:00:00');
 
 --
 -- bestellung
@@ -59,10 +61,10 @@ INSERT INTO posten (id, bestellung_fk, artikel_fk, anzahl, erzeugt, aktualisiert
 --
 -- lieferung
 --
-INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (600,'20051005-001','ST','01.08.2006 00:00:00','01.08.2006 00:00:00');
-INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (601,'20051005-002','SCH','02.08.2006 00:00:00','02.08.2006 00:00:00');
-INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (602,'20051005-003','L','03.08.2006 00:00:00','03.08.2006 00:00:00');
-INSERT INTO lieferung (id, liefernr, transport_art, erzeugt, aktualisiert) VALUES (603,'20051008-001','W','04.08.2006 00:00:00','04.08.2006 00:00:00');
+INSERT INTO lieferung (id, transport_art, erzeugt, aktualisiert) VALUES (600,'ST','01.08.2006 00:00:00','01.08.2006 00:00:00');
+INSERT INTO lieferung (id, transport_art, erzeugt, aktualisiert) VALUES (601,'SCH','02.08.2006 00:00:00','02.08.2006 00:00:00');
+INSERT INTO lieferung (id, transport_art, erzeugt, aktualisiert) VALUES (602,'L','03.08.2006 00:00:00','03.08.2006 00:00:00');
+INSERT INTO lieferung (id, transport_art, erzeugt, aktualisiert) VALUES (603,'W','04.08.2006 00:00:00','04.08.2006 00:00:00');
 
 --
 -- bestellung_lieferung
