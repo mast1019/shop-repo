@@ -138,16 +138,6 @@ public class BestellungServiceImpl implements BestellungService, Serializable {
 		final AbstractKunde kunde = ks.findKundeById(kundeId, KundeService.FetchType.MIT_BESTELLUNGEN);
 		return createBestellung(bestellung, kunde);
 	}
-		
-	/*@Override
-	public Bestellung updateBestellung(Bestellung bestellung) {
-		if (bestellung == null)
-			return null;
-		
-		//TODO
-		
-		return bestellung;
-	}*/
 	
 	@Override
 	@NotNull(message = "{bestellung.kunde.notFound.id}")

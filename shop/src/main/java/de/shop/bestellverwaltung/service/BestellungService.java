@@ -13,7 +13,6 @@ public interface BestellungService {
 	List<Bestellung> findBestellungenByKunde(AbstractKunde kunde);
 	Bestellung createBestellung(Bestellung bestellung, Long kundeId);
 	Bestellung createBestellung(Bestellung bestellung, AbstractKunde kunde);
-	//Bestellung updateBestellung(Bestellung bestellung);
 	AbstractKunde findKundeById(Long id);
 	List<Bestellung> findBestellungenByIds(List<Long> ids, FetchType fetch);
 	List<Artikel> ladenhueter(int anzahl);
