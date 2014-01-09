@@ -21,12 +21,12 @@ INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktu
 --
 -- kunde
 --
-INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (100,'Admin','Admin', 200, 'F', 'admin@hs-karlsruhe.de', null, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (101,'Admin','Admin', 201, 'F', 'admin@hs-karlsruhe.de', null, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (102,'Admin','Admin', 202, 'F', 'admin@hs-karlsruhe.de', null, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (103,'Admin','Admin', 203, 'P', 'admin@hs-karlsruhe.de', 0, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (104,'Admin','Admin', 204, 'P', 'admin@hs-karlsruhe.de', 0, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (105,'Admin','Admin', 205, 'P', 'admin@hs-karlsruhe.de', 1, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (100,'Admin','Admin', 200, 'F', 'admin100@hs-karlsruhe.de', null, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (101,'Admin','Admin', 201, 'F', 'admin101@hs-karlsruhe.de', null, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (102,'Admin','Admin', 202, 'F', 'admin102@hs-karlsruhe.de', null, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (103,'Admin','Admin', 203, 'P', 'admin103@hs-karlsruhe.de', 0, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (104,'Admin','Admin', 204, 'P', 'admin104@hs-karlsruhe.de', 0, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, password, erzeugt, aktualisiert) VALUES (105,'Admin','Admin', 205, 'P', 'admin105@hs-karlsruhe.de', 1, 'passwort', '01.10.2013 00:00:00','01.10.2013 00:00:00');
 
 
 --
