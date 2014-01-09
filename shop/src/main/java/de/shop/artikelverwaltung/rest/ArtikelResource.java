@@ -7,6 +7,7 @@ import static javax.ws.rs.core.MediaType.TEXT_XML;
 
 import java.lang.invoke.MethodHandles;
 import java.net.URI;
+import java.util.Date;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -84,7 +85,9 @@ public class ArtikelResource {
 	public void updateArtikel(@Valid Artikel artikel) {
 		final Artikel orgArtikel = as.findArtikelById(artikel.getId());
 		LOGGER.tracef("Artikel vorher: %s", orgArtikel);
-		
+		final Artikel tmp = as.findArtikelById(artikel.getId());
+		final Date erzeugt = tmp.getErzeugt();
+		artikel.setErzeugt(erzeugt);
 		orgArtikel.setValues(artikel);
 		LOGGER.tracef("Arikel nachher: %s, orgArtikel");
 		
