@@ -169,6 +169,7 @@ public class BestellungResource {
 	@POST
 	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
+	@Transactional
 	public Response createBestellung(@Valid Bestellung bestellung) {
 		// TODO eingeloggter Kunde wird durch die URI im Attribut "kundeUri" emuliert
 		final String kundeUriStr = bestellung.getKundeUri().toString();
@@ -218,7 +219,7 @@ public class BestellungResource {
 		// Fuer jede Posten wird der Artikel passend zur Artikel-URL bzw. Artikel-ID gesetzt.
 		// Postenen mit nicht-gefundene Artikel werden eliminiert.
 		int i = 0;
-		final List<Posten> neuePosten = new ArrayList<Posten>();
+		final List<Posten> neuePosten = new ArrayList<Posten>(Posten.size());
 		for (Posten bp : Posten) {
 			// Artikel-ID der aktuellen Posten (s.o.):
 			// artikelIds haben gleiche Reihenfolge wie Postenen
@@ -243,8 +244,8 @@ public class BestellungResource {
 			//}
 		}
 		bestellung.setPosten(neuePosten);
-		//TODO 
-		//bestellung = bs.createBestellung(bestellung, kundeId);
+		 
+		bestellung = bs.createBestellung(bestellung, kundeId);
 
 		final URI bestellungUri = getUriBestellung(bestellung, uriInfo);
 		return Response.created(bestellungUri).build();

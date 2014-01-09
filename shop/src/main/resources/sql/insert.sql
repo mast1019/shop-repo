@@ -28,12 +28,12 @@ INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, pa
 --
 -- artikel
 --
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (300,'Fahrrad ','Typ A',100,10,0,'01.10.2013 00:00:00','07.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (301,'Fahrrad ','Typ B',200,11,0,'02.10.2013 00:00:00','08.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (302,'Fahrrad ','Typ C',300,12,0,'03.10.2013 00:00:00','09.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (303,'Fahrrad ','Typ D',400,13,0,'04.10.2013 00:00:00','10.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (304,'Fahrrad ','Typ E',500,14,0,'05.10.2013 00:00:00','11.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (305,'Fahrrad ','Typ F',600,15,0,'06.10.2013 00:00:00','12.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (300,'Fahrrad','Super schnell',100,10,0,'01.10.2013 00:00:00','07.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (301,'Fahrrad','gut und günstig',200,11,0,'02.10.2013 00:00:00','08.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (302,'Fahrrad','Typ C',300,12,0,'03.10.2013 00:00:00','09.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (303,'Fahrrad','Typ D',400,13,0,'04.10.2013 00:00:00','10.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (304,'Fahrrad','Typ E',500,14,0,'05.10.2013 00:00:00','11.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (305,'Fahrrad','Typ F',600,15,0,'06.10.2013 00:00:00','12.10.2013 00:00:00');
 
 --
 -- bestellung

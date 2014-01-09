@@ -280,6 +280,7 @@ public class KundeResource {
 	@POST
 	@Consumes({APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
+	@Transactional
 	public Response createKunde(@Valid AbstractKunde kunde) {
 		kunde.setId(KEINE_ID);
 		
