@@ -22,6 +22,7 @@ import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -292,7 +293,7 @@ public class KundeService implements Serializable {
 		return em.createQuery(criteriaQuery).getResultList();
 	}
 	
-	
+	@Transactional
 	public <T extends AbstractKunde> T createKunde(T kunde) {
 		if (kunde == null) {
 			return kunde;
@@ -308,6 +309,7 @@ public class KundeService implements Serializable {
 		return kunde;		
 	}
 
+	@Transactional
 	public <T extends AbstractKunde> T updateKunde(T kunde) {
 		if (kunde == null) {
 			return null;
@@ -330,23 +332,5 @@ public class KundeService implements Serializable {
 		return kunde;
 	}
 
-	public void deleteKunde(AbstractKunde kunde) {
-		if (kunde == null) {
-			return;
-		}
-		
-		// Bestellungen laden, damit sie anschl. ueberprueft werden koennen
-		kunde = findKundeById(kunde.getId(), FetchType.MIT_BESTELLUNGEN);  // Kein Aufruf als Business-Methode
-		if (kunde == null) {
-			return;
-		}
-		
-		// Gibt es Bestellungen?
-		if (!kunde.getBestellungen().isEmpty()) {
-			throw new KundeDeleteBestellungException(kunde);
-		}
-
-		em.remove(kunde);
-	}
 
 }
