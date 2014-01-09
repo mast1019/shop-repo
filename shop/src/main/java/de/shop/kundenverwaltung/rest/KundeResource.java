@@ -127,11 +127,11 @@ public class KundeResource {
                                 .rel(UPDATE_LINK)
                                 .build();
 
-		final Link remove = Link.fromUri(uriHelper.getUri(KundeResource.class, "deleteKunde", kunde.getId(), uriInfo))
-                                .rel(REMOVE_LINK)
-                                .build();
+//		final Link remove = Link.fromUri(uriHelper.getUri(KundeResource.class, "deleteKunde", kunde.getId(), uriInfo))
+//                                .rel(REMOVE_LINK)
+//                                .build();
 		
-		return new Link[] {self, add, update, remove };
+		return new Link[] {self, add, update, /*remove */};
 	}
 	
 	public URI getUriKunde(AbstractKunde kunde, UriInfo uriInfo) {
