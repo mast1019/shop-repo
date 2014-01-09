@@ -209,15 +209,16 @@ public class BestellungResource {
 		
 		if (artikelIds.isEmpty()) {
 			// keine einzige Artikel-ID als gueltige Zahl
-			artikelIdsInvalid();
+			return null;
 		}
 
 		final Collection<Artikel> gefundeneArtikel = as.findArtikelByIds(artikelIds);
 		
-		// Postenen haben URLs fuer persistente Artikel.
+		
+		// Posten haben URLs fuer persistente Artikel.
 		// Diese persistenten Artikel wurden in einem DB-Zugriff ermittelt (s.o.)
 		// Fuer jede Posten wird der Artikel passend zur Artikel-URL bzw. Artikel-ID gesetzt.
-		// Postenen mit nicht-gefundene Artikel werden eliminiert.
+		// Posten mit nicht-gefundene Artikel werden eliminiert.
 		int i = 0;
 		final List<Posten> neuePosten = new ArrayList<Posten>(Posten.size());
 		for (Posten bp : Posten) {
@@ -244,21 +245,10 @@ public class BestellungResource {
 			//}
 		}
 		bestellung.setPosten(neuePosten);
-		 
 		bestellung = bs.createBestellung(bestellung, kundeId);
 
 		final URI bestellungUri = getUriBestellung(bestellung, uriInfo);
 		return Response.created(bestellungUri).build();
-	}
-	
-	/**
-	 * @NotNull verletzen, um die entsprechende Meldung zu verursachen, weil keine einzige Artikel-ID
-	 *          eine gueltige Zahl war.
-	 * @return null
-	 */
-	@NotNull(message = "{bestellung.artikelIds.invalid}")
-	public List<Long> artikelIdsInvalid() {
-		return null;
 	}
 	
 	/**
