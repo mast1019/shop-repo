@@ -159,12 +159,17 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 	}
 	
 	public void addMehrereLieferungen(List<Lieferung> lieferungen) {
-		if (lieferungen == null) {
+		if (this.lieferungen == null) {
 			this.lieferungen = lieferungen;
 			return;
 		}
+		
 		for (Lieferung l : lieferungen) {
+			if (l == null) {	
+			}
+			else {
 			this.lieferungen.add(l);
+			}
 		}
 	}
 	
@@ -201,12 +206,16 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 	}	
 	
 	public void addMehrerePosten(List<Posten> posten) {
-		if (posten == null) {
+		if (this.posten == null) {
 			this.posten = posten;
 			return;
 		}
 		for (Posten p : posten) {
+			if (p == null) {
+			}
+			else {
 			this.posten.add(p);
+			}
 		}
 	}
 
