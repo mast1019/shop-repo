@@ -292,9 +292,8 @@ public class KundeService implements Serializable {
 		             .distinct(true);
 		return em.createQuery(criteriaQuery).getResultList();
 	}
-	
-	@Transactional
-	public <T extends AbstractKunde> T createKunde(T kunde) {
+		
+	public AbstractKunde createKunde(AbstractKunde kunde) {
 		if (kunde == null) {
 			return kunde;
 		}
