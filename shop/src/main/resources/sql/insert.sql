@@ -8,12 +8,12 @@
 --
 -- adresse
 --
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (200,'76133','Moltkestraße', '30', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (201,'76133','Moltkestraße', '31', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (202,'76133','Moltkestraße', '32', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (203,'76133','Moltkestraße', '33', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (204,'76133','Moltkestraße', '34', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
-INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (205,'76133','Moltkestraße', '35', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (200,'76133','Moltkestrass�e', '30', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (201,'76133','Moltkestrasse', '31', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (202,'76133','Moltkestrasse', '32', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (203,'76133','Moltkestrasse', '33', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (204,'76133','Moltkestrass�e', '34', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (205,'76133','Moltkestrasse', '35', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
 
 
 
@@ -32,12 +32,12 @@ INSERT INTO kunde (id, nachname, vorname, adresse_fk, art, email, geschlecht, pa
 --
 -- artikel
 --
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (300,'Fahrrad','Super schnell',100,10,0,'01.10.2013 00:00:00','07.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (301,'Fahrrad','gut und g�nstig',200,11,0,'02.10.2013 00:00:00','08.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (302,'Fahrrad','Typ C',300,12,0,'03.10.2013 00:00:00','09.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (303,'Fahrrad','Typ D',400,13,0,'04.10.2013 00:00:00','10.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (304,'Fahrrad','Typ E',500,14,0,'05.10.2013 00:00:00','11.10.2013 00:00:00');
-INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (305,'Fahrrad','Typ F',600,15,0,'06.10.2013 00:00:00','12.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (300,'Fahrrad','Fahrrad Typ A',100,10,0,'01.10.2013 00:00:00','07.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (301,'Fahrrad','Fahrrad Typ B',200,11,0,'02.10.2013 00:00:00','08.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (302,'Fahrrad','Fahrrad Typ C',300,12,0,'03.10.2013 00:00:00','09.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (303,'Fahrrad','Fahrrad Typ D',400,13,0,'04.10.2013 00:00:00','10.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (304,'Fahrrad','Fahrrad Typ E',500,14,0,'05.10.2013 00:00:00','11.10.2013 00:00:00');
+INSERT INTO artikel (id, name, beschreibung, preis, gewicht, ausgesondert, erzeugt, aktualisiert) VALUES (305,'Fahrrad','Fahrrad Typ F',600,15,0,'06.10.2013 00:00:00','12.10.2013 00:00:00');
 
 --
 -- bestellung
