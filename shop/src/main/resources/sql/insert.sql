@@ -4,6 +4,7 @@
 -- ===============================================================================
 
 
+
 --
 -- adresse
 --
@@ -13,6 +14,9 @@ INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktu
 INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (203,'76133','Moltkestraße', '33', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
 INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (204,'76133','Moltkestraße', '34', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
 INSERT INTO adresse (id, postleitzahl, strasse, hausnummer, stadt, erzeugt, aktualisiert) VALUES (205,'76133','Moltkestraße', '35', 'Karlsruhe', '01.10.2013 00:00:00','01.10.2013 00:00:00');
+
+
+
 
 --
 -- kunde

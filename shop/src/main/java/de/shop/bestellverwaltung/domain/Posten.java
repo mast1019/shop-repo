@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import de.shop.artikelverwaltung.domain.Artikel;
+import de.shop.util.persistence.AbstractAuditable;
 import static de.shop.util.Constants.KEINE_ID;
 
 import javax.persistence.Basic;
@@ -21,6 +22,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.PostPersist;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -40,7 +42,7 @@ import org.jboss.logging.Logger;
 	            	    + " WHERE  a NOT IN (SELECT p.artikel FROM Posten p)")
 })
 @XmlRootElement
-public class Posten implements Serializable {
+public class Posten extends AbstractAuditable implements Serializable {
 	private static final long serialVersionUID = -6546634107480260335L;
 	private static final Logger LOGGER = Logger.getLogger(MethodHandles.lookup().lookupClass());
 	
@@ -64,7 +66,7 @@ public class Posten implements Serializable {
 	@Min(value = 1, message = "{posten.anzahl.min}")	
 	private Integer anzahl;
 	
-	@XmlTransient
+	@Transient
 	private URI artikelUri;
 
 	public Posten() {	
@@ -115,11 +117,6 @@ public class Posten implements Serializable {
 		this.artikelUri = artikeluri;
 	}
 
-	@Override
-	public String toString() {
-		return "Posten [id=" + id + ", artikel=" + artikel.toString() + ", anzahl="
-				+ anzahl + "]";
-	}
 	
 	@Override
 	public int hashCode() {
@@ -168,5 +165,11 @@ public class Posten implements Serializable {
 		
 		return true;
 	}
-		
+
+	@Override
+	public String toString() {
+		return "Posten [id=" + id + ", artikel=" + artikel + ", anzahl="
+				+ anzahl + ", toString()=" + super.toString() + "]";
+	}
+
 }
