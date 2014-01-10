@@ -165,9 +165,7 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 		}
 		
 		for (Lieferung l : lieferungen) {
-			if (l == null) {	
-			}
-			else {
+			if (l != null) {
 			this.lieferungen.add(l);
 			}
 		}
@@ -211,9 +209,7 @@ public class Bestellung extends AbstractAuditable implements Serializable {
 			return;
 		}
 		for (Posten p : posten) {
-			if (p == null) {
-			}
-			else {
+			if (p != null) {
 			this.posten.add(p);
 			}
 		}

@@ -126,9 +126,7 @@ public class Lieferung extends AbstractAuditable {
 			return;
 		}
 		for (Bestellung b : bestellungen) {
-			if (b == null) {
-			}
-			else {
+			if (b != null) {
 			this.bestellungen.add(b);
 			}
 		}

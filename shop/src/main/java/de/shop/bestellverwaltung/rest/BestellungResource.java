@@ -17,7 +17,6 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -94,10 +93,10 @@ public class BestellungResource {
 			bestellung.setKundeUri(kundeUri);
 		}
 		
-		// URIs fuer Artikel in den Postenen setzen
-		final Collection<Posten> Postenen = bestellung.getPosten();
-		if (Postenen != null && !Postenen.isEmpty()) {
-			for (Posten bp : Postenen) {
+		// URIs fuer Artikel in den Posten setzen
+		final Collection<Posten> posten = bestellung.getPosten();
+		if (posten != null && !posten.isEmpty()) {
+			for (Posten bp : posten) {
 				final URI artikelUri = artikelResource.getUriArtikel(bp.getArtikel(), uriInfo);
 				bp.setArtikelUri(artikelUri);
 			}
@@ -186,9 +185,9 @@ public class BestellungResource {
 		}
 		
 		// IDs der (persistenten) Artikel ermitteln
-		final List<Posten> Posten = bestellung.getPosten();
-		final List<Long> artikelIds = new ArrayList<>(Posten.size());
-		for (Posten bp : Posten) {
+		final List<Posten> posten = bestellung.getPosten();
+		final List<Long> artikelIds = new ArrayList<>(posten.size());
+		for (Posten bp : posten) {
 			final URI artikelUri = bp.getArtikelUri();
 			if (artikelUri == null) {
 				continue;
@@ -218,8 +217,8 @@ public class BestellungResource {
 		}
 
 		int i = 0;
-		final List<Posten> neuePosten = new ArrayList<Posten>(Posten.size());
-		for (Posten bp : Posten) {
+		final List<Posten> neuePosten = new ArrayList<Posten>(posten.size());
+		for (Posten bp : posten) {
 			// Artikel-ID der aktuellen Posten (s.o.):
 			// artikelIds haben gleiche Reihenfolge wie Posten
 			final long artikelId = artikelIds.get(i++);
