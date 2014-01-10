@@ -315,12 +315,12 @@ public class KundeService implements Serializable {
 		}
 		
 		// kunde vom EntityManager trennen, weil anschliessend z.B. nach Id und Email gesucht wird
-		em.detach(kunde);
+		//em.detach(kunde);
 		
 		// Gibt es ein anderes Objekt mit gleicher Email-Adresse?
 		final AbstractKunde tmp = findKundeByEmail(kunde.getEmail());  // Kein Aufruf als Business-Methode
 		if (tmp != null) {
-			em.detach(tmp);
+		//	em.detach(tmp);
 			if (tmp.getId().longValue() != kunde.getId().longValue()) {
 				// anderes Objekt mit gleichem Attributwert fuer email
 				throw new EmailExistsException(kunde.getEmail());

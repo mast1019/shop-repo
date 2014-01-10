@@ -170,7 +170,7 @@ public class BestellungResource {
 	@Consumes({ APPLICATION_JSON, APPLICATION_XML, TEXT_XML })
 	@Produces
 	@Transactional
-	public Response createBestellung(@Valid Bestellung bestellung) {
+	public Response createBestellung(Bestellung bestellung) {
 		// TODO eingeloggter Kunde wird durch die URI im Attribut "kundeUri" emuliert
 		final String kundeUriStr = bestellung.getKundeUri().toString();
 		int startPos = kundeUriStr.lastIndexOf('/') + 1;
@@ -186,7 +186,7 @@ public class BestellungResource {
 		}
 		
 		// IDs der (persistenten) Artikel ermitteln
-		final Collection<Posten> Posten = bestellung.getPosten();
+		final List<Posten> Posten = bestellung.getPosten();
 		final List<Long> artikelIds = new ArrayList<>(Posten.size());
 		for (Posten bp : Posten) {
 			final URI artikelUri = bp.getArtikelUri();
@@ -210,19 +210,19 @@ public class BestellungResource {
 		if (artikelIds.isEmpty()) {
 			// keine einzige Artikel-ID als gueltige Zahl
 			artikelIdsInvalid();
+			return null;
 		}
 
-		final Collection<Artikel> gefundeneArtikel = as.findArtikelByIds(artikelIds);
-		
-		// Postenen haben URLs fuer persistente Artikel.
-		// Diese persistenten Artikel wurden in einem DB-Zugriff ermittelt (s.o.)
-		// Fuer jede Posten wird der Artikel passend zur Artikel-URL bzw. Artikel-ID gesetzt.
-		// Postenen mit nicht-gefundene Artikel werden eliminiert.
+		final List<Artikel> gefundeneArtikel = new ArrayList<Artikel>();
+		for (Long l : artikelIds) {
+			gefundeneArtikel.add(as.findArtikelById(l));
+		}
+
 		int i = 0;
 		final List<Posten> neuePosten = new ArrayList<Posten>(Posten.size());
 		for (Posten bp : Posten) {
 			// Artikel-ID der aktuellen Posten (s.o.):
-			// artikelIds haben gleiche Reihenfolge wie Postenen
+			// artikelIds haben gleiche Reihenfolge wie Posten
 			final long artikelId = artikelIds.get(i++);
 			
 			// Wurde der Artikel beim DB-Zugriff gefunden?
@@ -234,14 +234,6 @@ public class BestellungResource {
 					break;					
 				}
 			}
-			// FIXME JDK 8 hat Lambda-Ausdruecke
-			//final Artikel artikel = gefundeneArtikel.stream()
-			//                                        .filter(a -> a.getId() == artikelId)
-			//                                        .findAny();
-			//if (artikel != null) {
-			//	bp.setArtikel(artikel);
-			//	neuePostenen.add(bp);				
-			//}
 		}
 		bestellung.setPosten(neuePosten);
 		 
