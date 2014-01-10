@@ -209,7 +209,6 @@ public class BestellungResource {
 		
 		if (artikelIds.isEmpty()) {
 			// keine einzige Artikel-ID als gueltige Zahl
-			artikelIdsInvalid();
 			return null;
 		}
 
@@ -236,21 +235,10 @@ public class BestellungResource {
 			}
 		}
 		bestellung.setPosten(neuePosten);
-		 
 		bestellung = bs.createBestellung(bestellung, kundeId);
 
 		final URI bestellungUri = getUriBestellung(bestellung, uriInfo);
 		return Response.created(bestellungUri).build();
-	}
-	
-	/**
-	 * @NotNull verletzen, um die entsprechende Meldung zu verursachen, weil keine einzige Artikel-ID
-	 *          eine gueltige Zahl war.
-	 * @return null
-	 */
-	@NotNull(message = "{bestellung.artikelIds.invalid}")
-	public List<Long> artikelIdsInvalid() {
-		return null;
 	}
 	
 	/**
